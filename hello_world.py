@@ -16,9 +16,9 @@ def main():
     """
     Main function that prints the message returned by get_message().
     """
-    df = pd.DataFrame({'A': [1, 2, 3], 'B': [4, 5, 6]})
+    data = pd.DataFrame({'A': [1, 2, 3], 'B': [4, 5, 6]})
 
-    print("Pandas DataFrame:\n", df)
+    print("Pandas DataFrame:\n", data)
 
     array = np.array([1, 2, 3])
 
