@@ -2,6 +2,10 @@
 A simple script to print "Hello World" that adheres to Pylint standards.
 """
 
+import pandas as pd
+import numpy as np
+import pyspark
+
 def get_message():
     """
     Returns the message to be printed.
