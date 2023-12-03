@@ -12,7 +12,15 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: "3.10" # or specific version like 3.8
+          python-version: "3.11"
+
+      - name: Set up Conda
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          activate-environment: hydrophonatics
+          environment-file: environment.yml
+          python-version: "3.11"
+          auto-activate-base: false
 
       - name: Install dependencies
         run: |
