@@ -1,0 +1,13 @@
+name: hydrophonatics
+channels:
+  - defaults
+dependencies:
+  - pip=23.3
+  - python=3.11
+  - jupyter=1
+  - notebook=6
+  - pandas=2.1
+  - numpy-base=1.26.2
+  - matplotlib=3.8
+  - pip:
+      - pyspark==3.5
