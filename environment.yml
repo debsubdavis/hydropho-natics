@@ -10,4 +10,4 @@ dependencies:
   - numpy-base=1.26.2
   - matplotlib=3.8
   - pip:
-      - pyspark
+      - pyspark=3.5
