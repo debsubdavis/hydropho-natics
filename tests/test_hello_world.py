@@ -1,4 +1,4 @@
-import hello_world
+from utils import hello_world
 
 def test_get_message():
     """

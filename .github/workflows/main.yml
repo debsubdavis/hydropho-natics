@@ -1,6 +1,12 @@
 name: Python CI
 
-on: [pull_request]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
@@ -23,11 +29,11 @@ jobs:
 
       - name: Lint with pylint
         run: |
-          conda run -n hydrophonatics pylint hello_world.py
+          conda run -n hydrophonatics pylint ./**/*.py
 
       - name: Test with pytest
         run: |
-          conda run -n hydrophonatics pytest --cov=hello_world
+          conda run -n hydrophonatics pytest
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
