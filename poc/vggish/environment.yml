@@ -1,0 +1,6 @@
+name: vggish_environment
+channels:
+  - defaults
+dependencies:
+  - jupyter = 1
+  - notebook = 6
