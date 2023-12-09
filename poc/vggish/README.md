@@ -48,7 +48,8 @@ annotated_info.csv - This file contains the annotated sound labels, their coordi
 5. create initial clusters of data (12/12-13)
 
 ## Concerns
-1. Multiple sound are labeled in each image? How do we attribute the sounds to particular cuts of the wav files?
+1. VGGish will cut the wav files into ~1 second duration clips. How do we match the cuts back to the original WAV files and label the data?
+2. What happens to the "dead time" in each file where there are no sounds?
 
 ## Check out:
 Where VGGIsh lives - https://github.com/tensorflow/models/tree/master/research/audioset/vggish
