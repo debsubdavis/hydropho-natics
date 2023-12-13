@@ -61,25 +61,21 @@ To match those conditions, we will convert our wav files from their input form (
 annotated_info.csv - This file contains the annotated sound labels, their coordinates, and the spectrogram and metadata file they belong to.
 
 ## To Dos:
-1. find wav files of interest (12/7)
+~~1. find wav files of interest (12/7)
     - find the annotated images
     - see what the sounds are
     - choose a representative sample (or all) of them for analysis
     - see if we can match them back to .wav files
-    - get those wav files in a directory we can use
-**2. understand preprocessing code (12/7-8)**
-3. run wav files through (12/8)
-4. get embeddings to run on one file (12/11-12)
-**5. understand how to label embeddings
-**6. save embedding output
-**7. run embeddings on all files and save all labeled outputs
-**8. run PCA or other dimensionality reduction to see clustering
-**9. graph PCA-reduced output
-**10. see if can tie back datapoints to their identified sounds
-
-This is the new to-do list
-
-
+    - get those wav files in a directory we can use~~
+2. understand preprocessing code (12/7-8)
+~~3. run wav files through (12/8)~~
+~~4. get embeddings to run on one file (12/11-12)~~
+5. understand how to label embeddings
+6. save embedding output
+7. run embeddings on all files and save all labeled outputs
+8. run PCA or other dimensionality reduction to see clustering
+9. graph PCA-reduced output
+10. see if can tie back datapoints to their identified sounds
 
 
 ## Concerns
