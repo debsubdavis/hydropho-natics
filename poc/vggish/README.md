@@ -77,6 +77,8 @@ annotated_info.csv - This file contains the annotated sound labels, their coordi
 **9. graph PCA-reduced output
 **10. see if can tie back datapoints to their identified sounds
 
+This is the new to-do list
+
 
 
 
