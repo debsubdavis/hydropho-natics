@@ -66,23 +66,26 @@ annotated_info.csv - This file contains the annotated sound labels, their coordi
 
 
 ## To Dos:
-    ~~1. find wav files of interest (12/7)
+
+In Scope:
+    1. find wav files of interest
         - find the annotated images
         - see what the sounds are
         - choose a representative sample (or all) of them for analysis
         - see if we can match them back to .wav files
-        - get those wav files in a directory we can use~~
-    2. understand preprocessing code (12/7-8)
-    ~~3. run wav files through (12/8)~~
-    ~~4. get embeddings to run on one file (12/11-12)~~
-    ~~6. save embedding output~~
-    ~~7. run embeddings on all files and save all outputs~~
+        - get those wav files in a directory we can use
+    2. base understand preprocessing code
+    3. run wav files through
+    4. get embeddings to run on one file
+    6. save embedding output
+    7. run embeddings on all files and save all outputs
     8. run PCA or other dimensionality reduction to see clustering
     9. graph PCA-reduced output
 
 Out of scope:
-labeling samples
-tying samples back to their original sounds
+    1. labeling samples
+    2. tying samples back to their original sounds
+    3. understanding all elements of model
 
 
 ## Concerns/Questions/Future work
@@ -95,17 +98,18 @@ tying samples back to their original sounds
 7. We can alter window and hop length - does that make a difference?
 8. Do we want to do post-processing on the data? Does it make a difference?
 9. Need to fix these f*ing depreciation warnings
-10. Is PCA the best way to reduce the dimensonality for visualization? Is there another way which makes the clusters more apparent? (In POC we're capturing 99% of variance).
+10. Is PCA the best way to reduce the dimensonality for visualization? Is there another way which makes the clusters more apparent? (In POC we're capturing 33% of variance in 2D and ).
       
 ## QUESTIONS FOR CHRIS
 1. Not all the annotated .png have metadata files. The two I found were 20190221T100004-File-13.png has no metadata file and 20190222T190004-File-28.png has no metadata file. They were both taken in 2019022
 2. What are our thoughts on resampling the audio from 16-bit to 32-bit and 48kHz to 16kHz? It felt like we lost a lot of the depth of sound, and maybe it would be worth seeing how the results of the model changed if we kept the file in its original format.
 
 
-## Check out:
+## Sources:
 Where VGGIsh lives - https://github.com/tensorflow/models/tree/master/research/audioset/vggish
 The collab with the how-to - https://colab.research.google.com/drive/1E3CaPAqCai9P9QhJ3WYPNCVmrJU4lAhF
 Info on WAV files - https://en.wikipedia.org/wiki/WAV
 TFR technical docs - https://www.thethingsnetwork.org/docs/devices/bytes/
 TDS TFR article - https://towardsdatascience.com/a-practical-guide-to-tfrecords-584536bc786c
 TDS explanation of log mel spectrogram - https://medium.com/analytics-vidhya/understanding-the-mel-spectrogram-fca2afa2ce53
+PCA - https://medium.com/data-science-365/principal-component-analysis-pca-with-scikit-learn-1e84a0c731b0
