@@ -58,26 +58,32 @@ To match those conditions, we will convert our wav files from their input form (
 ### FINISH THIS SECTION
 
 ### Intermediate Data
+### FINISH THIS SECTION
 annotated_info.csv - This file contains the annotated sound labels, their coordinates, and the spectrogram and metadata file they belong to.
 
+### Embedding Data Files
+### FINISH THIS SECTION
+
+
 ## To Dos:
-~~1. find wav files of interest (12/7)
-    - find the annotated images
-    - see what the sounds are
-    - choose a representative sample (or all) of them for analysis
-    - see if we can match them back to .wav files
-    - get those wav files in a directory we can use~~
-2. understand preprocessing code (12/7-8)
-~~3. run wav files through (12/8)~~
-~~4. get embeddings to run on one file (12/11-12)~~
-6. save embedding output
-7. run embeddings on all files and save all outputs
-8. run PCA or other dimensionality reduction to see clustering
-9. graph PCA-reduced output
+    ~~1. find wav files of interest (12/7)
+        - find the annotated images
+        - see what the sounds are
+        - choose a representative sample (or all) of them for analysis
+        - see if we can match them back to .wav files
+        - get those wav files in a directory we can use~~
+    2. understand preprocessing code (12/7-8)
+    ~~3. run wav files through (12/8)~~
+    ~~4. get embeddings to run on one file (12/11-12)~~
+    ~~6. save embedding output~~
+    ~~7. run embeddings on all files and save all outputs~~
+    8. run PCA or other dimensionality reduction to see clustering
+    9. graph PCA-reduced output
 
 Out of scope:
 labeling samples
 tying samples back to their original sounds
+
 
 ## Concerns/Questions/Future work
 1. VGGish will cut the wav files into ~1 second duration clips. How do we match the cuts back to the original WAV files and label the data?
@@ -89,6 +95,7 @@ tying samples back to their original sounds
 7. We can alter window and hop length - does that make a difference?
 8. Do we want to do post-processing on the data? Does it make a difference?
 9. Need to fix these f*ing depreciation warnings
+10. Is PCA the best way to reduce the dimensonality for visualization? Is there another way which makes the clusters more apparent? (In POC we're capturing 99% of variance).
       
 ## QUESTIONS FOR CHRIS
 1. Not all the annotated .png have metadata files. The two I found were 20190221T100004-File-13.png has no metadata file and 20190222T190004-File-28.png has no metadata file. They were both taken in 2019022
