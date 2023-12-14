@@ -70,20 +70,26 @@ annotated_info.csv - This file contains the annotated sound labels, their coordi
 2. understand preprocessing code (12/7-8)
 ~~3. run wav files through (12/8)~~
 ~~4. get embeddings to run on one file (12/11-12)~~
-5. understand how to label embeddings
 6. save embedding output
-7. run embeddings on all files and save all labeled outputs
+7. run embeddings on all files and save all outputs
 8. run PCA or other dimensionality reduction to see clustering
 9. graph PCA-reduced output
-10. see if can tie back datapoints to their identified sounds
 
+Out of scope:
+labeling samples
+tying samples back to their original sounds
 
-## Concerns
+## Concerns/Questions/Future work
 1. VGGish will cut the wav files into ~1 second duration clips. How do we match the cuts back to the original WAV files and label the data?
 2. What happens to the "dead time" in each file where there are no sounds?
 3. Changing the file from mono 48kHz, 32-bit float to mono 16kHz 16-bit float appears to significantly reduce the amount of information available in the sound. Would model performance be degraded by leaving the files as-is?
 4. There doesn't appear to be many sounds in the hydrophone clips. Are we sure these are the right files corresponding to the labeled datapoints?
-
+5. Do cluster results vary if the embeddings go through postprocessing or not?
+6. Per the vggish_input.py "Each sample is generally expected to lie in the range -1.0, +1.0, although this is not required." Ours goes from 30k to -30k. What difference is that making? - NO WORRIES THE vggish_inputs does this conversion for us.
+7. We can alter window and hop length - does that make a difference?
+8. Do we want to do post-processing on the data? Does it make a difference?
+9. Need to fix these f*ing depreciation warnings
+      
 ## QUESTIONS FOR CHRIS
 1. Not all the annotated .png have metadata files. The two I found were 20190221T100004-File-13.png has no metadata file and 20190222T190004-File-28.png has no metadata file. They were both taken in 2019022
 2. What are our thoughts on resampling the audio from 16-bit to 32-bit and 48kHz to 16kHz? It felt like we lost a lot of the depth of sound, and maybe it would be worth seeing how the results of the model changed if we kept the file in its original format.
@@ -93,5 +99,6 @@ annotated_info.csv - This file contains the annotated sound labels, their coordi
 Where VGGIsh lives - https://github.com/tensorflow/models/tree/master/research/audioset/vggish
 The collab with the how-to - https://colab.research.google.com/drive/1E3CaPAqCai9P9QhJ3WYPNCVmrJU4lAhF
 Info on WAV files - https://en.wikipedia.org/wiki/WAV
-
-
+TFR technical docs - https://www.thethingsnetwork.org/docs/devices/bytes/
+TDS TFR article - https://towardsdatascience.com/a-practical-guide-to-tfrecords-584536bc786c
+TDS explanation of log mel spectrogram - https://medium.com/analytics-vidhya/understanding-the-mel-spectrogram-fca2afa2ce53
