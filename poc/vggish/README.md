@@ -1,7 +1,9 @@
 This README contains information to run the test VGGish implementation
 
 ## About
-For the initial POC we wanted to test the clusters produced for existing known sounds in wav files. By comparing the inter-cluster and intra-cluster similarity we can get a sense of the goodness of clustering. We can also visually see how the clusters look together. Potential limitations of this method include: the potentially small number of observations available per sound-type, the reduction from 128 dimensions (number of dimensions created from the embedding) to 2 or 3 dimensions may not accurately reflect the distance of the clusters in space.
+For the initial POC we wanted to create embeddings for some test wav files and examine the PCA-reduced clusters visually.
+
+Limitations and concerns include: small number of observations available per sound-type (e.g., lots of "dead sound" time), the reduction from 128 dimensions (number of dimensions created from the embedding) to 2 or 3 dimensions may not accurately reflect the distance of the clusters in space, model training data may not port well to hydrophone sounds.
 
 
 ## Steps to Reproduce Analysis
@@ -12,14 +14,14 @@ For the initial POC we wanted to test the clusters produced for existing known s
 3. Run "pip install -r requirements.txt" which installs the dependent libraries. These libraries should be contained in the vggish_environemnt file, but this will cover you in the event that they are not.
 4. *Taken from the TensorFlow VGGish README linked above*
     - Clone TensorFlow models repo into a 'models' directory.
-    $ git clone https://github.com/tensorflow/models.git
-    $ cd models/research/audioset/vggish
+    - $ git clone https://github.com/tensorflow/models.git
+    - $ cd models/research/audioset/vggish
     - Download data files into same directory as code.
-    $ curl -O https://storage.googleapis.com/audioset/vggish_model.ckpt
-    $ curl -O https://storage.googleapis.com/audioset/vggish_pca_params.npz
+    - $ curl -O https://storage.googleapis.com/audioset/vggish_model.ckpt
+    - $ curl -O https://storage.googleapis.com/audioset/vggish_pca_params.npz
 5. Execute the smoke test *Taken from the TensorFlow VGGish README linked above*
     - Installation ready, let's test it.
-    $ python vggish_smoke_test.py
+    - $ python vggish_smoke_test.py
     - If we see "Looks Good To Me", then we're all set.
 
 ### Getting WAV files for analysis
@@ -50,19 +52,24 @@ To match those conditions, we will convert our wav files from their input form (
 3. Ensuring that your vggish_environment is activated, run the vggish_inference_demo.py code.
 
 ### Running the VGGish model on our data
+1. In this POC we are interested in outputting embeddings for our 4 test files. We will not do any post-processing of data and will use raw_embeddings only. To that end Emily altered the vggish_inference_demo.py code to run only the 4 wav files, extract the raw embeddings, and save them in csv files in the embedding_data directory. If you'd like to look at the code, check out the scr/vggish_scripts. If you'd like to run the code do so in models/research/audioset/vggish.
+2. If you're interested in collapsing the embeddings to 2 or 3 dimensions (originally 128) and visualizing the outputs please run the POC_PCA_graphing.ipynb in scr/data_processing.
 
 
 ## Data Files
 
 ### Raw Data Files
-### FINISH THIS SECTION
+MLFigs_Labeled_Oct_26_Chris is a directory containing the json files which identify sounds in different spectrograms. We will use these json in "metadata_file_finder" to find the images which contain the most idenified sounds. 
+
+\[]Metadata.txt - these files are the metadata files which correspond to the images found from the annotation jsons above.
 
 ### Intermediate Data
-### FINISH THIS SECTION
 annotated_info.csv - This file contains the annotated sound labels, their coordinates, and the spectrogram and metadata file they belong to.
 
+\[].wav - These are the preprocessed wav (audio) files of the images which had the most annotated sounds as found from the raw data above. For information on preprocessing please see the "Preprocessing the Data" section above. We only stored the preprocessed data (not the raw data) because GitHub didn't have room for both.
+
 ### Embedding Data Files
-### FINISH THIS SECTION
+\[].csv - These csv files contain the embeddings output from the vggish model plus the numerical name of the recording file, what example number the embedding was for, start time in seconds of the example, and end time in seconds for the example.
 
 
 ## To Dos:
@@ -88,21 +95,21 @@ Out of scope:
 3. understanding post-processing
 
 
-## Concerns/Questions/Future work
-1. VGGish will cut the wav files into ~1 second duration clips. How do we match the cuts back to the original WAV files and label the data?
-2. What happens to the "dead time" in each file where there are no sounds?
-3. Changing the file from mono 48kHz, 32-bit float to mono 16kHz 16-bit float appears to significantly reduce the amount of information available in the sound. Would model performance be degraded by leaving the files as-is?
-4. There doesn't appear to be many sounds in the hydrophone clips. Are we sure these are the right files corresponding to the labeled datapoints?
-5. Do cluster results vary if the embeddings go through postprocessing or not?
-6. Per the vggish_input.py "Each sample is generally expected to lie in the range -1.0, +1.0, although this is not required." Ours goes from 30k to -30k. What difference is that making? - NO WORRIES THE vggish_inputs does this conversion for us.
-7. We can alter window and hop length - does that make a difference?
-8. Do we want to do post-processing on the data? Does it make a difference?
-9. Need to fix these f*ing depreciation warnings
-10. Is PCA the best way to reduce the dimensonality for visualization? Is there another way which makes the clusters more apparent? (In POC we're capturing 33% of variance in 2D and ).
-      
-## QUESTIONS FOR CHRIS
-1. Not all the annotated .png have metadata files. The two I found were 20190221T100004-File-13.png has no metadata file and 20190222T190004-File-28.png has no metadata file. They were both taken in 2019022
-2. What are our thoughts on resampling the audio from 16-bit to 32-bit and 48kHz to 16kHz? It felt like we lost a lot of the depth of sound, and maybe it would be worth seeing how the results of the model changed if we kept the file in its original format.
+## Questions, Concerns, and Future Opportunitites
+
+### Questions for Chris
+1. Not all the annotated .png have metadata files. The two I found were 20190221T100004-File-13.png and 20190222T190004-File-28.png. They were both taken in 2019022. Have I misinterpreted how to tie the labeled spectrograms back to the .wav files which produced them? Additionally, I'm not hearing any clear sounds in the wav files which the labels would suggest they have.
+
+### Concerns
+1. We have a lot of "dead time" in our recordings (e.g., no anamolous sounds). This may muddy our results.
+2. Still thinking about the training context of the model.
+
+### Future Opportunitites
+1. Resampling the audio from 16-bit to 32-bit and 48kHz to 16kHz causes us to lose a lot of depth of sound. It may be worth running the model on the original data or somewhat-resampled data to see how the groupings change.
+2. VGGish currently cuts the wav files into ~1 second duration clips. How can we change these clips, windows, hops, etc. to alter the model, similar to the polar ice paper?
+3. How does applying post-processing to our data impact the clusters of sounds?
+4. Is PCA the best way to reduce the dimensonality for visualization? Is there another way which makes the clusters more apparent or captures more variation? (In POC we're capturing only 33% of variance in 2D and 46% in 3D).
+5. Update code to remove depreciation warnings.
 
 
 ## Sources:
