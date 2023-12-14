@@ -68,24 +68,24 @@ annotated_info.csv - This file contains the annotated sound labels, their coordi
 ## To Dos:
 
 In Scope:
-    1. find wav files of interest
+1. find wav files of interest
         - find the annotated images
         - see what the sounds are
         - choose a representative sample (or all) of them for analysis
         - see if we can match them back to .wav files
         - get those wav files in a directory we can use
-    2. base understand preprocessing code
-    3. run wav files through
-    4. get embeddings to run on one file
-    6. save embedding output
-    7. run embeddings on all files and save all outputs
-    8. run PCA or other dimensionality reduction to see clustering
-    9. graph PCA-reduced output
+2. base understand preprocessing code
+3. run wav files through
+4. get embeddings to run on one file
+5. save embedding output
+6. run embeddings on all files and save all outputs
+7. run PCA or other dimensionality reduction to see clustering
+8. graph PCA-reduced output
 
 Out of scope:
-    1. labeling samples
-    2. tying samples back to their original sounds
-    3. understanding all elements of model
+1. Altering constants (e.g., hop length, windows)
+2. labeling known sounds in embeddings
+3. understanding post-processing
 
 
 ## Concerns/Questions/Future work
