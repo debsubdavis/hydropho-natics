@@ -1,5 +1,0 @@
-Col Col2
-FileName "181227-053002-437599-806141979_Spectrograms_20Hz.mat"
-StartTime "20181227T053004"
-WindowsPlotted "12002-13201"
-ColorBarLimits "60-100 dB"
