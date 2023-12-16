@@ -7,9 +7,7 @@ import numpy as np
 import pyspark
 
 def get_message():
-    """
-    Returns the message to be printed.
-    """
+
     return "Hello World"
 
 def main():
