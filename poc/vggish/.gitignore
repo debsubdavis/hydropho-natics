@@ -1,4 +1,0 @@
-#Excludes the very large .wav files
-#intermediate_data/*.wav
-raw_data/*.wav
-intermediate_data/*.wav
