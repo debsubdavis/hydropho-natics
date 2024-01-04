@@ -85,7 +85,7 @@ FLAGS = flags.FLAGS
 
 
 def main(_):
-  # In this POC, we run all wav POC files through the model
+  # EKRC In this POC, we run all wav POC files through the model
   path = r'../../../../intermediate_data/*.wav'
   file_list = glob.glob(path)
   format_file_list = [file.replace('\\', '/') for file in file_list]
@@ -93,7 +93,7 @@ def main(_):
 
   for file in format_file_list:
     wav_file = file
-
+    #EKRC we know we have wav files, so we comment out the warning here
     '''    if FLAGS.wav_file:
         wav_file = FLAGS.wav_file
     else:
@@ -101,7 +101,7 @@ def main(_):
     examples_batch = vggish_input.wavfile_to_examples(wav_file)
     #print(examples_batch) #EKRC
 
-    #Getting the wav filename
+    #EKRC Getting the wav filename
     wav_filename = wav_file[30:-4]
 
     with tf.Graph().as_default(), tf.Session() as sess:
@@ -114,18 +114,20 @@ def main(_):
         embedding_tensor = sess.graph.get_tensor_by_name(
             vggish_params.OUTPUT_TENSOR_NAME)
 
-        # Run inference and postprocessing.
+        #EKRC Run inference but not postprocessing.
         [embedding_batch] = sess.run([embedding_tensor],
                                     feed_dict={features_tensor: examples_batch})
         #print(embedding_batch)
 
-        #Save the embeddings to a pandas df then csv file
+        #EKRC Save the embeddings to a pandas df then csv file
         embedding_df = pd.DataFrame(embedding_batch)
         embedding_df['recording_file'] = wav_filename
         embedding_df['example_number'] = range(len(embedding_df))
         embedding_df['start_time_s'] = (embedding_df['example_number']) * 0.96 #MAKE REUSABLE IN FUTURE
         embedding_df['stop_time_s'] = (embedding_df['example_number'] + 1) * 0.96 #MAKE REUSABLE IN FUTURE 
         #print(embedding_df[['example_number','start_time_s','stop_time_s']])
+        
+        #EKRC reordering the col of the df to have identification info first, 128D last
         ref_col = embedding_df.pop('recording_file')
         embedding_df.insert(0, 'recording_file',ref_col)
         example_number = embedding_df.pop('example_number')
@@ -134,6 +136,8 @@ def main(_):
         embedding_df.insert(2, 'start_time_s',start_col)
         stop_col = embedding_df.pop('stop_time_s')
         embedding_df.insert(3, 'stop_time_s',stop_col)
+        
+        #EKRC saving as a csv
         embedding_df.to_csv('../../../../embedding_data/'+wav_filename+'.csv')
         print("File embeddings created and saved in 'embedding_data'")
 
