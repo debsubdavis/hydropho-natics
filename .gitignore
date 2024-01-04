@@ -2,6 +2,21 @@ poc/vggish/raw_data/
 poc/vggish/intermediate_data/
 data
 
+# Jupyter Notebook
+.ipynb_checkpoints/
+*-checkpoint*.ipynb
+
+# JupyterLab
+.jupyter/
+.labworkspace
+
+# AML Specific
+.amlignore*
+
+# Azure ML Configurations
+azureml-config.json
+.azureml/
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
