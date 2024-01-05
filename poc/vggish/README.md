@@ -115,7 +115,7 @@ Out of scope:
 Where VGGIsh lives - https://github.com/tensorflow/models/tree/master/research/audioset/vggish
 The collab with the how-to - https://colab.research.google.com/drive/1E3CaPAqCai9P9QhJ3WYPNCVmrJU4lAhF
 Info on WAV files - https://en.wikipedia.org/wiki/WAV
-TFR technical docs - https://www.thethingsnetwork.org/docs/devices/bytes/
-TDS TFR article - https://towardsdatascience.com/a-practical-guide-to-tfrecords-584536bc786c
-TDS explanation of log mel spectrogram - https://medium.com/analytics-vidhya/understanding-the-mel-spectrogram-fca2afa2ce53
+TFR technical docs (file structure) - https://www.thethingsnetwork.org/docs/devices/bytes/
+Towards Data Science TFR article - https://towardsdatascience.com/a-practical-guide-to-tfrecords-584536bc786c
+Towards Data Science explanation of log mel spectrogram - https://medium.com/analytics-vidhya/understanding-the-mel-spectrogram-fca2afa2ce53
 PCA - https://medium.com/data-science-365/principal-component-analysis-pca-with-scikit-learn-1e84a0c731b0
