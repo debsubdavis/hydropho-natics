@@ -9,18 +9,17 @@ Limitations and concerns include: small number of observations available per sou
 ## Steps to Reproduce Analysis
 
 ### Setting up and Testing VGGish
-1. Activate the vggish_environment virtual environment
-2. Download the "requirements.txt" file from https://github.com/tensorflow/models/tree/master/research/audioset/vggish and move it into the directory you plan to run your code in. For us it's hydropho-natics/poc/vggish.
+1. Activate the vggish_environment virtual environment. The information is stored in the vggish_environment.yml.
+2. Download the "requirements.txt" file from https://github.com/tensorflow/models/tree/master/research/audioset/vggish and move it into the directory you plan to run your code in. For the POC it's hydropho-natics/poc/vggish.
 3. Run "pip install -r requirements.txt" which installs the dependent libraries. These libraries should be contained in the vggish_environemnt file, but this will cover you in the event that they are not.
 4. *Taken from the TensorFlow VGGish README linked above*
     - Clone TensorFlow models repo into a 'models' directory.
     - $ git clone https://github.com/tensorflow/models.git
     - $ cd models/research/audioset/vggish
-    - Download data files into same directory as code.
+    - Download data files into same directory as code (follow cd command above to be in directory with code)
     - $ curl -O https://storage.googleapis.com/audioset/vggish_model.ckpt
     - $ curl -O https://storage.googleapis.com/audioset/vggish_pca_params.npz
 5. Execute the smoke test *Taken from the TensorFlow VGGish README linked above*
-    - Installation ready, let's test it.
     - $ python vggish_smoke_test.py
     - If we see "Looks Good To Me", then we're all set.
 
@@ -52,7 +51,7 @@ To match those conditions, we will convert our wav files from their input form (
 3. Ensuring that your vggish_environment is activated, run the vggish_inference_demo.py code.
 
 ### Running the VGGish model on our data
-1. In this POC we are interested in outputting embeddings for our 4 test files. We will not do any post-processing of data and will use raw_embeddings only. To that end Emily altered the vggish_inference_demo.py code to run only the 4 wav files, extract the raw embeddings, and save them in csv files in the embedding_data directory. If you'd like to look at the code, check out the scr/vggish_scripts. If you'd like to run the code do so in models/research/audioset/vggish.
+1. In this POC we are interested in outputting embeddings for our 4 test files. We will not do any post-processing of data and will use raw_embeddings only. To that end Emily altered the vggish_inference_demo.py code to run the wav files, extract the raw embeddings, and save them in csv files in the embedding_data directory. If you'd like to look at the code, check out the scr/vggish_scripts. If you'd like to run the code do so in models/research/audioset/vggish.
 2. If you're interested in collapsing the embeddings to 2 or 3 dimensions (originally 128) and visualizing the outputs please run the POC_PCA_graphing.ipynb in scr/data_processing.
 
 
@@ -75,19 +74,19 @@ annotated_info.csv - This file contains the annotated sound labels, their coordi
 ## To Dos:
 
 In Scope:
-1. find wav files of interest
+1. DONE - find wav files of interest
         - find the annotated images
         - see what the sounds are
         - choose a representative sample (or all) of them for analysis
         - see if we can match them back to .wav files
         - get those wav files in a directory we can use
-2. base understand preprocessing code
-3. run wav files through
-4. get embeddings to run on one file
-5. save embedding output
-6. run embeddings on all files and save all outputs
-7. run PCA or other dimensionality reduction to see clustering
-8. graph PCA-reduced output
+2. DONE - base understand preprocessing code
+3. DONE -  run wav files through
+4. DONE -  get embeddings to run on one file
+5. DONE -  save embedding output
+6. DONE -  run embeddings on all files and save all outputs
+7. DONE -  run PCA or other dimensionality reduction to see clustering
+8. DONE -  graph PCA-reduced output
 
 Out of scope:
 1. Altering constants (e.g., hop length, windows)
@@ -116,7 +115,7 @@ Out of scope:
 Where VGGIsh lives - https://github.com/tensorflow/models/tree/master/research/audioset/vggish
 The collab with the how-to - https://colab.research.google.com/drive/1E3CaPAqCai9P9QhJ3WYPNCVmrJU4lAhF
 Info on WAV files - https://en.wikipedia.org/wiki/WAV
-TFR technical docs - https://www.thethingsnetwork.org/docs/devices/bytes/
-TDS TFR article - https://towardsdatascience.com/a-practical-guide-to-tfrecords-584536bc786c
-TDS explanation of log mel spectrogram - https://medium.com/analytics-vidhya/understanding-the-mel-spectrogram-fca2afa2ce53
+TFR technical docs (file structure) - https://www.thethingsnetwork.org/docs/devices/bytes/
+Towards Data Science TFR article - https://towardsdatascience.com/a-practical-guide-to-tfrecords-584536bc786c
+Towards Data Science explanation of log mel spectrogram - https://medium.com/analytics-vidhya/understanding-the-mel-spectrogram-fca2afa2ce53
 PCA - https://medium.com/data-science-365/principal-component-analysis-pca-with-scikit-learn-1e84a0c731b0
