@@ -105,7 +105,10 @@ Towards Data Science YAMNet explanation - https://farmaker47.medium.com/classifi
 
 On Mel Bands - https://learn.flucoma.org/reference/melbands/
 
-HAVENT READ YET - VGG architecture - https://paperswithcode.com/method/vgg 
+#### Reading list
+VGG architecture - https://paperswithcode.com/method/vgg 
+
+Comparison of Time-Frequency Representations for Environmental Sound Classification using Convolutional Neural Networks - https://arxiv.org/pdf/1706.07156.pdf 
 
 
 ### vggish_slim - Saumya Nauni
