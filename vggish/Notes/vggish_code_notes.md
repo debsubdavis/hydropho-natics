@@ -79,9 +79,8 @@ VGGish was trained with audio features computed as follows:
 * These features are then framed into non-overlapping examples of 0.96 seconds,
   where each example covers 64 mel bands and 96 frames of 10 ms each.
     * what are features? - features are generally used to train a model. I would guess that each stabilized log mel spectrogram is a feature.
-    * How does the non-overlapping examples of 0.96 seconds relate to the original windows/hops? 
-    * are mel bands and mel bins the same?
-    * how do we get from 96 frames of 10ms each back to 0.96 seconds?
+    * How does the non-overlapping examples of 0.96 seconds relate to the original windows/hops? I think this is created by how the FFT are combined from the overlapping windows to result into 0.01 second frames combined into 0.96 second examples. So basically we break down the total audio into the windows with overlap, compute the FFT on the windows, then recombine the pieces into 0.01 second bits, combined into 0.96 second chunks.
+    * are mel bands and mel bins the same? - It seems so (see On Mel Bands below). Frequencies are binned into Mel bands.
 
 What are frequency and temporal resolution? - [read this 1/8](https://www.avisoft.com/Help/SASLab/menu_main_analyze_spectrogram_parameters.htm#:~:text=Resolution%20The%20frequency%20resolution%20depends,sample%20rate%20%2F%20FFT%20length).)
 
@@ -89,9 +88,10 @@ What are frequency and temporal resolution? - [read this 1/8](https://www.avisof
 #### Questions for Chris
 1. Help me understand why the output FFT don't overlap when the windows overlap (see diagram from the TDS understanding the mel spectrogram article)? 
 As I take it: ideally we would run the FFT on the whole sound. Unfortunately though, the entire sound isn't periodic so the FFT will "smudge" the sound because it has discontinuous ends. Instead we use STFT on smaller overlapping windows (corrected with the Hann window to produce continuous window ends). When we run FFT on these windowed segments it somehow produces non-overlapping FFTs which show the amplitudes of each frequency in chunks of the audio duration, which if summed together would represent the whole audio. To show the amplitude of all the frequencies in a whole audio one would superimpose (or add) all the amplitudes from the time chunked audio together. Is that correct? Why bother creating overlapping windows in the first place and not just run the whole audio file through the FFT to produce a single graph? If the windows you run FFT on overlap, why don't the FFT overlap (per this diagram which I'm putting lots of stock into)
-2. I resampled our audio to 16kHz mono and appeared to lose a lot of information looking at the waveform. Is there a better way to do this than in Audacity?
-3. For the YOLO model it appears each 30 min recording is broken down into 1 min windows. Those 1 min windows are then broken down into 1 second or 0.1 second windows with Hann windows and 50% overlap in both cases. We currently are processing the whole signal (can be 30 min) into 25ms windows with 40% (10ms) overlap and a periodic Hann window. Do we think any tweaks should be made there?
+2. When we spoke last time you had some thoughts on the windowing/overlapping of the sample. I noted that for the YOLO model it appears each 30 min recording is broken down into 1 min windows. Those 1 min windows are then broken down into 1 second or 0.1 second windows with Hann windows and 50% overlap in both cases. We currently are processing the whole signal into 0.96 second windows (consistent with the model training) made up of 25ms windows with 40% (10ms) overlap and a periodic Hann window. I'd recommend keeping the data processed as the model was originally trained. If we have time, planning to play with the windows to see if we get better results. Any thoughts on how to go about this or pre-existing windows that you favor?
+3. I resampled our audio to 16kHz mono and appeared to lose a lot of information looking at the waveform. Is there a better way to do this than in Audacity?
 4. The model uses a mel spectrogram with 64 mel bins and frequencies in the range 125-7500 Hz. Does that frequency range feel like it captures the entirety or the valuable part of what we might see? Any thoughts on the binning?
+
 
 #### Questions to think through w/ Saumya
 #### References
@@ -102,6 +102,8 @@ Towards Data Science Understanding the Mel Spectrogram - https://medium.com/anal
 Towards Data Science Getting to Know the Mel Spectrogram - https://towardsdatascience.com/getting-to-know-the-mel-spectrogram-31bca3e2d9d0
 
 Towards Data Science YAMNet explanation - https://farmaker47.medium.com/classification-of-sounds-using-android-mobile-phone-and-the-yamnet-ml-model-539bc199540
+
+On Mel Bands - https://learn.flucoma.org/reference/melbands/
 
 HAVENT READ YET - VGG architecture - https://paperswithcode.com/method/vgg 
 
