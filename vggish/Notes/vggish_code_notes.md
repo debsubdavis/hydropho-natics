@@ -83,6 +83,8 @@ VGGish was trained with audio features computed as follows:
     * are mel bands and mel bins the same?
     * how do we get from 96 frames of 10ms each back to 0.96 seconds?
 
+What are frequency and temporal resolution? - [read this 1/8](https://www.avisoft.com/Help/SASLab/menu_main_analyze_spectrogram_parameters.htm#:~:text=Resolution%20The%20frequency%20resolution%20depends,sample%20rate%20%2F%20FFT%20length).)
+
 
 #### Questions for Chris
 1. Help me understand why the output FFT don't overlap when the windows overlap (see diagram from the TDS understanding the mel spectrogram article)? 
@@ -101,7 +103,7 @@ Towards Data Science Getting to Know the Mel Spectrogram - https://towardsdatasc
 
 Towards Data Science YAMNet explanation - https://farmaker47.medium.com/classification-of-sounds-using-android-mobile-phone-and-the-yamnet-ml-model-539bc199540
 
-
+HAVENT READ YET - VGG architecture - https://paperswithcode.com/method/vgg 
 
 
 ### vggish_slim - Saumya Nauni
