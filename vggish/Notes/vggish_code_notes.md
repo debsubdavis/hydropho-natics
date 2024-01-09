@@ -39,23 +39,15 @@ vggish_smoke_test.py - This is to test the quality of the install, not for actua
 
 vggish_postprocess.py - Applying post-processing to our raw embeddings is currently listed as an area of expansion. We will hold off on understanding this code in depth for now.
 
-## Areas for future investment
-*Understand vggish_postprocess.py to see if postprocessing our data creates better/different clusters
-*Understand the vggish_train_demo code to see if retraining makes sense
 
 ## Code Notes
-### vggish_inference_demo
-
-
-### vggish_input - Emily Creeden
+### vggish_input Notes - Emily Creeden
 Background:
 We know from the vggish_inference_demo "A WAV file (assumed to contain signed 16-bit PCM samples) is read in, converted into log mel spectrogram examples..."
 We also know "The input size was changed to 96x64 for log mel spectrogram audio inputs." 
 From the README:
 VGGish was trained with audio features computed as follows:
-
 * All audio is resampled to 16 kHz mono. (see questions for chris)
-# What does the below mean?
 * A spectrogram is computed using magnitudes of the Short-Time Fourier Transform
   with a window size of 25 ms, a window hop of 10 ms, and a periodic Hann
   window.
@@ -80,37 +72,52 @@ VGGish was trained with audio features computed as follows:
   where each example covers 64 mel bands and 96 frames of 10 ms each.
     * what are features? - features are generally used to train a model. I would guess that each stabilized log mel spectrogram is a feature.
     * How does the non-overlapping examples of 0.96 seconds relate to the original windows/hops? I think this is created by how the FFT are combined from the overlapping windows to result into 0.01 second frames combined into 0.96 second examples. So basically we break down the total audio into the windows with overlap, compute the FFT on the windows, then recombine the pieces into 0.01 second bits, combined into 0.96 second chunks.
-    * are mel bands and mel bins the same? - It seems so (see On Mel Bands below). Frequencies are binned into Mel bands.
+    * are mel bands and mel bins the same? - It seems so (see On Mel Bands below). Frequencies are binned into Mel bands. The code in _params also has NUM_BANDS = NUM_MEL_BINS
 
-What are frequency and temporal resolution? - [read this 1/8](https://www.avisoft.com/Help/SASLab/menu_main_analyze_spectrogram_parameters.htm#:~:text=Resolution%20The%20frequency%20resolution%20depends,sample%20rate%20%2F%20FFT%20length).)
+### vggish_input Notes - Emily Creeden
+* seems like can change the sample rate both for the input file and the model, though it was trained with specific parameters - worth double checking that "sr" is what we understand based on what we have in our input file
+* we can edut the upper and lower frequency edges
+* the "examples" and "features" are different. The features are the log mel spectrograms with their own window length and hop length in seconds for calculation purposes.
+* Examples have their own window lengths and hop lengths, but the Example's parameters aren't in seconds, they're in features. The example_window (s) * feature sample rate (feature/s) creates the example window length. In our demo case,
+1/0.010s, or 100 features/second, or 100 log mel spectrograms per second of audio.
+* We get an example window length of 96 features (log mel spectrograms representing 0.010 seconds of audio)
+* We get an example hop length of 96 features as well, meaning there is no overlap in Examples
 
 
-#### Questions for Chris
+### mel_features Notes - Emily Creeden
+* 
+
+
+## Questions for Chris
 1. Help me understand why the output FFT don't overlap when the windows overlap (see diagram from the TDS understanding the mel spectrogram article)? 
 As I take it: ideally we would run the FFT on the whole sound. Unfortunately though, the entire sound isn't periodic so the FFT will "smudge" the sound because it has discontinuous ends. Instead we use STFT on smaller overlapping windows (corrected with the Hann window to produce continuous window ends). When we run FFT on these windowed segments it somehow produces non-overlapping FFTs which show the amplitudes of each frequency in chunks of the audio duration, which if summed together would represent the whole audio. To show the amplitude of all the frequencies in a whole audio one would superimpose (or add) all the amplitudes from the time chunked audio together. Is that correct? Why bother creating overlapping windows in the first place and not just run the whole audio file through the FFT to produce a single graph? If the windows you run FFT on overlap, why don't the FFT overlap (per this diagram which I'm putting lots of stock into)
 2. When we spoke last time you had some thoughts on the windowing/overlapping of the sample. I noted that for the YOLO model it appears each 30 min recording is broken down into 1 min windows. Those 1 min windows are then broken down into 1 second or 0.1 second windows with Hann windows and 50% overlap in both cases. We currently are processing the whole signal into 0.96 second windows (consistent with the model training) made up of 25ms windows with 40% (10ms) overlap and a periodic Hann window. I'd recommend keeping the data processed as the model was originally trained. If we have time, planning to play with the windows to see if we get better results. Any thoughts on how to go about this or pre-existing windows that you favor?
 3. I resampled our audio to 16kHz mono and appeared to lose a lot of information looking at the waveform. Is there a better way to do this than in Audacity?
 4. The model uses a mel spectrogram with 64 mel bins and frequencies in the range 125-7500 Hz. Does that frequency range feel like it captures the entirety or the valuable part of what we might see? Any thoughts on the binning?
 
-
-#### Questions to think through w/ Saumya
-#### References
-Texas Instruments Signals info - https://download.ni.com/evaluation/pxi/Understanding%20FFTs%20and%20Windowing.pdf
-
-Towards Data Science Understanding the Mel Spectrogram - https://medium.com/analytics-vidhya/understanding-the-mel-spectrogram-fca2afa2ce53
-
-Towards Data Science Getting to Know the Mel Spectrogram - https://towardsdatascience.com/getting-to-know-the-mel-spectrogram-31bca3e2d9d0
-
-Towards Data Science YAMNet explanation - https://farmaker47.medium.com/classification-of-sounds-using-android-mobile-phone-and-the-yamnet-ml-model-539bc199540
-
-On Mel Bands - https://learn.flucoma.org/reference/melbands/
-
-#### Reading list
-VGG architecture - https://paperswithcode.com/method/vgg 
-
-Comparison of Time-Frequency Representations for Environmental Sound Classification using Convolutional Neural Networks - https://arxiv.org/pdf/1706.07156.pdf 
+## Questions for/to think through w/ Saumya
+1. What is the mel-spectrogram patch? Is that part of the model?
 
 
-### vggish_slim - Saumya Nauni
-#### Questions for Chris
-#### Questions to think through w/ Emily
+## Internal Questions
+1. Does our sample lie in the range -1 to 1 as the model expects? Seems like it must based on wavfile_to_examples / 32768 (magic number?)
+
+
+## Areas for future investment
+* Changing the parameters of the mel spectrogram creation or example length to better capture sounds
+* Understand vggish_postprocess.py to see if postprocessing our data creates better/different clusters
+* Understand the vggish_train_demo code to see if retraining makes sense
+
+
+## References
+* Texas Instruments Signals info - https://download.ni.com/evaluation/pxi/Understanding%20FFTs%20and%20Windowing.pdf
+* Towards Data Science Understanding the Mel Spectrogram - https://medium.com/analytics-vidhya/understanding-the-mel-spectrogram-fca2afa2ce53
+* Towards Data Science Getting to Know the Mel Spectrogram - https://towardsdatascience.com/getting-to-know-the-mel-spectrogram-31bca3e2d9d0
+* Towards Data Science YAMNet explanation - https://farmaker47.medium.com/classification-of-sounds-using-android-mobile-phone-and-the-yamnet-ml-model-539bc199540
+* On Mel Bands - https://learn.flucoma.org/reference/melbands/
+
+
+## Reading list
+* VGG architecture - https://paperswithcode.com/method/vgg 
+* Comparison of Time-Frequency Representations for Environmental Sound Classification using Convolutional Neural Networks - https://arxiv.org/pdf/1706.07156.pdf 
+* What are frequency and temporal resolution? - (https://www.avisoft.com/Help/SASLab/menu_main_analyze_spectrogram_parameters.htm#:~:text=Resolution%20The%20frequency%20resolution%20depends,sample%20rate%20%2F%20FFT%20length).)
