@@ -101,6 +101,7 @@ As I take it: ideally we would run the FFT on the whole sound. Unfortunately tho
 
 ## Internal Questions
 1. Does our sample lie in the range -1 to 1 as the model expects? Seems like it must based on wavfile_to_examples / 32768 (magic number?)
+2. Should the audio_sample_rate in log_mel_spectrogram be 16khz instead of 8kHz as it's initially hard coded?
 
 
 ## Areas for future investment
