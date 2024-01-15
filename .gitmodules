@@ -1,3 +1,0 @@
-[submodule "vggish/models"]
-	path = vggish/models
-	url = https://github.com/tensorflow/models.git
