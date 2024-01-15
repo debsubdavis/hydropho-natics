@@ -1,6 +1,7 @@
 poc/vggish/raw_data/
 poc/vggish/intermediate_data/
 data
+vggish/models
 
 
 # Byte-compiled / optimized / DLL files
