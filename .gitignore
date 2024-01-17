@@ -166,4 +166,4 @@ cython_debug/
 #.idea/
 
 # VGGish files
-vggish/tf_models/*.ckpt
+vggish/tf_models/vggish_model.ckpt
