@@ -26,7 +26,8 @@ embeddings. Currently no post-processing is applied to the data, though this
 feature may be added in the future.
 
 Input(s):
-  # Relative path to directory containing wav files for analysis
+  # Absolute path to directory containing wav files for analysis. Users should
+  use '/' or '\\' to separate levels of directories.
 
 Output(s):
   # One csv file per input wav file which contains the 128 embeddings plus
@@ -45,42 +46,42 @@ Usage:
 from __future__ import print_function
 
 import tensorflow.compat.v1 as tf
-import glob
+import os
 import pandas as pd
+import argparse
 
 import vggish_input
 import vggish_params
 import vggish_slim
 
-flags = tf.app.flags
-
-flags.DEFINE_string(
-    'wav_path', None,
-    'Path to a wav file. Should contain signed 16-bit PCM samples.'
-    'If none is provided, an error is raised')
-
+#FLAG STUFF - REPLACING WITH ARG PARSE BELOW
+'''flags = tf.app.flags
 flags.DEFINE_string(
     'checkpoint', 'vggish_model.ckpt',
     'Path to the VGGish checkpoint file.')
+FLAGS = flags.FLAGS'''
 
-FLAGS = flags.FLAGS
+# Define argparse to run file from command line
+parser = argparse.ArgumentParser(description="Process wav files into log mel "+
+                                 "spectrograms and feed into VGGish to create"+
+                                 "embeddings")
+parser.add_argument('--wav_path', action='store', required=True,
+                    help="Path to .wav files. "+
+                    "Should contain signed 16-bit PCM samples.")
+args = parser.parse_args()
 
 
 def main(_):
-  # Create a list of files from the input path
-  if FLAGS.wav_path:
-    wav_path = FLAGS.wav_file
+  # Create a list of wav files from input path
+  if args.wav_path:
+    wav_path = args.wav_path
   else:
-    raise TypeError("Pass in relative path to wav files when calling this "+
-                    "function e.g., '$ python vggish_audio_embeddings.py "+
-                    "--wav_path /path/to/wav/files/'")
-  file_list = glob.glob(wav_path)
-  formatted_file_list = [file.replace('\\', '/') for file in file_list]
-  #print(format_file_list)
+    raise TypeError("Pass in path to wav files when calling the function" +
+                    "e.g., $ python vggish_audio_embeddings.py "+
+                    "--wav_path path/to/wav/files/'")
+  file_list = [file for file in os.listdir(wav_path) if file.endswith('.wav')]
 
-  for file in formatted_file_list:
-    #TEST THAT EVERY FILE IN THE PATH IS A WAV FILE
-    wav_file = file
+  '''for wav_file in file_list:
     examples_batch = vggish_input.wavfile_to_examples(wav_file)
     #print(examples_batch) #EKRC
 
@@ -112,7 +113,7 @@ def main(_):
         
         # Save the embedding and sample information to a csv file
         embedding_df.to_csv('../embedding_data/'+wav_filename+'.csv')
-        #print("File embeddings created and saved in 'embedding_data'")
+        #print("File embeddings created and saved in 'embedding_data'")'''
 
 if __name__ == '__main__':
   tf.app.run()
