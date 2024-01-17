@@ -38,9 +38,9 @@ def frame(data, window_length, hop_length):
     (N+1)-D np.array with as many rows as there are complete frames that can be
     extracted.
   """
-  num_samples = data.shape[0] #how many samples there are in the data
-  num_frames = 1 + int(np.floor((num_samples - window_length) / hop_length)) #
-  shape = (num_frames, window_length) + data.shape[1:] #don't think the data.shape does anything when first called for spectrogram b/c data is 1-D
+  num_samples = data.shape[0]
+  num_frames = 1 + int(np.floor((num_samples - window_length) / hop_length))
+  shape = (num_frames, window_length) + data.shape[1:]
   strides = (data.strides[0] * hop_length,) + data.strides
   return np.lib.stride_tricks.as_strided(data, shape=shape, strides=strides)
 
@@ -65,11 +65,7 @@ def periodic_hann(window_length):
     A 1D np.array containing the periodic hann window.
   """
   return 0.5 - (0.5 * np.cos(2 * np.pi / window_length *
-                             np.arange(window_length))) #arange will create a range of 
-#ints between 0 and the window length, evenly spaced in a np array. This function as 
-#a whole will multiply that nparray by the 2*pi, then apply the cosine to each element.
-#Then the whole array is multiplied bt 0.5, and a new array is created with 0.5-the 
-#cosine-d array
+                             np.arange(window_length)))
 
 
 def stft_magnitude(signal, fft_length,
@@ -146,7 +142,7 @@ def spectrogram_to_mel_matrix(num_mel_bins=20,
       spectrogram. We need this to figure out the actual frequencies for
       each spectrogram bin, which dictates how they are mapped into mel.
     lower_edge_hertz: Lower bound on the frequencies to be included in the mel
-      spectrum. This corresponds to the lower edge of the lowest triangular
+      spectrum.  This corresponds to the lower edge of the lowest triangular
       band.
     upper_edge_hertz: The desired top edge of the highest frequency band.
 
@@ -213,14 +209,14 @@ def log_mel_spectrogram(data,
     2D np.array of (num_frames, num_mel_bins) consisting of log mel filterbank
     magnitudes for successive frames.
   """
-  window_length_samples = int(round(audio_sample_rate * window_length_secs)) #400 samples/events
-  hop_length_samples = int(round(audio_sample_rate * hop_length_secs)) #160 samples/events
-  fft_length = 2 ** int(np.ceil(np.log(window_length_samples) / np.log(2.0)))#2^9 = 512 samples/events
+  window_length_samples = int(round(audio_sample_rate * window_length_secs))
+  hop_length_samples = int(round(audio_sample_rate * hop_length_secs))
+  fft_length = 2 ** int(np.ceil(np.log(window_length_samples) / np.log(2.0)))
   spectrogram = stft_magnitude(
-      data, #still wav resampled to rate assumed by vggish (16kHZ in params)
-      fft_length=fft_length, #512 samples or events
-      hop_length=hop_length_samples, #160 samples
-      window_length=window_length_samples) #400 samples
+      data,
+      fft_length=fft_length,
+      hop_length=hop_length_samples,
+      window_length=window_length_samples)
   mel_spectrogram = np.dot(spectrogram, spectrogram_to_mel_matrix(
       num_spectrogram_bins=spectrogram.shape[1],
       audio_sample_rate=audio_sample_rate, **kwargs))
