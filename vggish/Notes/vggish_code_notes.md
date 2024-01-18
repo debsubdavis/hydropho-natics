@@ -83,17 +83,68 @@ VGGish was trained with audio features computed as follows:
 * We get an example window length of 96 features (log mel spectrograms representing 0.010 seconds of audio)
 * We get an example hop length of 96 features as well, meaning there is no overlap in Examples
 
+* *SEE mel_features below*
+* Once we have all the mel features, they get framed into the examples
+* The example window length is in features (96)
+* The example hop length is also in features (96). Because it's the same length as the window, there is no overlap (but we could overlap them if we wanted to)
+* Return to mel_features.frame()
+    * input is log_mel spectrogram matrix (frames (same as original spectrogram framing) x 64), window_length = 96 features, and hop length = 96 features
+    * We input a 2-d array, so the output will be a 3-d array (num_frames, window_length, ...)
+    * This is where the regrouping ("reframing") into examples 0.96s in length consisting of 96 frames of 0.010 occurrs
+
+
 
 ### mel_features Notes - Emily Creeden
-* 
-
+* log_mel_spectrogram -> stft_magnitude -> frame -> periodic_hann -> spectrogram_to_mel_matrix -> hertz_to_mel
+* log_mel_spectrogram - converts waveform into log mag mel-freq spectrogram
+    * takes in your data (wav file resampled to rate assumed by VGGish - 16kHz), then the _params for the rest of the fields to create the log mel spectrogram - there are saved values in case you don't put a field in
+    * the bulk of this code seems to put the window and hop length into samples/events instead of seconds and generates a fft length in samples/events
+    * *SEE stft_magnitude*
+    * *SEE spectorgram_to_mel_matrix*
+* stft_magnitude - calculates stft magnitude
+    * now calls the data (wav file resampled to params sample rate) "signal"
+    * returns the stft magnitude for each frame of input samples
+    * *SEE frame below*
+    * now that data is framed, a periodic hann is applied
+    * *SEE periodic_hann below*
+    * creates windowed frames a.k.a., the data divided into frames (based on the window length and overlap) and multiplied by the Hann window - this seems like it creates the "pinched audio wave samples" from the TDS article on Mel spectrograms
+    * then the numpy function fft.rfft takes the 1-d discrete FT on the input
+    * IMPORTANT - per the fft.rfft documentation  the second input in the function is the "number of points along transformation axis in the input to use. If n is smaller than the length of the input, the input is cropped. If it is larger, the input is padded with zeros. If n is not given, the length of the input along the axis specified by axis is used." In our case n = int(fft_length) = 512 which is longer than the 400-sample length windows, so our input is padded with zeros
+    * It returns only the non-neg frequency terms w/ the function and the abs (fft_length/2 + 1) - so for every frame, it returns the magnitudes of the frequencies from the events in the window as the spectrogram
+* frame - converts array into sequence of successive possibly overlapping frames
+    * breaks the big n-dimensional array of samples (signal now called data again) into a 2-d array which has rows = # of frames (calculated in code), and each row has window_length # of samples
+    * it uses stride_tricks (probably a library) to avoid copying the data again
+    * it returns 2-D array (because input is always 1D) which has # of rows = complete frames available in the input data (contents of the rows are window length # of events/samples). I'm imagining the following:
+        input array: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+        window length = 4, overlap = 2
+        output array with window length and overlap above:
+        [[1,2,3,4],
+        [3,4,5,6],
+        [5,6,7,8],
+        [7,8,9,10],
+        [9,10,11,12],
+        [11,12,13,14]] <- 15 was cut off because the next row doesn't have enough #
+* periodic_hann - calculates a periodic Hann window
+    * creates an array for calculating the periodic Hann window
+* spectrogram_to_mel_matrix - 
+    * num_spectrogram_bins = shape of the second dimension of the spectrogram (mangitudes of the fft_length/2+1 (257) unique values of the fft per frame), audio_sample_rate is still 16kHz
+    * It looks like we pass in the rest of the **kwargs from log_mel_spectrogram into spectrogram_to_mel_matrix (so the preset values aren't used)
+    * The function multiplies the stft_magnitudes matrix by a matrix which converts it into a mel spectrogram. The mel spectrogram is represented in a 2-d array with num_spectrogram_bins rows (257) and num_mel_bins columns (64)
+    * When we multiply the spectrogram (frames x 257) and spectrogram_to_mel_matrix (257x64) together, we get a resulting mel spectrogram matrix of (frames x 64)
+    * No time changes (e.g., from 0.025 second stft window to final 0.96 second examples made of 96 10ms frames).
+* hertz_to_mel - switches frequencies from hertz to mel
 
 ## Questions for Chris
-1. Help me understand why the output FFT don't overlap when the windows overlap (see diagram from the TDS understanding the mel spectrogram article)? 
-As I take it: ideally we would run the FFT on the whole sound. Unfortunately though, the entire sound isn't periodic so the FFT will "smudge" the sound because it has discontinuous ends. Instead we use STFT on smaller overlapping windows (corrected with the Hann window to produce continuous window ends). When we run FFT on these windowed segments it somehow produces non-overlapping FFTs which show the amplitudes of each frequency in chunks of the audio duration, which if summed together would represent the whole audio. To show the amplitude of all the frequencies in a whole audio one would superimpose (or add) all the amplitudes from the time chunked audio together. Is that correct? Why bother creating overlapping windows in the first place and not just run the whole audio file through the FFT to produce a single graph? If the windows you run FFT on overlap, why don't the FFT overlap (per this diagram which I'm putting lots of stock into)
-2. When we spoke last time you had some thoughts on the windowing/overlapping of the sample. I noted that for the YOLO model it appears each 30 min recording is broken down into 1 min windows. Those 1 min windows are then broken down into 1 second or 0.1 second windows with Hann windows and 50% overlap in both cases. We currently are processing the whole signal into 0.96 second windows (consistent with the model training) made up of 25ms windows with 40% (10ms) overlap and a periodic Hann window. I'd recommend keeping the data processed as the model was originally trained. If we have time, planning to play with the windows to see if we get better results. Any thoughts on how to go about this or pre-existing windows that you favor?
-3. I resampled our audio to 16kHz mono and appeared to lose a lot of information looking at the waveform. Is there a better way to do this than in Audacity?
-4. The model uses a mel spectrogram with 64 mel bins and frequencies in the range 125-7500 Hz. Does that frequency range feel like it captures the entirety or the valuable part of what we might see? Any thoughts on the binning?
+1. Our model first creates log mel spectrograms from 0.025s windows with 0.010 overlap. These log mel spectrograms are then combined to represent 0.96 seconds of total audio with no overlap. A key factor in that math appears to be 1/hop length of those original log mel spectrogram windows. I had been thinking of this as the "unique sound contribution" of each spectrogram. Is there a better way to think about it? Basically yes.
+
+2. When we spoke last time you had some thoughts on the windowing/overlapping of the sample. I noted that for the YOLO model it appears each 30 min recording is broken down into 1 min windows. Those 1 min windows are then broken down into 1 second or 0.1 second windows with Hann windows and 50% overlap in both cases. We currently are processing the whole signal into 0.96 second windows (consistent with the model training) made up of 25ms windows with 40% (10ms) overlap and a periodic Hann window. I'd recommend keeping the data processed as the model was originally trained. If we have time, planning to play with the windows to see if we get better results. Any thoughts on how to go about this or pre-existing windows that you favor? Hold for now. The hop length and total length will impact the time resolution and frequency resolution of the systems. in a longer window length will give better frequency resoluion and poorer time resolution - can make alterations to get better resolutions. We're trading time for frequency but they don't overlap at all.
+
+3. The examples timing (1 second vs. longer?) - seems like something we can play around with. 1 second is pretty good balance of time and spectral resolution. Thinks we may want to pay the price in time resolution - don't need to have the window lengths as short as they are b.c we aren't gaining anything from it.
+
+4. I resampled our audio to 16kHz mono and appeared to lose a lot of information looking at the waveform. Is there a better way to do this than in Audacity? - the signal gets much quieter because you cut out the popcorn shrimp, it will have a different impact on different files. Don't worry about it. Can downsample in python. There are subtleties but they don't have anything to do with you. DO IT IN PYTHON FOR EASE OF REUSE. The downsampling will remove the high frequency noises. Chris would band-pass filter it but it won't impact us. The things that we care about happen at lower frequencies. It hits the high frequencies harder because they are shorter so will get frewer of the points randomly sampled in the downsampling.
+
+5. The model uses a mel spectrogram with 64 mel bins and frequencies in the range 125-7500 Hz. Does that frequency range feel like it captures the entirety or the valuable part of what we might see? Any thoughts on the binning? Chris would like it to be higher ideally, but dont let it be a deal breaker. Until recently no one had shown high freqiency noises from a WEC but when Chris went into the WEC there was a lot of high frequency noises. Tidal was 8kHz and 16kHz from variable drive keeping the DC motor functioning. They are modulating the current through the motor- so there is an electrical switch and the components which go through the motors vibrate at high frequencies - happens at the drive frequencies. On the low frequency end flow noise gets in the way - doesn't care. let's explore methods.
+
 
 ## Questions for/to think through w/ Saumya
 1. What is the mel-spectrogram patch? Is that part of the model?
