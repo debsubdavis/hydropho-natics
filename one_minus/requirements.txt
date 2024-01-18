@@ -1,0 +1,3 @@
+labelbox==3.59
+ultralytics==8.1
+requests==2.31

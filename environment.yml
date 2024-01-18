@@ -11,3 +11,6 @@ dependencies:
   - matplotlib=3.8
   - pip:
       - pyspark==3.5
+      - labelbox==3.59
+      - ultralytics==8.1
+      - requests==2.31
