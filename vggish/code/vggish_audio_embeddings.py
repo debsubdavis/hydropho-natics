@@ -58,10 +58,10 @@ import vggish_slim
 
 # Define argparse parameters to run from the command line
 parser = argparse.ArgumentParser(description="Process wav files into log mel "+
-                                 "spectrograms and feed into VGGish to create"+
-                                 "embeddings")
+                                 "spectrograms and feed into VGGish for "+
+                                 "embedding generation.")
 parser.add_argument('--wav_path', action='store', required=True,
-                    help="Path to .wav files. "+
+                    help="Path to directory containing .wav files. "+
                     "Should contain signed 16-bit PCM samples.")
 parser.add_argument('--vggish_checkpoint', action='store', required=False,
                     default= 'vggish_model.ckpt',
@@ -80,6 +80,9 @@ def main(_):
                     "e.g., $ python vggish_audio_embeddings.py "+
                     "--wav_path path/to/wav/files/'")
   file_list = [wav_path+file for file in os.listdir(wav_path) if file.endswith('.wav')]
+  if len(file_list) <= 0:
+    raise TypeError("The user must specify a path containing .wav files "+
+                    "sampled as 16kHz mono.")
 
   # Define the model in inference mode, load the checkpoint, and
   # locate input and output tensors.
