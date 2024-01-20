@@ -18,3 +18,4 @@ dependencies:
       - azure-keyvault-secrets==4.7
       - azure-identity==1.15
       - pylint==3.0
+      - azure-storage-blob==12.19
