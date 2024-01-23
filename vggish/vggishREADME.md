@@ -34,7 +34,7 @@ This README contains information to create audio embedddings via the TensorFlow 
 #### SEE IF NEEDS TO BE CHANGED - The version of this model developed for the 2024 MSDS Capstone project will leave all model parameters as-is (e.g., hop length, window length, example length) given the higher likelihood of good model performance if training and testing conditions match.
 2. Ensuring that your vggish_environment is activated, run the vggish_inference_demo.py code as below:
       $ python vggish_audio_embeddings.py --wav_path path/to/wav/files/
-   #### By including '--wav_path path/to/wav/files/' you can avoid hard-coding or changing any parameters in the code itself. Audio embeddings will be saved as csv files (1 per input wav file) in a directory ("embedding_data/") on the same level as the directory where you run your code. No post-processing will be done on the data
+   #### By including '--wav_path path/to/wav/files/' you can avoid hard-coding or changing any parameters in the code itself. Audio embeddings will be saved as csv files (1 per input wav file) in a directory ("embedding_data/") on the same level as the directory where you run your code. No post-processing will be done on the data.
 
 ### IV. Performing dimensionality reduction and clustering
 1. XX
@@ -46,13 +46,10 @@ This README contains information to create audio embedddings via the TensorFlow 
 \[].csv - These csv files contain the embeddings output from the vggish model plus the numerical name of the recording file, what example number the embedding was for, start time in seconds of the example, and end time in seconds for the example.
 
 
-
-
-
 ## Questions, Concerns, and Future Opportunitites
 
 ### Questions for Chris
-1. Not all the annotated .png have metadata files. The two I found were 20190221T100004-File-13.png and 20190222T190004-File-28.png. They were both taken in 2019022. Have I misinterpreted how to tie the labeled spectrograms back to the .wav files which produced them? Additionally, I'm not hearing any clear sounds in the wav files which the labels would suggest they have.
+1. Validate that downsampling, 16-bit PCM changes methodology in the code are correct (code uses ‘soxr_vhq’ resampling - Very high-, High-, Medium-, Low-quality FFT-based bandlimited interpolation. 'soxr_hq' is the default setting of soxr.)
 
 ### Concerns
 1. 

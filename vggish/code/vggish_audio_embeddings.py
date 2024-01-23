@@ -23,7 +23,10 @@ This code will leverage functions written by TensorFlow including
 vggish_input.py and vggish_params.py to turn the wav files in the input path
 into log mel spectrograms, feed them into VGGish, and generate 128-D raw
 embeddings. Currently no post-processing is applied to the data, though this
-feature may be added in the future.
+feature may be added in the future. If the embedding code is run multiple times
+with the same file names, the output csvs with the embeddings will be
+overwritten. If you plan to re-run the code on files multiple times, rename
+the resulting csvs or move them to avoid overwriting the outputs.
 
 Input(s):
   # Path to directory containing wav files for analysis. Users should
@@ -42,7 +45,7 @@ Usage:
   # loaded from vggish_params.py in the current directory.
   $ python vggish_audio_embeddings.py --wav_path path/to/wav/files/
 """
-#python vggish_audio_embeddings.py --wav_path ../../../test_audio_files/
+#python vggish_audio_embeddings.py --wav_path D:
 
 from __future__ import print_function
 
@@ -109,8 +112,8 @@ def main(_):
       embedding_df = pd.DataFrame(embedding_batch)
       embedding_df['wav_filename'] = wav_filename
       embedding_df['example_number'] = range(len(embedding_df))
-      embedding_df['recording_start_s'] = (embedding_df['example_number']) * 0.96 #MAKE REUSABLE IN FUTURE
-      embedding_df['recording_stop_s'] = (embedding_df['example_number'] + 1) * 0.96 #MAKE REUSABLE IN FUTURE 
+      embedding_df['recording_start_s'] = (embedding_df['example_number']) * vggish_params.EXAMPLE_WINDOW_SECONDS
+      embedding_df['recording_stop_s'] = (embedding_df['example_number'] + 1) * vggish_params.EXAMPLE_WINDOW_SECONDS
       
       # Save the embedding and sample information to a csv file
       embedding_df.to_csv('../embedding_data/'+wav_filename+'.csv')
