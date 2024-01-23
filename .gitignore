@@ -166,5 +166,6 @@ cython_debug/
 #.idea/
 
 # VGGish files
-vggish/tf_models/vggish_model.ckpt
 vggish/code/vggish_model.ckpt
+vggish/embedding_data/*
+vggish/DELETE_LATER/test_embed_data/*
