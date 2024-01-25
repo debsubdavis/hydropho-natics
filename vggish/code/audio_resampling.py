@@ -27,26 +27,29 @@ parser.add_argument('--save_path', action='store', required=True,
 args = parser.parse_args()
 #python audio_resampling.py --wav_path D:/1Dec2018_28Feb2019/Hydrophone/ --save_path D:/1Dec2018_28Feb2019/Hydrophone_Resampled/
 
+def main():
+    #Resampling audio
+    if args.wav_path:
+        wav_path = args.wav_path
+        save_path = args.save_path
+        target_sample_rate = args.target_sample_rate
 
-#Resampling audio
-if args.wav_path:
-    wav_path = args.wav_path
-    save_path = args.save_path
-    target_sample_rate = args.target_sample_rate
+    #Get a list of the wav files
+    file_list = [wav_path+file for file in os.listdir(wav_path) if file.endswith('.wav')]
+    for wav_file in file_list:
+        wav_data, sr = librosa.load(wav_file, sr=None, mono=True)
+        raw_filename = wav_file[len(wav_path):-4]
+        wav_filename = wav_file[:-4]
+        save_filename = save_path + raw_filename + '_resampled.wav'
+        # Resample and write out audio as 16bit PCM WAV
+        wav_data_resampled = librosa.resample(y=wav_data, orig_sr=sr, target_sr=target_sample_rate)
+        sf.write(save_filename, wav_data_resampled,
+                target_sample_rate, format='wav', subtype='PCM_16')
+        print("Processed {0}".format(raw_filename))
 
-#Get a list of the wav files
-file_list = [wav_path+file for file in os.listdir(wav_path) if file.endswith('.wav')]
-for wav_file in file_list:
-    wav_data, sr = librosa.load(wav_file, sr=None, mono=True)
-    raw_filename = wav_file[len(wav_path):-4]
-    wav_filename = wav_file[:-4]
-    save_filename = save_path + raw_filename + '_resampled.wav'
-    # Resample and write out audio as 16bit PCM WAV
-    wav_data_resampled = librosa.resample(y=wav_data, orig_sr=sr, target_sr=target_sample_rate)
-    sf.write(save_filename, wav_data_resampled,
-             target_sample_rate, format='wav', subtype='PCM_16')
-    print("Processed {0}".format(raw_filename))
+        #Uncomment the following code to verify that your file was changed into the format your expect
+        #info = sf.info(save_filename)
+        #print(info)
 
-    #Uncomment the following code to verify that your file was changed into the format your expect
-    #info = sf.info(save_filename)
-    #print(info)
+if __name__ == "__main__":
+    main()
