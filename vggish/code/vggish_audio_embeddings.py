@@ -45,7 +45,7 @@ Usage:
   # loaded from vggish_params.py in the current directory.
   $ python vggish_audio_embeddings.py --wav_path path/to/wav/files/
 """
-#python vggish_audio_embeddings.py --wav_path D:
+#python vggish_audio_embeddings.py --wav_path D:/1Dec2018_28Feb2019/Hydrophone_Resampled/ --save_path D:/1Dec2018_28Feb2019/Embedding_Data/
 
 from __future__ import print_function
 
@@ -66,6 +66,8 @@ parser = argparse.ArgumentParser(description="Process wav files into log mel "+
 parser.add_argument('--wav_path', action='store', required=True,
                     help="Path to directory containing .wav files. "+
                     "Should contain signed 16-bit PCM samples.")
+parser.add_argument('--save_path', action='store', required=True,
+                    help="Path to embedding directory. ")
 parser.add_argument('--vggish_checkpoint', action='store', required=False,
                     default= 'vggish_model.ckpt',
                     help="Path to the VGGish checkpoint file. Checkpoints "+
@@ -78,6 +80,7 @@ def main(_):
   # Create a list of wav files from the user-input path
   if args.wav_path:
     wav_path = args.wav_path
+    save_path = args.save_path
   else:
     raise TypeError("Pass in path to wav files when calling the function" +
                     "e.g., $ python vggish_audio_embeddings.py "+
@@ -116,7 +119,7 @@ def main(_):
       embedding_df['recording_stop_s'] = (embedding_df['example_number'] + 1) * vggish_params.EXAMPLE_WINDOW_SECONDS
       
       # Save the embedding and sample information to a csv file
-      embedding_df.to_csv('../embedding_data/'+wav_filename+'.csv')
+      embedding_df.to_csv(save_path+wav_filename+'.csv')
       print("{0} embeddings created and saved in 'embedding_data'".format(wav_filename))
 
 if __name__ == '__main__':
