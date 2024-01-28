@@ -56,16 +56,10 @@ import vggish_params
 import vggish_postprocess
 import vggish_slim
 
-#EKRC adds
-import pandas as pd
-import glob
-
 flags = tf.app.flags
 
-#Removed the WAV file option in favor of a for loop which will automatically run all
-# the WAV files in our intermediate_data directory
 flags.DEFINE_string(
-    'wav_file', '../../../../intermediate_data/181204-203002-437599-806141979.wav',
+    'wav_file', None,
     'Path to a wav file. Should contain signed 16-bit PCM samples. '
     'If none is provided, a synthetic sound is used.')
 
@@ -85,57 +79,75 @@ FLAGS = flags.FLAGS
 
 
 def main(_):
-  # In this POC, we run all wav POC files through the model
-  path = r'../../../../intermediate_data/*.wav'
-  file_list = glob.glob(path)
-  format_file_list = [file.replace('\\', '/') for file in file_list]
-  #print(format_file_list)
+  # In this simple example, we run the examples from a single audio file through
+  # the model. If none is provided, we generate a synthetic input.
+  if FLAGS.wav_file:
+    wav_file = FLAGS.wav_file
+  else:
+    # Write a WAV of a sine wav into an in-memory file object.
+    num_secs = 5
+    freq = 1000
+    sr = 44100
+    t = np.arange(0, num_secs, 1 / sr)
+    x = np.sin(2 * np.pi * freq * t)
+    # Convert to signed 16-bit samples.
+    samples = np.clip(x * 32768, -32768, 32767).astype(np.int16)
+    wav_file = six.BytesIO()
+    soundfile.write(wav_file, samples, sr, format='WAV', subtype='PCM_16')
+    wav_file.seek(0)
+  examples_batch = vggish_input.wavfile_to_examples(wav_file)
+  print(examples_batch)
 
-  for file in format_file_list:
-    wav_file = file
+  # Prepare a postprocessor to munge the model embeddings.
+  pproc = vggish_postprocess.Postprocessor(FLAGS.pca_params)
 
-    '''    if FLAGS.wav_file:
-        wav_file = FLAGS.wav_file
-    else:
-        print("WAV file must be provided")'''
-    examples_batch = vggish_input.wavfile_to_examples(wav_file)
-    #print(examples_batch) #EKRC
+  # If needed, prepare a record writer to store the postprocessed embeddings.
+  writer = tf.python_io.TFRecordWriter(
+      FLAGS.tfrecord_file) if FLAGS.tfrecord_file else None
 
-    #Getting the wav filename
-    wav_filename = wav_file[30:-4]
+  with tf.Graph().as_default(), tf.Session() as sess:
+    # Define the model in inference mode, load the checkpoint, and
+    # locate input and output tensors.
+    vggish_slim.define_vggish_slim(training=False)
+    vggish_slim.load_vggish_slim_checkpoint(sess, FLAGS.checkpoint)
+    features_tensor = sess.graph.get_tensor_by_name(
+        vggish_params.INPUT_TENSOR_NAME)
+    embedding_tensor = sess.graph.get_tensor_by_name(
+        vggish_params.OUTPUT_TENSOR_NAME)
 
-    with tf.Graph().as_default(), tf.Session() as sess:
-        # Define the model in inference mode, load the checkpoint, and
-        # locate input and output tensors.
-        vggish_slim.define_vggish_slim(training=False)
-        vggish_slim.load_vggish_slim_checkpoint(sess, FLAGS.checkpoint)
-        features_tensor = sess.graph.get_tensor_by_name(
-            vggish_params.INPUT_TENSOR_NAME)
-        embedding_tensor = sess.graph.get_tensor_by_name(
-            vggish_params.OUTPUT_TENSOR_NAME)
+    # Run inference and postprocessing.
+    [embedding_batch] = sess.run([embedding_tensor],
+                                 feed_dict={features_tensor: examples_batch})
+    print(embedding_batch)
+    postprocessed_batch = pproc.postprocess(embedding_batch)
+    print(postprocessed_batch)
 
-        # Run inference and postprocessing.
-        [embedding_batch] = sess.run([embedding_tensor],
-                                    feed_dict={features_tensor: examples_batch})
-        #print(embedding_batch)
+    # Write the postprocessed embeddings as a SequenceExample, in a similar
+    # format as the features released in AudioSet. Each row of the batch of
+    # embeddings corresponds to roughly a second of audio (96 10ms frames), and
+    # the rows are written as a sequence of bytes-valued features, where each
+    # feature value contains the 128 bytes of the whitened quantized embedding.
+    seq_example = tf.train.SequenceExample(
+        feature_lists=tf.train.FeatureLists(
+            feature_list={
+                vggish_params.AUDIO_EMBEDDING_FEATURE_NAME:
+                    tf.train.FeatureList(
+                        feature=[
+                            tf.train.Feature(
+                                bytes_list=tf.train.BytesList(
+                                    value=[embedding.tobytes()]))
+                            for embedding in postprocessed_batch
+                        ]
+                    )
+            }
+        )
+    )
+    print(seq_example)
+    if writer:
+      writer.write(seq_example.SerializeToString())
 
-        #Save the embeddings to a pandas df then csv file
-        embedding_df = pd.DataFrame(embedding_batch)
-        embedding_df['recording_file'] = wav_filename
-        embedding_df['example_number'] = range(len(embedding_df))
-        embedding_df['start_time_s'] = (embedding_df['example_number']) * 0.96 #MAKE REUSABLE IN FUTURE
-        embedding_df['stop_time_s'] = (embedding_df['example_number'] + 1) * 0.96 #MAKE REUSABLE IN FUTURE 
-        #print(embedding_df[['example_number','start_time_s','stop_time_s']])
-        ref_col = embedding_df.pop('recording_file')
-        embedding_df.insert(0, 'recording_file',ref_col)
-        example_number = embedding_df.pop('example_number')
-        embedding_df.insert(1, 'example_number',example_number)
-        start_col = embedding_df.pop('start_time_s')
-        embedding_df.insert(2, 'start_time_s',start_col)
-        stop_col = embedding_df.pop('stop_time_s')
-        embedding_df.insert(3, 'stop_time_s',stop_col)
-        embedding_df.to_csv('../../../../embedding_data/'+wav_filename+'.csv')
-        print("File embeddings created and saved in 'embedding_data'")
+  if writer:
+    writer.close()
 
 if __name__ == '__main__':
   tf.app.run()
