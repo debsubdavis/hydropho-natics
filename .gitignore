@@ -169,3 +169,4 @@ cython_debug/
 vggish/code/vggish_model.ckpt
 vggish/embedding_data/*
 vggish/DELETE_LATER/test_embed_data/*
+vggish/tests/*.wav

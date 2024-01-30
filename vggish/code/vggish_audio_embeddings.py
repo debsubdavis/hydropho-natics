@@ -45,7 +45,6 @@ Usage:
   # loaded from vggish_params.py in the current directory.
   $ python vggish_audio_embeddings.py --wav_path path/to/wav/files/
 """
-#python vggish_audio_embeddings.py --wav_path D:/1Dec2018_28Feb2019/Hydrophone_Resampled/ --save_path D:/1Dec2018_28Feb2019/Embedding_Data/
 
 from __future__ import print_function
 
@@ -58,37 +57,46 @@ import vggish_input
 import vggish_params
 import vggish_slim
 
-
-# Define argparse parameters to run from the command line
-parser = argparse.ArgumentParser(description="Process wav files into log mel "+
-                                 "spectrograms and feed into VGGish for "+
-                                 "embedding generation.")
-parser.add_argument('--wav_path', action='store', required=True,
-                    help="Path to directory containing .wav files. "+
-                    "Should contain signed 16-bit PCM samples.")
-parser.add_argument('--save_path', action='store', required=True,
-                    help="Path to embedding directory. ")
-parser.add_argument('--vggish_checkpoint', action='store', required=False,
-                    default= 'vggish_model.ckpt',
-                    help="Path to the VGGish checkpoint file. Checkpoints "+
-                    "outside the one downloaded using the instructions in the "+
-                    "README have not been tested.")
-args = parser.parse_args()
+def get_inputs():
+  # Define argparse parameters to run from the command line
+  parser = argparse.ArgumentParser(description="Process wav files into log mel "+
+                                  "spectrograms and feed into VGGish for "+
+                                  "embedding generation.")
+  parser.add_argument('--wav_path', action='store', required=True,
+                      help="Path to directory containing .wav files. "+
+                      "Should contain signed 16-bit PCM samples.")
+  parser.add_argument('--save_path', action='store', required=True,
+                      help="Path to embedding directory. ")
+  parser.add_argument('--vggish_checkpoint', action='store', required=False,
+                      default= 'vggish_model.ckpt',
+                      help="Path to the VGGish checkpoint file. Checkpoints "+
+                      "outside the one downloaded using the instructions in the "+
+                      "README have not been tested.")
+  args = parser.parse_args()
+  return args
 
 
 def main(_):
+  args = get_inputs()
+  print(args)
   # Create a list of wav files from the user-input path
-  if args.wav_path:
+  if args.wav_path and os.path.exists(args.wav_path):
     wav_path = args.wav_path
-    save_path = args.save_path
   else:
-    raise TypeError("Pass in path to wav files when calling the function" +
+    raise TypeError("Pass in valid path to wav files when calling the function" +
                     "e.g., $ python vggish_audio_embeddings.py "+
                     "--wav_path path/to/wav/files/'")
+  if args.save_path and os.path.exists(args.save_path):
+      save_path = args.save_path
+  else:
+    raise TypeError("Pass in valid path to save location for embeddings files " + 
+                    "when calling the function" +
+                    "e.g., $ python vggish_audio_embeddings.py "+
+                    "--save_path path/to/saved/files/'")
   file_list = [wav_path+file for file in os.listdir(wav_path) if file.endswith('.wav')]
   if len(file_list) <= 0:
     raise TypeError("The user must specify a path containing .wav files "+
-                    "sampled as 16kHz mono.")
+                    "sampled as signed 16-bit PCM, 16kHz mono.")
 
   # Define the model in inference mode, load the checkpoint, and
   # locate input and output tensors.
