@@ -13,29 +13,47 @@ import os
 
 
 # Define argparse parameters to run from the command line
-parser = argparse.ArgumentParser(description="Resample audio files for input "+
-                                 "into VGGish model.")
-parser.add_argument('--wav_path', action='store', required=True,
-                    help="Path to directory containing .wav files.")
-parser.add_argument('--target_sample_rate', action='store', required=False,
-                    default= 16000,
-                    help="Desired new sample rate of the audio. "+
-                    "VGGish requires 16kHz.")
-parser.add_argument('--save_path', action='store', required=True,
-                    help='Path to directory where resampled wav files '+
-                    'will be stored.')
-args = parser.parse_args()
-#python audio_resampling.py --wav_path D:/1Dec2018_28Feb2019/Hydrophone/ --save_path D:/1Dec2018_28Feb2019/Hydrophone_Resampled/
+def get_inputs():
+    parser = argparse.ArgumentParser(description="Resample audio files for input "+
+                                    "into VGGish model.")
+    parser.add_argument('--wav_path', action='store', required=True,
+                        help="Path to directory containing .wav files.")
+    parser.add_argument('--target_sample_rate', action='store', required=False,
+                        default= 16000,
+                        help="Desired new sample rate of the audio. "+
+                        "VGGish requires 16kHz.")
+    parser.add_argument('--save_path', action='store', required=True,
+                        help='Path to directory where resampled wav files '+
+                        'will be stored.')
+    args = parser.parse_args()
+    return args
 
 def main():
     #Resampling audio
-    if args.wav_path:
+    args = get_inputs()
+    if args.wav_path and os.path.exists(args.wav_path):
         wav_path = args.wav_path
+    else:
+        raise TypeError("Pass in valid path to wav files when calling the function" +
+                        "e.g., $ python audio_resampling.py "+
+                        "--wav_path path/to/wav/files/'")
+    if args.save_path and os.path.exists(args.save_path):
         save_path = args.save_path
+    else:
+        raise TypeError("Pass in valid path to save location for resampled " + 
+                        "wav files" +
+                        "e.g., $ python audio_resampling.py "+
+                        "--save_path path/to/saved/files/'")
+    if args.target_sample_rate and args.target_sample_rate > 0:
         target_sample_rate = args.target_sample_rate
+    else:
+        raise TypeError("The target sample rate must be > 0. We recommend "+
+                        "16kHz to optimally comply with the model.")
 
     #Get a list of the wav files
     file_list = [wav_path+file for file in os.listdir(wav_path) if file.endswith('.wav')]
+    if len(file_list) <= 0:
+        raise TypeError("The user must specify a path containing .wav files")
     for wav_file in file_list:
         wav_data, sr = librosa.load(wav_file, sr=None, mono=True)
         raw_filename = wav_file[len(wav_path):-4]

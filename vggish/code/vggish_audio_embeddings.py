@@ -31,6 +31,7 @@ the resulting csvs or move them to avoid overwriting the outputs.
 Input(s):
   # Path to directory containing wav files for analysis. Users should
   use '/' or '\\' to separate levels of directories.
+  # Path to directory where embeddings should be stored
 
 Output(s):
   # One csv file per input wav file which contains the 128 embeddings plus
@@ -78,7 +79,6 @@ def get_inputs():
 
 def main(_):
   args = get_inputs()
-  print(args)
   # Create a list of wav files from the user-input path
   if args.wav_path and os.path.exists(args.wav_path):
     wav_path = args.wav_path
