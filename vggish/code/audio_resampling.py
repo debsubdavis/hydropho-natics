@@ -21,16 +21,13 @@ def get_inputs():
     parser.add_argument('--target_sample_rate', action='store', required=False,
                         default= 16000,
                         help="Desired new sample rate of the audio. "+
-                        "VGGish requires 16kHz.")
+                        "e.g., 16000. VGGish requires 16kHz.")
     parser.add_argument('--save_path', action='store', required=True,
                         help='Path to directory where resampled wav files '+
                         'will be stored.')
     args = parser.parse_args()
-    return args
 
-def main():
-    #Resampling audio
-    args = get_inputs()
+    #Testing for valid user inputs
     if args.wav_path and os.path.exists(args.wav_path):
         wav_path = args.wav_path
     else:
@@ -44,12 +41,19 @@ def main():
                         "wav files" +
                         "e.g., $ python audio_resampling.py "+
                         "--save_path path/to/saved/files/'")
-    if args.target_sample_rate and args.target_sample_rate > 0:
+    if args.target_sample_rate and int(args.target_sample_rate) > 0 and type(args.target_sample_rate) == int:
         target_sample_rate = args.target_sample_rate
     else:
         raise TypeError("The target sample rate must be > 0. We recommend "+
-                        "16kHz to optimally comply with the model.")
+                        "16000 Hz to optimally comply with the model.")
+    return args
 
+def main():
+    #Getting user input to resample audio
+    args = get_inputs()
+    wav_path = args.wav_path
+    save_path = args.save_path
+    target_sample_rate = args.target_sample_rate
     #Get a list of the wav files
     file_list = [wav_path+file for file in os.listdir(wav_path) if file.endswith('.wav')]
     if len(file_list) <= 0:

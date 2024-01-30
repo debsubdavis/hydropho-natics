@@ -11,66 +11,152 @@ Usage:
   # Validating user conditions are met and throw errors as expected
 """
 
+#For general unittesting
 import unittest
-import audio_resampling
+import argparse
+from unittest.mock import patch
+from audio_resampling import main
+from audio_resampling import get_inputs
+
+#For unittesting main & the outputs of the test audio file
+import librosa
+import soundfile as sf
 
 
 class TestGetInputs(unittest.TestCase):
-    """Test suite for vggish_audio_embeddings function"""
+    """Test suite for vggish_audio_embeddings arg parse function"""
 
-    def test_no_paths(self):
+    @patch('argparse.ArgumentParser.parse_args',
+            return_value = argparse.Namespace(
+                wav_path = '',
+                target_sample_rate = '',
+                save_path = ''
+            ))
+    def test_no_paths(self, mock_parse_args):
         """
         Test that when no paths are input to vggish_audio_embedding
         it throws an error
         """
-        self.assertRaises(TypeError, audio_resampling, '', '')
+        with self.assertRaises(TypeError):
+            get_inputs()
 
-    def test_no_wav_path(self):
+    @patch('argparse.ArgumentParser.parse_args',
+            return_value = argparse.Namespace(
+                wav_path = '',
+                target_sample_rate = 16000,
+                save_path = '../tests/Embeddings'
+            ))
+    def test_no_wav_path(self, mock_parse_args):
         """
         Test that when no wav path is input to vggish_audio_embedding
         it throws an error
         """
-        self.assertRaises(TypeError, audio_resampling, '',
-                          '../tests/Embeddings/')
-    
-    def test_no_save_path(self):
+        with self.assertRaises(TypeError):
+            get_inputs()
+
+    @patch('argparse.ArgumentParser.parse_args',
+            return_value = argparse.Namespace(
+                wav_path = '../tests/',
+                target_sample_rate = 16000,
+                save_path = ''
+            )) 
+    def test_no_save_path(self, mock_parse_args):
         """
         Test that when no save path is input to vggish_audio_embedding
         it throws an error
         """
-        self.assertRaises(TypeError, audio_resampling, '../tests/'
-                          , '')
+        with self.assertRaises(TypeError):
+            get_inputs()
 
-    def test_bad_wav_path(self):
+    @patch('argparse.ArgumentParser.parse_args',
+            return_value = argparse.Namespace(
+                wav_path = './bad_path/',
+                target_sample_rate = 16000,
+                save_path = '../tests/Embeddings'
+            )) 
+    def test_bad_wav_path(self, mock_parse_args):
         """
         Test that when an invalid wav path is input to vggish_audio_embedding
         it throws an error
         """
-        self.assertRaises(TypeError, audio_resampling, './bad_path/'
-                          , '../tests/Embeddings/')
-    
-    def test_bad_save_path(self):
+        with self.assertRaises(TypeError):
+            get_inputs()
+
+    @patch('argparse.ArgumentParser.parse_args',
+            return_value = argparse.Namespace(
+                wav_path = '../tests/',
+                target_sample_rate = 16000,
+                save_path = './bad_path/'
+            )) 
+    def test_bad_save_path(self, mock_parse_args):
         """
         Test that when an invalid save path is input to vggish_audio_embedding
         it throws an error
         """
-        self.assertRaises(TypeError, audio_resampling, '../tests/Embeddings/',
-                          './bad_path/')
+        with self.assertRaises(TypeError):
+            get_inputs()
 
-    def test_no_wav_files(self):
+    @patch('argparse.ArgumentParser.parse_args',
+            return_value = argparse.Namespace(
+                wav_path = '../tests/',
+                target_sample_rate = -16000,
+                save_path = '../tests/Embeddings'
+            )) 
+    def test_bad_sample_rate(self, mock_parse_args):
+        """
+        Test that when the user inputs a sample rate <0 it throws a TypeError
+        """
+        with self.assertRaises(TypeError):
+            get_inputs()
+       
+    @patch('argparse.ArgumentParser.parse_args',
+            return_value = argparse.Namespace(
+                wav_path = '../tests/',
+                target_sample_rate = 16000.5,
+                save_path = '../tests/Embeddings'
+            )) 
+    def test_int_sample_rate(self, mock_parse_args):
+        """
+        Test that when the sample rate isn't an int it throws a TypeError
+        """
+        with self.assertRaises(TypeError):
+            get_inputs()
+
+class TestMain(unittest.TestCase):
+    """Test suite for vggish_audio_embeddings main function"""
+
+    @patch('argparse.ArgumentParser.parse_args',
+            return_value = argparse.Namespace(
+                wav_path = '../tests/Embeddings',
+                target_sample_rate = 16000,
+                save_path = '../tests/Embeddings'
+            )) 
+    def test_no_wav_files(self, mock_parse_args):
         """
         Test that when the user inputs a real path with no wav files to
         vggish_audio_embedding it throws an error
         """
-        self.assertRaises(TypeError, audio_resampling, '../tests/Embeddings/',
-                          '../tests/Embeddings/')
+        with self.assertRaises(TypeError):
+            main()
 
-    def test_bad_sample_rate(self):
+    @patch('argparse.ArgumentParser.parse_args',
+            return_value = argparse.Namespace(
+                wav_path = '../tests/',
+                target_sample_rate = 16000,
+                save_path = '../tests/'
+            )) 
+    def test_correct_resampling(self, mock_parse_args):
         """
-        Test that when the user inputs a sample rate <0 it throws a TypeError
+        Test that the output file from audio_resampling is indeed
+        signed 16-bit PCM, sampled as 16kHz mono
         """
-        self.assertRaises(TypeError, audio_resampling, '../tests/',
-                          '../tests/', target_sample_rate = -16000)
+        info = sf.info('../tests/sample_wav_resampled.wav')
+        self.assertEqual(info.samplerate, 16000)
+        self.assertEqual(info.channels, 1)
+        self.assertEqual(info.format, 'WAV')
+        self.assertEqual(info.subtype, 'PCM_16')
+        
+
 
 if __name__ == '__main__':
     unittest.main()
