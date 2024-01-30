@@ -11,59 +11,122 @@ Usage:
   # Validating user conditions are met and throw errors as expected
 """
 
+#General unittesting
 import unittest
+import argparse
+from unittest.mock import patch
+from vggish_audio_embeddings import main
 from vggish_audio_embeddings import get_inputs
+import pandas as pd
+import librosa
+import soundfile as sf
 
 
-class TestGetInputs(unittest.TestCase):
-    """Test suite for vggish_audio_embeddings function"""
+class TestGetInfo(unittest.TestCase):
+    """Test suite for vggish_audio_embeddings arg parsing"""
 
-    def test_no_paths(self):
+    @patch('argparse.ArgumentParser.parse_args',
+            return_value = argparse.Namespace(
+                wav_path = '',
+                vggish_checkpoint = 'vggish_model.ckpt',
+                save_path = ''
+            ))
+    def test_no_paths(self, mock_parse_args):
         """
         Test that when no paths are input to vggish_audio_embedding
         it throws an error
         """
-        self.assertRaises(TypeError, get_inputs, '', '')
+        with self.assertRaises(TypeError):
+            get_inputs()
 
-    def test_no_wav_path(self):
+    @patch('argparse.ArgumentParser.parse_args',
+            return_value = argparse.Namespace(
+                wav_path = '',
+                vggish_checkpoint = 'vggish_model.ckpt',
+                save_path = '../tests/Embeddings'
+            ))
+    def test_no_wav_path(self, mock_parse_args):
         """
         Test that when no wav path is input to vggish_audio_embedding
         it throws an error
         """
-        self.assertRaises(TypeError, get_inputs, '',
-                          '../tests/Embeddings')
-    
-    def test_no_save_path(self):
+        with self.assertRaises(TypeError):
+            get_inputs()
+
+    @patch('argparse.ArgumentParser.parse_args',
+            return_value = argparse.Namespace(
+                wav_path = '../tests/',
+                vggish_checkpoint = 'vggish_model.ckpt',
+                save_path = ''
+            )) 
+    def test_no_save_path(self, mock_parse_args):
         """
         Test that when no save path is input to vggish_audio_embedding
         it throws an error
         """
-        self.assertRaises(TypeError, get_inputs, '../tests/'
-                          , '')
+        with self.assertRaises(TypeError):
+            get_inputs()
 
-    def test_bad_wav_path(self):
+    @patch('argparse.ArgumentParser.parse_args',
+            return_value = argparse.Namespace(
+                wav_path = './bad_path/',
+                vggish_checkpoint = 'vggish_model.ckpt',
+                save_path = '../tests/Embeddings'
+            )) 
+    def test_bad_wav_path(self, mock_parse_args):
         """
         Test that when an invalid wav path is input to vggish_audio_embedding
         it throws an error
         """
-        self.assertRaises(TypeError, get_inputs, './bad_path'
-                          , '../tests/Embeddings')
-    
-    def test_bad_save_path(self):
+        with self.assertRaises(TypeError):
+            get_inputs()
+
+    @patch('argparse.ArgumentParser.parse_args',
+            return_value = argparse.Namespace(
+                wav_path = '../tests/',
+                vggish_checkpoint = 'vggish_model.ckpt',
+                save_path = './bad_path/'
+            )) 
+    def test_bad_save_path(self, mock_parse_args):
         """
         Test that when an invalid save path is input to vggish_audio_embedding
         it throws an error
         """
-        self.assertRaises(TypeError, get_inputs, '../tests/Embeddings',
-                          './bad_path')
+        with self.assertRaises(TypeError):
+            get_inputs()
 
-    def test_no_wav_files(self):
+class TestMain(unittest.TestCase):
+    """Test suite for vggish_audio_embeddings main function"""
+    
+    @patch('argparse.ArgumentParser.parse_args',
+            return_value = argparse.Namespace(
+                wav_path = './bad_path',
+                vggish_checkpoint = 'vggish_model.ckpt',
+                save_path = '../tests/Embeddings'
+            )) 
+    def test_no_wav_files(self, mock_parse_args):
         """
         Test that when the user inputs a real path with no wav files to
         vggish_audio_embedding it throws an error
         """
-        self.assertRaises(TypeError, get_inputs, '../tests/Embeddings',
-                          '../tests/Embeddings')
+        with self.assertRaises(TypeError):
+            main()
+
+    @patch('argparse.ArgumentParser.parse_args',
+            return_value = argparse.Namespace(
+                wav_path = '../tests/',
+                vggish_checkpoint = 'vggish_model.ckpt',
+                save_path = '../tests/Embeddings'
+            )) 
+    def test_csv_len(self, mock_parse_args):
+        """
+        Test that the output csv is the right length based on the audio file
+        """
+        output_csv = pd.read_csv('../tests/Embeddings/Embeddingssample_wav.csv')
+        info = sf.info('../tests/sample_wav_resampled.wav')
+        file_length = (info.duration)/0.96
+        self.assertEqual(len(output_csv), file_length)
+        
 
 if __name__ == '__main__':
     unittest.main()

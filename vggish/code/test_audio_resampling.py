@@ -24,7 +24,7 @@ import soundfile as sf
 
 
 class TestGetInputs(unittest.TestCase):
-    """Test suite for vggish_audio_embeddings arg parse function"""
+    """Test suite for audio_resampling arg parse function"""
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
@@ -34,7 +34,7 @@ class TestGetInputs(unittest.TestCase):
             ))
     def test_no_paths(self, mock_parse_args):
         """
-        Test that when no paths are input to vggish_audio_embedding
+        Test that when no paths are input to audio_resampling
         it throws an error
         """
         with self.assertRaises(TypeError):
@@ -48,7 +48,7 @@ class TestGetInputs(unittest.TestCase):
             ))
     def test_no_wav_path(self, mock_parse_args):
         """
-        Test that when no wav path is input to vggish_audio_embedding
+        Test that when no wav path is input to audio_resampling
         it throws an error
         """
         with self.assertRaises(TypeError):
@@ -62,7 +62,7 @@ class TestGetInputs(unittest.TestCase):
             )) 
     def test_no_save_path(self, mock_parse_args):
         """
-        Test that when no save path is input to vggish_audio_embedding
+        Test that when no save path is input to audio_resampling
         it throws an error
         """
         with self.assertRaises(TypeError):
@@ -76,7 +76,7 @@ class TestGetInputs(unittest.TestCase):
             )) 
     def test_bad_wav_path(self, mock_parse_args):
         """
-        Test that when an invalid wav path is input to vggish_audio_embedding
+        Test that when an invalid wav path is input to audio_resampling
         it throws an error
         """
         with self.assertRaises(TypeError):
@@ -90,7 +90,7 @@ class TestGetInputs(unittest.TestCase):
             )) 
     def test_bad_save_path(self, mock_parse_args):
         """
-        Test that when an invalid save path is input to vggish_audio_embedding
+        Test that when an invalid save path is input to audio_resampling
         it throws an error
         """
         with self.assertRaises(TypeError):
@@ -123,7 +123,7 @@ class TestGetInputs(unittest.TestCase):
             get_inputs()
 
 class TestMain(unittest.TestCase):
-    """Test suite for vggish_audio_embeddings main function"""
+    """Test suite for audio_resampling main function"""
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
@@ -134,7 +134,7 @@ class TestMain(unittest.TestCase):
     def test_no_wav_files(self, mock_parse_args):
         """
         Test that when the user inputs a real path with no wav files to
-        vggish_audio_embedding it throws an error
+        audio_resampling it throws an error
         """
         with self.assertRaises(TypeError):
             main()
@@ -156,7 +156,6 @@ class TestMain(unittest.TestCase):
         self.assertEqual(info.format, 'WAV')
         self.assertEqual(info.subtype, 'PCM_16')
         
-
 
 if __name__ == '__main__':
     unittest.main()

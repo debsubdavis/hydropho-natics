@@ -74,12 +74,7 @@ def get_inputs():
                       "outside the one downloaded using the instructions in the "+
                       "README have not been tested.")
   args = parser.parse_args()
-  return args
-
-
-def main(_):
-  args = get_inputs()
-  # Create a list of wav files from the user-input path
+  #Testing for valid user inputs
   if args.wav_path and os.path.exists(args.wav_path):
     wav_path = args.wav_path
   else:
@@ -93,6 +88,15 @@ def main(_):
                     "when calling the function" +
                     "e.g., $ python vggish_audio_embeddings.py "+
                     "--save_path path/to/saved/files/'")
+  return args
+
+
+def main(_):
+  args = get_inputs()
+  wav_path = args.wav_path
+  save_path = args.save_path
+  vggish_checkpoint = args.vggish_checkpoint
+  # Create a list of wav files from the user-input path
   file_list = [wav_path+file for file in os.listdir(wav_path) if file.endswith('.wav')]
   if len(file_list) <= 0:
     raise TypeError("The user must specify a path containing .wav files "+
