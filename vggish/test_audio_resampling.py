@@ -17,11 +17,10 @@ import argparse
 from unittest.mock import patch
 from code.audio_resampling import get_inputs
 from code.audio_resampling import main
-
-
 #For unittesting main & the outputs of the test audio file
-import librosa
 import soundfile as sf
+
+# pylint:disable=unused-argument; is 'magic' argument allowing mock of user input
 
 
 class TestGetInputs(unittest.TestCase):
@@ -74,7 +73,7 @@ class TestGetInputs(unittest.TestCase):
                 wav_path = './bad_path/',
                 target_sample_rate = 16000,
                 save_path = '../tests/Embeddings'
-            )) 
+            ))
     def test_bad_wav_path(self, mock_parse_args):
         """
         Test that when an invalid wav path is input to audio_resampling
@@ -88,7 +87,7 @@ class TestGetInputs(unittest.TestCase):
                 wav_path = '../tests/',
                 target_sample_rate = 16000,
                 save_path = './bad_path/'
-            )) 
+            ))
     def test_bad_save_path(self, mock_parse_args):
         """
         Test that when an invalid save path is input to audio_resampling
@@ -102,20 +101,20 @@ class TestGetInputs(unittest.TestCase):
                 wav_path = '../tests/',
                 target_sample_rate = -16000,
                 save_path = '../tests/Embeddings'
-            )) 
+            ))
     def test_bad_sample_rate(self, mock_parse_args):
         """
         Test that when the user inputs a sample rate <0 it throws a TypeError
         """
         with self.assertRaises(TypeError):
             get_inputs()
-       
+
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
                 wav_path = '../tests/',
                 target_sample_rate = 16000.5,
                 save_path = '../tests/Embeddings'
-            )) 
+            ))
     def test_int_sample_rate(self, mock_parse_args):
         """
         Test that when the sample rate isn't an int it throws a TypeError
@@ -131,7 +130,7 @@ class TestMain(unittest.TestCase):
                 wav_path = '../tests/Embeddings',
                 target_sample_rate = 16000,
                 save_path = '../tests/Embeddings'
-            )) 
+            ))
     def test_no_wav_files(self, mock_parse_args):
         """
         Test that when the user inputs a real path with no wav files to
@@ -145,7 +144,7 @@ class TestMain(unittest.TestCase):
                 wav_path = '../tests/',
                 target_sample_rate = 16000,
                 save_path = '../tests/'
-            )) 
+            ))
     def test_correct_resampling(self, mock_parse_args):
         """
         Test that the output file from audio_resampling is indeed
@@ -156,7 +155,7 @@ class TestMain(unittest.TestCase):
         self.assertEqual(info.channels, 1)
         self.assertEqual(info.format, 'WAV')
         self.assertEqual(info.subtype, 'PCM_16')
-        
+
 
 if __name__ == '__main__':
     unittest.main()
