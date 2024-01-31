@@ -15,8 +15,9 @@ Usage:
 import unittest
 import argparse
 from unittest.mock import patch
-from audio_resampling import main
-from audio_resampling import get_inputs
+from code.audio_resampling import get_inputs
+from code.audio_resampling import main
+
 
 #For unittesting main & the outputs of the test audio file
 import librosa
@@ -150,7 +151,7 @@ class TestMain(unittest.TestCase):
         Test that the output file from audio_resampling is indeed
         signed 16-bit PCM, sampled as 16kHz mono
         """
-        info = sf.info('../tests/sample_wav_resampled.wav')
+        info = sf.info('tests/sample_wav_resampled.wav')
         self.assertEqual(info.samplerate, 16000)
         self.assertEqual(info.channels, 1)
         self.assertEqual(info.format, 'WAV')

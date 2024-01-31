@@ -15,8 +15,8 @@ Usage:
 import unittest
 import argparse
 from unittest.mock import patch
-from vggish_audio_embeddings import main
-from vggish_audio_embeddings import get_inputs
+from code.vggish_audio_embeddings import main
+from code.vggish_audio_embeddings import get_inputs
 import pandas as pd
 import librosa
 import soundfile as sf
@@ -122,10 +122,10 @@ class TestMain(unittest.TestCase):
         """
         Test that the output csv is the right length based on the audio file
         """
-        output_csv = pd.read_csv('../tests/Embeddings/Embeddingssample_wav.csv')
-        info = sf.info('../tests/sample_wav_resampled.wav')
-        file_length = (info.duration)/0.96
-        self.assertEqual(len(output_csv), file_length)
+        output_csv = pd.read_csv('tests/Embeddings/sample_wav_resampled.csv')
+        info = sf.info('tests/sample_wav_resampled.wav')
+        wav_file_length = (info.duration)/0.96
+        self.assertEqual(len(output_csv), int(wav_file_length))
         
 
 if __name__ == '__main__':
