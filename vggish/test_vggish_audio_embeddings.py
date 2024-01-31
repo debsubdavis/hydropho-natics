@@ -22,6 +22,7 @@ import soundfile as sf
 
 
 # pylint:disable=unused-argument; is 'magic' argument allowing mock of user input
+# pylint:disable=duplicate-code; similar user input testing in vggish test scripts
 
 
 class TestGetInfo(unittest.TestCase):

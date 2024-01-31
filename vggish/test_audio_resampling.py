@@ -21,6 +21,7 @@ from code.audio_resampling import main
 import soundfile as sf
 
 # pylint:disable=unused-argument; is 'magic' argument allowing mock of user input
+# pylint:disable=duplicate-code; similar user input testing in vggish test scripts
 
 
 class TestGetInputs(unittest.TestCase):
@@ -59,7 +60,7 @@ class TestGetInputs(unittest.TestCase):
                 wav_path = '../tests/',
                 target_sample_rate = 16000,
                 save_path = ''
-            )) 
+            ))
     def test_no_save_path(self, mock_parse_args):
         """
         Test that when no save path is input to audio_resampling
