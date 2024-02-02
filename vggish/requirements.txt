@@ -1,12 +1,12 @@
-numpy 1.24
-resampy 0.4
-tensorflow 2.15
-tf_slim 1.1
-six 1.16
-soundfile 0.12
+numpy==1.24
+resampy==0.4
+tensorflow==2.15
+tf_slim==1.1
+six==1.16
+soundfile==0.12
 os
-pandas 2.1
+pandas==2.1
 argparse 
 librosa 
-unittest2 1.1
-yaml 0.2
+unittest2==1.1
+yaml==0.2
