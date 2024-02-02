@@ -17,30 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      #All section below is EKRC
-      - name: Check for submodule changes
-        id: submodule_changes
-        run: |
-          if git diff-tree --name-only --no-commit-id ${{ github.event.before }} ${{ github.sha }} | grep -q "vggish"; then
-            echo "Changes detected in submodule"
-            echo "::set-output name=submodule_changed::true"
-          else
-            echo "No changes detected in submodule"
-            echo "::set-output name=submodule_changed::false"
-          fi
-      
-      # All section below is ekrc
-      - name: Set up Conda for specific path
-        if: steps.submodule_changes.outputs.submodule_changed == 'true'
-        uses: conda-incubator/setup-miniconda@v2
-        with:
-          activate-environment: vggish_environment
-          environment-file: vggish/environment.yml
-          python-version: "3.11"
-          auto-activate-base: false
-
       - name: Set up Conda (Default)
-        if: steps.submodule_changes.outputs.submodule_changed == 'false'
         uses: conda-incubator/setup-miniconda@v2
         with:
           activate-environment: hydrophonatics
