@@ -34,7 +34,7 @@ jobs:
         if: steps.submodule_changes.outputs.submodule_changed == 'true'
         uses: conda-incubator/setup-miniconda@v2
         with:
-          activate-environment: hydrophonatics
+          activate-environment: vggish_environment
           environment-file: vggish/environment.yml
           python-version: "3.11"
           auto-activate-base: false

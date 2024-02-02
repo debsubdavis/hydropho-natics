@@ -1,4 +1,4 @@
-name: hydrophonatics
+name: vggish_environment
 channels:
   - defaults
 dependencies:
