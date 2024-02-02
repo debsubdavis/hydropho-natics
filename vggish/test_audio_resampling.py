@@ -17,8 +17,8 @@ Usage:
 import unittest
 import argparse
 from unittest.mock import patch
-from scr.audio_resampling import get_inputs
-from scr.audio_resampling import main
+from scr import audio_resampling
+from scr import audio_resampling
 #For unittesting main & the outputs of the test audio file
 import soundfile as sf
 
@@ -41,7 +41,7 @@ class TestGetInputs(unittest.TestCase):
         it throws an error
         """
         with self.assertRaises(TypeError):
-            get_inputs()
+            audio_resampling()
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
@@ -55,7 +55,7 @@ class TestGetInputs(unittest.TestCase):
         it throws an error
         """
         with self.assertRaises(TypeError):
-            get_inputs()
+            audio_resampling()
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
@@ -69,7 +69,7 @@ class TestGetInputs(unittest.TestCase):
         it throws an error
         """
         with self.assertRaises(TypeError):
-            get_inputs()
+            audio_resampling()
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
@@ -83,7 +83,7 @@ class TestGetInputs(unittest.TestCase):
         it throws an error
         """
         with self.assertRaises(TypeError):
-            get_inputs()
+            audio_resampling()
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
@@ -97,7 +97,7 @@ class TestGetInputs(unittest.TestCase):
         it throws an error
         """
         with self.assertRaises(TypeError):
-            get_inputs()
+            audio_resampling()
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
@@ -110,7 +110,7 @@ class TestGetInputs(unittest.TestCase):
         Test that when the user inputs a sample rate <0 it throws a TypeError
         """
         with self.assertRaises(TypeError):
-            get_inputs()
+            audio_resampling()
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
@@ -123,7 +123,7 @@ class TestGetInputs(unittest.TestCase):
         Test that when the sample rate isn't an int it throws a TypeError
         """
         with self.assertRaises(TypeError):
-            get_inputs()
+            audio_resampling()
 
 class TestMain(unittest.TestCase):
     """Test suite for audio_resampling main function"""
@@ -140,7 +140,7 @@ class TestMain(unittest.TestCase):
         audio_resampling it throws an error
         """
         with self.assertRaises(TypeError):
-            main()
+            audio_resampling()
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
