@@ -16,8 +16,8 @@ Usage:
 import unittest
 import argparse
 from unittest.mock import patch
-from code.vggish_audio_embeddings import main
-from code.vggish_audio_embeddings import get_inputs
+from scr.vggish_audio_embeddings import main
+from scr.vggish_audio_embeddings import get_inputs
 import pandas as pd
 import soundfile as sf
 

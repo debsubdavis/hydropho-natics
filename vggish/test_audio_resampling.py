@@ -17,8 +17,8 @@ Usage:
 import unittest
 import argparse
 from unittest.mock import patch
-from code.audio_resampling import get_inputs
-from code.audio_resampling import main
+from scr.audio_resampling import get_inputs
+from scr.audio_resampling import main
 #For unittesting main & the outputs of the test audio file
 import soundfile as sf
 
