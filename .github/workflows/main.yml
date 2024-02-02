@@ -4,30 +4,49 @@ on:
   push:
     branches:
       - main
-      - dev-vggish #added by EKRC
+    paths:
+      - vggish/** #EKRC
   pull_request:
     branches:
       - main
-      - dev-vggish #added by EKRC
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo #added by EKRC
       - uses: actions/checkout@v2
 
-      - name: Set up Conda
+      #All section below is EKRC
+      - name: Check for submodule changes
+        id: submodule_changes
+        run: |
+          if git diff-tree --name-only --no-commit-id ${{ github.event.before }} ${{ github.sha }} | grep -q "vggish"; then
+            echo "Changes detected in submodule"
+            echo "::set-output name=submodule_changed::true"
+          else
+            echo "No changes detected in submodule"
+            echo "::set-output name=submodule_changed::false"
+          fi
+      
+      # All section below is ekrc
+      - name: Set up Conda for specific path
+        if: steps.submodule_changes.outputs.submodule_changed == 'true'
         uses: conda-incubator/setup-miniconda@v2
         with:
-          activate-environment: ${{ env.CONDA_ENV_NAME }} # hydrophonatics - EKRC
-          environment-file: ${{ env.ENV_FILE }} # environment.yml - EKRC
+          activate-environment: hydrophonatics
+          environment-file: vggish/environment.yml
           python-version: "3.11"
           auto-activate-base: false
-        env:
-          CONDA_ENV_NAME: ${{ github.repository_owner == debsubdavis && github.repository == hydropho-natics && github.ref == 'refs/heads/main' ? vggish_environment : hydrophonatics }} #EKRC
-          ENV_FILE: ${{ github.repository_owner == debsubdavis && github.repository == hydropho-natics && github.ref == 'refs/heads/main' ? 'vggish/environment.yml' : environment.yml }} #EKRC
+
+      - name: Set up Conda (Default)
+        if: steps.submodule_changes.outputs.submodule_changed == 'false'
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          activate-environment: hydrophonatics
+          environment-file: environment.yml
+          python-version: "3.11"
+          auto-activate-base: false
 
       - name: Install additional dependencies
         run: |
