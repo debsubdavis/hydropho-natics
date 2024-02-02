@@ -19,7 +19,7 @@ jobs:
         uses: conda-incubator/setup-miniconda@v2
         with:
           activate-environment: vggish_environment
-          environment-file: vggish/environment.yml
+          environment-file: hydropho-natics/vggish/environment.yml
           python-version: "3.11"
           auto-activate-base: false
 
