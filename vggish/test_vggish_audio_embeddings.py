@@ -11,7 +11,7 @@ Usage:
   # Validating user conditions are met and throw errors as expected
 """
 
-#General unittesting
+# pylint:disable=import-error; file works locally, not on GH
 import unittest
 import argparse
 from unittest.mock import patch
@@ -22,7 +22,7 @@ import soundfile as sf
 
 
 # pylint:disable=unused-argument; is 'magic' argument allowing mock of user input
-# pylint:disable=duplicate-code; similar user input testing in vggish test scripts
+# pylint:disable=duplicate-code; similar user input testing required in vggish test scripts
 
 
 class TestGetInfo(unittest.TestCase):
