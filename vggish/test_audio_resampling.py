@@ -18,7 +18,6 @@ import unittest
 import argparse
 from unittest.mock import patch
 from scr import audio_resampling
-from scr import audio_resampling
 #For unittesting main & the outputs of the test audio file
 import soundfile as sf
 
