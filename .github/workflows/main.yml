@@ -4,24 +4,30 @@ on:
   push:
     branches:
       - main
+      - dev-vggish #added by EKRC
   pull_request:
     branches:
       - main
+      - dev-vggish #added by EKRC
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout repo #added by EKRC
       - uses: actions/checkout@v2
 
       - name: Set up Conda
         uses: conda-incubator/setup-miniconda@v2
         with:
-          activate-environment: hydrophonatics
-          environment-file: environment.yml
+          activate-environment: ${{ env.CONDA_ENV_NAME }} # hydrophonatics - EKRC
+          environment-file: ${{ env.ENV_FILE }} # environment.yml - EKRC
           python-version: "3.11"
           auto-activate-base: false
+        env:
+          CONDA_ENV_NAME: ${{ github.repository_owner == debsubdavis && github.repository == hydropho-natics && github.ref == 'refs/heads/main' ? vggish_environment : hydrophonatics }} #EKRC
+          ENV_FILE: ${{ github.repository_owner == debsubdavis && github.repository == hydropho-natics && github.ref == 'refs/heads/main' ? 'vggish/environment.yml' : environment.yml }} #EKRC
 
       - name: Install additional dependencies
         run: |
