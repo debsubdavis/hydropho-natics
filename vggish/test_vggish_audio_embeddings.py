@@ -11,7 +11,8 @@ Usage:
   # Validating user conditions are met and throw errors as expected
 """
 
-# pylint:disable=import-error; file works locally, not on GH
+# pylint:disable=import-error; not sure what's going on here
+# pylint:disable=no-name-in-module; these names are definitely in the modult - needed for GH
 import unittest
 import argparse
 from unittest.mock import patch
