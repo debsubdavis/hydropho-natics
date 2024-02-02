@@ -12,6 +12,7 @@ Usage:
 """
 
 #For general unittesting
+# pylint:disable=unused-argument; is 'magic' argument allowing mock of user input
 import unittest
 import argparse
 from unittest.mock import patch
