@@ -18,6 +18,7 @@ import unittest
 import argparse
 from unittest.mock import patch
 from vggish.scr.audio_resampling import get_inputs
+from vggish.scr import audio_resampling
 #For unittesting main & the outputs of the test audio file
 import soundfile as sf
 
@@ -124,7 +125,7 @@ class TestGetInputs(unittest.TestCase):
         with self.assertRaises(TypeError):
             get_inputs()
 
-'''class TestMain(unittest.TestCase):
+class TestMain(unittest.TestCase):
     """Test suite for audio_resampling main function"""
 
     @patch('argparse.ArgumentParser.parse_args',
@@ -156,7 +157,7 @@ class TestGetInputs(unittest.TestCase):
         self.assertEqual(info.samplerate, 16000)
         self.assertEqual(info.channels, 1)
         self.assertEqual(info.format, 'WAV')
-        self.assertEqual(info.subtype, 'PCM_16')'''
+        self.assertEqual(info.subtype, 'PCM_16')
 
 
 if __name__ == '__main__':
