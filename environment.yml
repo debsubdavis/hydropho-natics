@@ -11,3 +11,8 @@ dependencies:
   - matplotlib=3.8
   - pip:
       - pyspark==3.5
+      - resampy==0.4
+      - tensorflow==2.15
+      - tf-slim==1.1
+      - six==1.16
+      - soundfile==0.12
