@@ -10,6 +10,7 @@ dependencies:
   - numpy-base=1.26.2
   - matplotlib=3.8
   - pip:
+      - librosa==0.10
       - pyspark==3.5
       - resampy==0.4
       - tensorflow==2.15
