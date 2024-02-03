@@ -12,15 +12,12 @@ Usage:
 """
 
 #For general unittesting
-# pylint:disable=import-error; not sure what's going on here
-# pylint:disable=no-name-in-module; these names are definitely in the modult - needed for GH
 import unittest
 import argparse
 from unittest.mock import patch
-from vggish.scr.audio_resampling import get_inputs
-from vggish.scr import audio_resampling
-#For unittesting main & the outputs of the test audio file
 import soundfile as sf
+from . import audio_resampling
+
 
 # pylint:disable=unused-argument; is 'magic' argument allowing mock of user input
 # pylint:disable=duplicate-code; similar user input testing in vggish test scripts
@@ -41,7 +38,7 @@ class TestGetInputs(unittest.TestCase):
         it throws an error
         """
         with self.assertRaises(TypeError):
-            get_inputs()
+            audio_resampling.get_inputs()
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
@@ -55,7 +52,7 @@ class TestGetInputs(unittest.TestCase):
         it throws an error
         """
         with self.assertRaises(TypeError):
-            get_inputs()
+            audio_resampling.get_inputs()
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
@@ -69,7 +66,7 @@ class TestGetInputs(unittest.TestCase):
         it throws an error
         """
         with self.assertRaises(TypeError):
-            get_inputs()
+            audio_resampling.get_inputs()
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
@@ -83,7 +80,7 @@ class TestGetInputs(unittest.TestCase):
         it throws an error
         """
         with self.assertRaises(TypeError):
-            get_inputs()
+            audio_resampling.get_inputs()
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
@@ -97,7 +94,7 @@ class TestGetInputs(unittest.TestCase):
         it throws an error
         """
         with self.assertRaises(TypeError):
-            get_inputs()
+            audio_resampling.get_inputs()
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
@@ -110,7 +107,7 @@ class TestGetInputs(unittest.TestCase):
         Test that when the user inputs a sample rate <0 it throws a TypeError
         """
         with self.assertRaises(TypeError):
-            get_inputs()
+            audio_resampling.get_inputs()
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
@@ -123,7 +120,7 @@ class TestGetInputs(unittest.TestCase):
         Test that when the sample rate isn't an int it throws a TypeError
         """
         with self.assertRaises(TypeError):
-            get_inputs()
+            audio_resampling.get_inputs()
 
 class TestMain(unittest.TestCase):
     """Test suite for audio_resampling main function"""
@@ -140,7 +137,7 @@ class TestMain(unittest.TestCase):
         audio_resampling it throws an error
         """
         with self.assertRaises(TypeError):
-            audio_resampling()
+            audio_resampling.main()
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
@@ -153,7 +150,7 @@ class TestMain(unittest.TestCase):
         Test that the output file from audio_resampling is indeed
         signed 16-bit PCM, sampled as 16kHz mono
         """
-        info = sf.info('tests/sample_wav_resampled.wav')
+        info = sf.info('../tests/sample_wav_resampled.wav')
         self.assertEqual(info.samplerate, 16000)
         self.assertEqual(info.channels, 1)
         self.assertEqual(info.format, 'WAV')

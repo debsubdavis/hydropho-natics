@@ -54,9 +54,9 @@ import os
 import pandas as pd
 import argparse
 
-from scr import vggish_input
-from scr import vggish_params
-from scr import vggish_slim
+import vggish_input
+import vggish_params
+import vggish_slim
 
 def get_inputs():
   # Define argparse parameters to run from the command line

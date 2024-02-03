@@ -11,15 +11,12 @@ Usage:
   # Validating user conditions are met and throw errors as expected
 """
 
-# pylint:disable=import-error; not sure what's going on here
-# pylint:disable=no-name-in-module; these names are definitely in the modult - needed for GH
 import unittest
 import argparse
 from unittest.mock import patch
-from scr.vggish_audio_embeddings import main
-from scr.vggish_audio_embeddings import get_inputs
 import pandas as pd
 import soundfile as sf
+from . import vggish_audio_embeddings
 
 
 # pylint:disable=unused-argument; is 'magic' argument allowing mock of user input
@@ -41,7 +38,7 @@ class TestGetInfo(unittest.TestCase):
         it throws an error
         """
         with self.assertRaises(TypeError):
-            get_inputs()
+            vggish_audio_embeddings.get_inputs()
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
@@ -55,7 +52,7 @@ class TestGetInfo(unittest.TestCase):
         it throws an error
         """
         with self.assertRaises(TypeError):
-            get_inputs()
+            vggish_audio_embeddings.get_inputs()
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
@@ -69,7 +66,7 @@ class TestGetInfo(unittest.TestCase):
         it throws an error
         """
         with self.assertRaises(TypeError):
-            get_inputs()
+            vggish_audio_embeddings.get_inputs()
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
@@ -83,7 +80,7 @@ class TestGetInfo(unittest.TestCase):
         it throws an error
         """
         with self.assertRaises(TypeError):
-            get_inputs()
+            vggish_audio_embeddings.get_inputs()
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
@@ -97,7 +94,7 @@ class TestGetInfo(unittest.TestCase):
         it throws an error
         """
         with self.assertRaises(TypeError):
-            get_inputs()
+            vggish_audio_embeddings.get_inputs()
 
 class TestMain(unittest.TestCase):
     """Test suite for vggish_audio_embeddings main function"""
@@ -111,10 +108,10 @@ class TestMain(unittest.TestCase):
     def test_no_wav_files(self, mock_parse_args):
         """
         Test that when the user inputs a real path with no wav files to
-        vggish_audio_embedding it throws an error
+        audio_resampling it throws an error
         """
         with self.assertRaises(TypeError):
-            main()
+            vggish_audio_embeddings.main(mock_parse_args)
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
@@ -126,8 +123,8 @@ class TestMain(unittest.TestCase):
         """
         Test that the output csv is the right length based on the audio file
         """
-        output_csv = pd.read_csv('tests/Embeddings/sample_wav_resampled.csv')
-        info = sf.info('tests/sample_wav_resampled.wav')
+        output_csv = pd.read_csv('../tests/Embeddings/sample_wav_resampled.csv')
+        info = sf.info('../tests/sample_wav_resampled.wav')
         wav_file_length = (info.duration)/0.96
         self.assertEqual(len(output_csv), int(wav_file_length))
 
