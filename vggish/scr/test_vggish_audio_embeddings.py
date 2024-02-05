@@ -123,8 +123,8 @@ class TestMain(unittest.TestCase):
         """
         Test that the output csv is the right length based on the audio file
         """
-        output_csv = pd.read_csv('./../tests/Embeddings/sample_wav_resampled.csv')
-        info = sf.info('./../tests/sample_wav_resampled.wav')
+        output_csv = pd.read_csv('hydropho-natics/vggish/tests/Embeddings/sample_wav_resampled.csv')
+        info = sf.info('hydropho-natics/vggish/tests/sample_wav_resampled.wav')
         wav_file_length = (info.duration)/0.96
         self.assertEqual(len(output_csv), int(wav_file_length))
 

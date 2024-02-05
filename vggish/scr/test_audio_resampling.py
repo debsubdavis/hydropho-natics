@@ -150,7 +150,7 @@ class TestMain(unittest.TestCase):
         Test that the output file from audio_resampling is indeed
         signed 16-bit PCM, sampled as 16kHz mono
         """
-        info = sf.info('./../tests/sample_wav_resampled.wav')
+        info = sf.info('hydropho-natics/vggish/tests/sample_wav_resampled.wav')
         self.assertEqual(info.samplerate, 16000)
         self.assertEqual(info.channels, 1)
         self.assertEqual(info.format, 'WAV')
