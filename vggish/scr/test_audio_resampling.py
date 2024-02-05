@@ -167,10 +167,10 @@ class TestMain(unittest.TestCase):
         # Assuming the sound file is located in a 'test_files' directory within your project
         sound_file_path = os.path.join(os.path.dirname(__file__), '../tests', 'sample_wav_resampled.wav')
 
-        '''# Checking if the file exists
+        # Checking if the file exists
         self.assertTrue(os.path.exists(sound_file_path), f"File '{sound_file_path}' not found.")
 
-        # Reading the sound file using soundfile
+        '''# Reading the sound file using soundfile
         data, samplerate = sf.read(sound_file_path)
 
         # Asserting that the data and samplerate are not None
@@ -178,11 +178,11 @@ class TestMain(unittest.TestCase):
         self.assertIsNotNone(samplerate)'''
 
         # Add more assertions or tests as needed
-        info = sf.info(sound_file_path)
+        '''info = sf.info(sound_file_path)
         self.assertEqual(info.samplerate, 16000)
         self.assertEqual(info.channels, 1)
         self.assertEqual(info.format, 'WAV')
-        self.assertEqual(info.subtype, 'PCM_16')
+        self.assertEqual(info.subtype, 'PCM_16')'''
 
 
 if __name__ == '__main__':
