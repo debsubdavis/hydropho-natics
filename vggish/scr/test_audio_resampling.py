@@ -14,6 +14,7 @@ Usage:
 #For general unittesting
 import unittest
 import argparse
+import os #EKRC
 from unittest.mock import patch
 import soundfile as sf
 from . import audio_resampling
@@ -22,6 +23,7 @@ from . import audio_resampling
 # pylint:disable=unused-argument; is 'magic' argument allowing mock of user input
 # pylint:disable=duplicate-code; similar user input testing in vggish test scripts
 
+resampled_test_file = os.path.join(os.path.dirname(__file__), 'sample_wav_resampled.wav')
 
 class TestGetInputs(unittest.TestCase):
     """Test suite for audio_resampling arg parse function"""
@@ -125,6 +127,19 @@ class TestGetInputs(unittest.TestCase):
 class TestMain(unittest.TestCase):
     """Test suite for audio_resampling main function"""
 
+    def setup(self):
+        """
+        Opens the resampled wav file for use later in these tests
+        """
+        self.test_wav_file = open(resampled_test_file)
+        self.test_wav_data = self.test_wav_file.read()
+    
+    def tearDown(self):
+        """
+        CLoses the test file to avoid resource usage
+        """
+        self.test_wav_file.close()
+
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
                 wav_path = '../tests/Embeddings',
@@ -150,7 +165,7 @@ class TestMain(unittest.TestCase):
         Test that the output file from audio_resampling is indeed
         signed 16-bit PCM, sampled as 16kHz mono
         """
-        info = sf.info('hydropho-natics/vggish/tests/sample_wav_resampled.wav')
+        info = sf.info(self.test_wav_data)
         self.assertEqual(info.samplerate, 16000)
         self.assertEqual(info.channels, 1)
         self.assertEqual(info.format, 'WAV')
