@@ -165,7 +165,7 @@ class TestMain(unittest.TestCase):
         signed 16-bit PCM, sampled as 16kHz mono
         """
         # Assuming the sound file is located in a 'test_files' directory within your project
-        sound_file_path = os.path.join(os.path.dirname(__file__), 'tests', 'sample_wav_resampled.wav')
+        sound_file_path = os.path.join(os.path.dirname(__file__), '../tests', 'sample_wav_resampled.wav')
 
         '''# Checking if the file exists
         self.assertTrue(os.path.exists(sound_file_path), f"File '{sound_file_path}' not found.")
