@@ -14,6 +14,7 @@ Usage:
 #For general unittesting
 import unittest
 import argparse
+import os
 from unittest.mock import patch
 import soundfile as sf
 from . import audio_resampling
@@ -163,7 +164,21 @@ class TestMain(unittest.TestCase):
         Test that the output file from audio_resampling is indeed
         signed 16-bit PCM, sampled as 16kHz mono
         """
-        info = sf.info('./../tests/sample_wav_resampled.wav')
+        # Assuming the sound file is located in a 'test_files' directory within your project
+        sound_file_path = os.path.join(os.path.dirname(__file__), 'tests', 'sample_wav_resampled.wav')
+
+        '''# Checking if the file exists
+        self.assertTrue(os.path.exists(sound_file_path), f"File '{sound_file_path}' not found.")
+
+        # Reading the sound file using soundfile
+        data, samplerate = sf.read(sound_file_path)
+
+        # Asserting that the data and samplerate are not None
+        self.assertIsNotNone(data)
+        self.assertIsNotNone(samplerate)'''
+
+        # Add more assertions or tests as needed
+        info = sf.info(sound_file_path)
         self.assertEqual(info.samplerate, 16000)
         self.assertEqual(info.channels, 1)
         self.assertEqual(info.format, 'WAV')
