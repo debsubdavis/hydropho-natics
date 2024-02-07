@@ -19,3 +19,4 @@ dependencies:
       - azure-identity==1.15
       - pylint==3.0
       - azure-storage-blob==12.19
+      - torch>=1.8
