@@ -2,4 +2,5 @@ ultralytics==8.1
 requests==2.31
 azure-keyvault-secrets==4.7
 azure-identity==1.15
-azureml-core
+azureml-core==1.*
+azureml-mlflow==1.*
