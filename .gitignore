@@ -1,7 +1,12 @@
 poc/vggish/raw_data/
 poc/vggish/intermediate_data/
 data
-
+one_minus/hyd_yolo_training/data/
+one_minus/hyd_yolo_training/output/
+one_minus/hyd_yolo_training/runs/
+*.pt
+*/compose-dev.yaml
+*/*/compose-dev.yaml
 
 
 # Byte-compiled / optimized / DLL files

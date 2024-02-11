@@ -4,3 +4,5 @@ azure-keyvault-secrets==4.7
 azure-identity==1.15
 azureml-core==1.*
 azureml-mlflow==1.*
+azure-ai-ml==1.*
+torch>=1.8
