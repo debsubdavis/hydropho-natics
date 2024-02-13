@@ -154,7 +154,7 @@ class TestMain(unittest.TestCase):
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
-                wav_path = './tests',
+                wav_path = './tests/',
                 target_sample_rate = 16000,
                 save_path = './tests/'
             ))
