@@ -163,7 +163,7 @@ def main(_):
       
       # Save the embedding and sample information to a csv file
       embedding_df.to_csv(save_path+wav_filename+'.csv')
-      print("{0} embeddings created and saved in 'embedding_data'".format(wav_filename))
+      #print("{0} embeddings created and saved".format(wav_filename))
 
 if __name__ == '__main__':
   tf.app.run()

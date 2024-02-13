@@ -47,7 +47,7 @@ class TestGetInfo(unittest.TestCase):
             return_value = argparse.Namespace(
                 wav_path = '',
                 vggish_checkpoint = 'vggish_model.ckpt',
-                save_path = './vggish/tests/Embeddings'
+                save_path = './vggish/tests/'
             ))
     def test_no_wav_path(self, mock_parse_args):
         """
@@ -75,7 +75,7 @@ class TestGetInfo(unittest.TestCase):
             return_value = argparse.Namespace(
                 wav_path = './bad_path/',
                 vggish_checkpoint = 'vggish_model.ckpt',
-                save_path = './vggish/tests/Embeddings'
+                save_path = './vggish/tests/'
             ))
     def test_bad_wav_path(self, mock_parse_args):
         """
@@ -106,7 +106,7 @@ class TestMain(unittest.TestCase):
             return_value = argparse.Namespace(
                 wav_path = './bad_path',
                 vggish_checkpoint = 'vggish_model.ckpt',
-                save_path = './vggish/tests/Embeddings'
+                save_path = './vggish/tests/'
             ))
     def test_no_wav_files(self, mock_parse_args):
         """
@@ -120,25 +120,27 @@ class TestMain(unittest.TestCase):
             return_value = argparse.Namespace(
                 wav_path = './vggish/tests/',
                 vggish_checkpoint = './vggish/scr/vggish_model.ckpt',
-                save_path = './vggish/tests/Embeddings'
+                save_path = './vggish/tests/'
             ))
     def test_csv_len(self, mock_parse_args):
         """
         Test that the output csv is the right length based on the audio file
         """
         #Running the model
-        '''vggish_audio_embeddings.main(None)
+        vggish_audio_embeddings.main(None)
 
         #Checking if the file exists
-        embedding_file_path = './vggish/tests/Embeddings/sample_wav.wav'
+        embedding_file_path = './vggish/tests/sample_wav.csv'
         self.assertTrue(os.path.exists(embedding_file_path))
 
-        
-
-        output_csv = pd.read_csv('hydropho-natics/vggish/tests/Embeddings/sample_wav_resampled.csv')
-        info = sf.info('hydropho-natics/vggish/tests/sample_wav_resampled.wav')
+        #Checking that the file is of the appropriate length
+        output_csv = pd.read_csv('./vggish/tests/sample_wav.csv')
+        info = sf.info('./vggish/tests/sample_wav.wav')
         wav_file_length = (info.duration)/0.96
-        self.assertEqual(len(output_csv), int(wav_file_length))'''
+        self.assertEqual(len(output_csv), int(wav_file_length))
+
+        #Remove the csv file after we're done testing it
+        os.remove(embedding_file_path)
 
 
 if __name__ == '__main__':
