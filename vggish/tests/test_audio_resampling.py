@@ -163,6 +163,7 @@ class TestMain(unittest.TestCase):
         Test that the output file from audio_resampling is indeed
         signed 16-bit PCM, sampled as 16kHz mono
         """
+        print(sys.path)
         #Running audio_resampling.py
         audio_resampling.main()
 
