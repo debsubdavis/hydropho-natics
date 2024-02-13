@@ -185,7 +185,7 @@ class TestMain(unittest.TestCase):
         self.assertEqual(info.subtype, 'PCM_16')
 
         #Remove the wav file after we're done testing it
-        os.remove(sound_file_path)''''''
+        os.remove(sound_file_path)'''
 
 if __name__ == '__main__':
     unittest.main()
