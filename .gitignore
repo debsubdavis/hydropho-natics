@@ -168,3 +168,4 @@ cython_debug/
 # VGGish files
 vggish/scr/vggish_model.ckpt
 vggish/DELETE_LATER/test_embed_data/*
+vggish/tests/*.wav

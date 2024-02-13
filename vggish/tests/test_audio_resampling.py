@@ -49,7 +49,7 @@ class TestGetInputs(unittest.TestCase):
             return_value = argparse.Namespace(
                 wav_path = '',
                 target_sample_rate = 16000,
-                save_path = './tests/Embeddings'
+                save_path = './vggish/tests/'
             ))
     def test_no_wav_path(self, mock_parse_args):
         """
@@ -62,7 +62,7 @@ class TestGetInputs(unittest.TestCase):
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
-                wav_path = './tests/',
+                wav_path = './vggish/tests/',
                 target_sample_rate = 16000,
                 save_path = ''
             ))
@@ -79,7 +79,7 @@ class TestGetInputs(unittest.TestCase):
             return_value = argparse.Namespace(
                 wav_path = './bad_path/',
                 target_sample_rate = 16000,
-                save_path = './tests/Embeddings'
+                save_path = './vggish/tests/'
             ))
     def test_bad_wav_path(self, mock_parse_args):
         """
@@ -92,7 +92,7 @@ class TestGetInputs(unittest.TestCase):
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
-                wav_path = './tests/',
+                wav_path = './vggish/tests/',
                 target_sample_rate = 16000,
                 save_path = './bad_path/'
             ))
@@ -107,9 +107,9 @@ class TestGetInputs(unittest.TestCase):
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
-                wav_path = './tests/',
+                wav_path = './vggish/tests/',
                 target_sample_rate = -16000,
-                save_path = './tests/Embeddings'
+                save_path = './vggish/tests/'
             ))
     def test_bad_sample_rate(self, mock_parse_args):
         """
@@ -121,9 +121,9 @@ class TestGetInputs(unittest.TestCase):
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
-                wav_path = './tests/',
+                wav_path = './vggish/tests/',
                 target_sample_rate = 16000.5,
-                save_path = './tests/Embeddings'
+                save_path = './vggish/tests/'
             ))
     def test_int_sample_rate(self, mock_parse_args):
         """
@@ -139,9 +139,9 @@ class TestMain(unittest.TestCase):
     """
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
-                wav_path = './tests/Embeddings',
+                wav_path = './vggish/tests/Embeddings',
                 target_sample_rate = 16000,
-                save_path = './tests/Embeddings'
+                save_path = './vggish/tests/'
             ))
     def test_no_wav_files(self, mock_parse_args):
         """
