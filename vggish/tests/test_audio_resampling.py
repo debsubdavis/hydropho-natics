@@ -18,7 +18,7 @@ import os
 from unittest.mock import patch
 import soundfile as sf
 import sys
-sys.path.append(os.path.join(os.path.dirname(__file__), "..")) #puts us in the vggish directory
+sys.path.append(os.path.join(os.path.dirname(__file__), "../")) #puts us in the vggish directory
 from scr import audio_resampling
 
 
@@ -154,7 +154,7 @@ class TestMain(unittest.TestCase):
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
-                wav_path = './tests/',
+                wav_path = 'tests/',
                 target_sample_rate = 16000,
                 save_path = './tests/'
             ))
