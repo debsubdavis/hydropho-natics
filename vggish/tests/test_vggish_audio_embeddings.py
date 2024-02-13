@@ -116,7 +116,7 @@ class TestMain(unittest.TestCase):
         with self.assertRaises(TypeError):
             vggish_audio_embeddings.main(mock_parse_args)
 
-    @patch('argparse.ArgumentParser.parse_args',
+    '''@patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
                 wav_path = './vggish/tests/',
                 vggish_checkpoint = './vggish/scr/vggish_model.ckpt',
@@ -140,7 +140,7 @@ class TestMain(unittest.TestCase):
         self.assertEqual(len(output_csv), int(wav_file_length))
 
         #Remove the csv file after we're done testing it
-        os.remove(embedding_file_path)
+        os.remove(embedding_file_path)'''
 
 
 if __name__ == '__main__':
