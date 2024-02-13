@@ -18,7 +18,7 @@ import os
 from unittest.mock import patch
 import soundfile as sf
 import sys
-sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
+sys.path.append(os.path.join(os.path.dirname(__file__), "..")) #puts us in the vggish directory
 from scr import audio_resampling
 
 
@@ -47,7 +47,7 @@ class TestGetInputs(unittest.TestCase):
             return_value = argparse.Namespace(
                 wav_path = '',
                 target_sample_rate = 16000,
-                save_path = '../tests/Embeddings'
+                save_path = './tests/Embeddings'
             ))
     def test_no_wav_path(self, mock_parse_args):
         """
@@ -59,7 +59,7 @@ class TestGetInputs(unittest.TestCase):
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
-                wav_path = '../tests/',
+                wav_path = './tests/',
                 target_sample_rate = 16000,
                 save_path = ''
             ))
@@ -75,7 +75,7 @@ class TestGetInputs(unittest.TestCase):
             return_value = argparse.Namespace(
                 wav_path = './bad_path/',
                 target_sample_rate = 16000,
-                save_path = '../tests/Embeddings'
+                save_path = './tests/Embeddings'
             ))
     def test_bad_wav_path(self, mock_parse_args):
         """
@@ -87,7 +87,7 @@ class TestGetInputs(unittest.TestCase):
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
-                wav_path = '../tests/',
+                wav_path = './tests/',
                 target_sample_rate = 16000,
                 save_path = './bad_path/'
             ))
@@ -101,9 +101,9 @@ class TestGetInputs(unittest.TestCase):
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
-                wav_path = '../tests/',
+                wav_path = './tests/',
                 target_sample_rate = -16000,
-                save_path = '../tests/Embeddings'
+                save_path = './tests/Embeddings'
             ))
     def test_bad_sample_rate(self, mock_parse_args):
         """
@@ -114,9 +114,9 @@ class TestGetInputs(unittest.TestCase):
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
-                wav_path = '../tests/',
+                wav_path = './tests/',
                 target_sample_rate = 16000.5,
-                save_path = '../tests/Embeddings'
+                save_path = './tests/Embeddings'
             ))
     def test_int_sample_rate(self, mock_parse_args):
         """
@@ -128,24 +128,11 @@ class TestGetInputs(unittest.TestCase):
 class TestMain(unittest.TestCase):
     """Test suite for audio_resampling main function"""
 
-    '''def setup(self):
-        """
-        Opens the resampled wav file for use later in these tests
-        """
-        self.test_wav_file = open(resampled_test_file)
-        self.test_wav_data = self.test_wav_file.read()
-    
-    def tearDown(self):
-        """
-        CLoses the test file to avoid resource usage
-        """
-        self.test_wav_file.close()'''
-
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
-                wav_path = '../tests/Embeddings',
+                wav_path = './tests/Embeddings',
                 target_sample_rate = 16000,
-                save_path = '../tests/Embeddings'
+                save_path = './tests/Embeddings'
             ))
     def test_no_wav_files(self, mock_parse_args):
         """
@@ -157,9 +144,9 @@ class TestMain(unittest.TestCase):
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
-                wav_path = '../tests/',
+                wav_path = './',
                 target_sample_rate = 16000,
-                save_path = '../tests/'
+                save_path = './Resampled_Audio/'
             ))
     def test_correct_resampling(self, mock_parse_args):
         """
@@ -167,25 +154,26 @@ class TestMain(unittest.TestCase):
         signed 16-bit PCM, sampled as 16kHz mono
         """
         
-        # Assuming the sound file is located in a 'test_files' directory within your project
-        sound_file_path = os.path.join(os.path.dirname(__file__), 'sample_wav_resampled.wav')
+        #Running audio_resampling.py
+        audio_resampling.main()
 
         # Checking if the file exists
+        sound_file_path = './Resampled_Audio/sample_wav_resampled.wav'
         self.assertTrue(os.path.exists(sound_file_path))
 
-        '''# Reading the sound file using soundfile
+        # Reading the sound file using soundfile
         data, samplerate = sf.read(sound_file_path)
 
         # Asserting that the data and samplerate are not None
         self.assertIsNotNone(data)
-        self.assertIsNotNone(samplerate)'''
+        self.assertIsNotNone(samplerate)
 
-        # Add more assertions or tests as needed
-        '''info = sf.info(sound_file_path)
+        # Asserting the samplerate is 16000, mono, Wav file, as PCM signed 16-bit
+        info = sf.info(sound_file_path)
         self.assertEqual(info.samplerate, 16000)
         self.assertEqual(info.channels, 1)
         self.assertEqual(info.format, 'WAV')
-        self.assertEqual(info.subtype, 'PCM_16')'''
+        self.assertEqual(info.subtype, 'PCM_16')
 
 
 if __name__ == '__main__':
