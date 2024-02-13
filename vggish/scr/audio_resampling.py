@@ -1,5 +1,5 @@
 '''The purpose of this file is to resample audio files in a programmatic way
-The audio needs to have the following qualifications:
+The resampled output audio needs to have the following qualifications:
     1. Signed 16-bit PCM samples
     2. Sampling rate of 16kHz
     3. Mono input
@@ -14,6 +14,21 @@ import os
 
 # Define argparse parameters to run from the command line
 def get_inputs():
+    """
+    This method defines the user-generated input to run the code.
+
+    Args:
+    --wav_path (required) - the path to the directory containing
+    wav files for resampling)
+    --save_path (required) - a path to the directory where the
+    resampled wav files will be stored
+    --target_sample_rate (optional) - recommended to remain at default
+     value of 16000 to align with VGGish model training conditions
+
+    Returns:
+    arguments above as entered by the user
+    
+    """
     parser = argparse.ArgumentParser(description="Resample audio files for input "+
                                     "into VGGish model.")
     parser.add_argument('--wav_path', action='store', required=True,
@@ -49,6 +64,21 @@ def get_inputs():
     return args
 
 def main():
+    """
+    This function actually performs audio resampling using the librosa library.
+    It will resample and output the wav files as a signed 16-bit PCM mono
+    wav file.
+
+    Args:
+    wav_path - path to wav files for resampling (relative path ok)
+    save_path - path to save location for resampled wav files (relative path
+        ok)
+
+    Returns:
+    N wav files with '_resampled.wav' appeneded to the end of each file name
+        to clarify which files have and have not been resampled, and to prevent
+        accidentally overwriting audio files.
+    """
     #Getting user input to resample audio
     args = get_inputs()
     wav_path = args.wav_path

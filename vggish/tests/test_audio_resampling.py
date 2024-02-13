@@ -17,7 +17,9 @@ import argparse
 import os
 from unittest.mock import patch
 import soundfile as sf
-from . import audio_resampling
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
+from scr import audio_resampling
 
 
 # pylint:disable=unused-argument; is 'magic' argument allowing mock of user input

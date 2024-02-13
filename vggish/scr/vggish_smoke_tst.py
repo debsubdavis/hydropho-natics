@@ -35,10 +35,10 @@ import numpy as np
 import resampy  # pylint: disable=import-error
 import tensorflow.compat.v1 as tf
 
-from . import vggish_input
-from . import vggish_params
-from . import vggish_postprocess
-from . import vggish_slim
+import vggish_input
+import vggish_params
+import vggish_postprocess
+import vggish_slim
 
 print('\nTesting your install of VGGish\n')
 

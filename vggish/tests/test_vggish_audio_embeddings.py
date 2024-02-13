@@ -14,9 +14,12 @@ Usage:
 import unittest
 import argparse
 from unittest.mock import patch
+import os
 import pandas as pd
 import soundfile as sf
-from . import vggish_audio_embeddings
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
+from scr import vggish_audio_embeddings
 
 
 # pylint:disable=unused-argument; is 'magic' argument allowing mock of user input

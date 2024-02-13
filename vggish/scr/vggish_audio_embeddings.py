@@ -59,6 +59,21 @@ from . import vggish_params
 from . import vggish_slim
 
 def get_inputs():
+  """
+  This method solicits user-generated input for where to obtain wav files
+  and save audio embeddings.
+
+  Args:
+    --wav_path (required) - the path to the directory containing
+    wav files for resampling)
+    --save_path (required) - a path to the directory where the
+    embeddings will be stored
+    --vggish_checkpoint (optional) - path to the VGGish checkpoint
+    file. The TensorFlow checkpoint file will be automatically loaded.
+
+    Returns:
+    arguments above as entered by the user
+  """
   # Define argparse parameters to run from the command line
   parser = argparse.ArgumentParser(description="Process wav files into log mel "+
                                   "spectrograms and feed into VGGish for "+
@@ -92,6 +107,22 @@ def get_inputs():
 
 
 def main(_):
+  """
+  This method runs the VGGish model to generate audio embeddings for
+  wav files in the input --wav_path
+
+  Args:
+    User-generated inputs from the above method will be used in this code
+
+  Returns:
+    N csv, one per input wav files, stored in the save_path. The csv will have 
+    128 columns corresponding to the 128-dimensional embedding, a column for
+    the wav filename which generated an embedding, the example number (an
+    example is  0.96 seconds of audio. The first 0.96 seconds embedded is
+    example 0, the next 0.96 seconds are example 1, etc.), a column
+    approximating the example start time, and a column approximating the
+    example stop time.
+  """
   args = get_inputs()
   wav_path = args.wav_path
   save_path = args.save_path
