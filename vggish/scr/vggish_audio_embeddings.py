@@ -57,6 +57,9 @@ import argparse
 from . import vggish_input
 from . import vggish_params
 from . import vggish_slim
+#import vggish_input
+#import vggish_params
+#import vggish_slim
 
 def get_inputs():
   """
@@ -163,7 +166,7 @@ def main(_):
       
       # Save the embedding and sample information to a csv file
       embedding_df.to_csv(save_path+wav_filename+'.csv')
-      #print("{0} embeddings created and saved".format(wav_filename))
+    print("Embeddings created and saved")
 
 if __name__ == '__main__':
   tf.app.run()
