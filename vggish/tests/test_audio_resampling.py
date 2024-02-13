@@ -27,8 +27,9 @@ from scr import audio_resampling
 
 
 class TestGetInputs(unittest.TestCase):
-    """Test suite for audio_resampling arg parse function"""
-
+    """
+    Test suite for audio_resampling arg parse function
+    """
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
                 wav_path = '',
@@ -42,6 +43,7 @@ class TestGetInputs(unittest.TestCase):
         """
         with self.assertRaises(TypeError):
             audio_resampling.get_inputs()
+
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
@@ -57,6 +59,7 @@ class TestGetInputs(unittest.TestCase):
         with self.assertRaises(TypeError):
             audio_resampling.get_inputs()
 
+
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
                 wav_path = './tests/',
@@ -70,6 +73,7 @@ class TestGetInputs(unittest.TestCase):
         """
         with self.assertRaises(TypeError):
             audio_resampling.get_inputs()
+
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
@@ -85,6 +89,7 @@ class TestGetInputs(unittest.TestCase):
         with self.assertRaises(TypeError):
             audio_resampling.get_inputs()
 
+
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
                 wav_path = './tests/',
@@ -99,6 +104,7 @@ class TestGetInputs(unittest.TestCase):
         with self.assertRaises(TypeError):
             audio_resampling.get_inputs()
 
+
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
                 wav_path = './tests/',
@@ -111,6 +117,7 @@ class TestGetInputs(unittest.TestCase):
         """
         with self.assertRaises(TypeError):
             audio_resampling.get_inputs()
+
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
@@ -125,9 +132,11 @@ class TestGetInputs(unittest.TestCase):
         with self.assertRaises(TypeError):
             audio_resampling.get_inputs()
 
-class TestMain(unittest.TestCase):
-    """Test suite for audio_resampling main function"""
 
+class TestMain(unittest.TestCase):
+    """
+    Test suite for audio_resampling main function
+    """
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
                 wav_path = './tests/Embeddings',
@@ -142,18 +151,18 @@ class TestMain(unittest.TestCase):
         with self.assertRaises(TypeError):
             audio_resampling.main()
 
+
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
-                wav_path = './',
+                wav_path = './tests',
                 target_sample_rate = 16000,
-                save_path = './Resampled_Audio/'
+                save_path = './tests/Resampled_Audio/'
             ))
     def test_correct_resampling(self, mock_parse_args):
         """
         Test that the output file from audio_resampling is indeed
         signed 16-bit PCM, sampled as 16kHz mono
         """
-        
         #Running audio_resampling.py
         audio_resampling.main()
 
@@ -175,6 +184,8 @@ class TestMain(unittest.TestCase):
         self.assertEqual(info.format, 'WAV')
         self.assertEqual(info.subtype, 'PCM_16')
 
+        #Remove the wav file after we're done testing it
+        os.remove(sound_file_path)
 
 if __name__ == '__main__':
     unittest.main()
