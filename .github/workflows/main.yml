@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Set up Conda
+      - name: Set up Conda (Default)
         uses: conda-incubator/setup-miniconda@v2
         with:
           activate-environment: hydrophonatics
