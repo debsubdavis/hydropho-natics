@@ -121,8 +121,8 @@ def main(_):
     N csv, one per input wav files, stored in the save_path. The csv will have 
     128 columns corresponding to the 128-dimensional embedding, a column for
     the wav filename which generated an embedding, the example number (an
-    example is  0.96 seconds of audio. The first 0.96 seconds embedded is
-    example 0, the next 0.96 seconds are example 1, etc.), a column
+    example is N seconds of audio. The first N seconds embedded is
+    example 0, the next N seconds are example 1, etc.), a column
     approximating the example start time, and a column approximating the
     example stop time.
   """
@@ -165,7 +165,7 @@ def main(_):
       embedding_df['recording_stop_s'] = (embedding_df['example_number'] + 1) * vggish_params.EXAMPLE_WINDOW_SECONDS
       
       # Save the embedding and sample information to a csv file
-      embedding_df.to_csv(save_path+wav_filename+'.csv')
+      embedding_df.to_csv(save_path+wav_filename+'.csv',index=False)
     print("Embeddings created and saved")
 
 if __name__ == '__main__':
