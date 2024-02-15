@@ -54,12 +54,12 @@ import os
 import pandas as pd
 import argparse
 
-from . import vggish_input
-from . import vggish_params
-from . import vggish_slim
-#import vggish_input
-#import vggish_params
-#import vggish_slim
+#from . import vggish_input
+#from . import vggish_params
+#from . import vggish_slim
+import vggish_input
+import vggish_params
+import vggish_slim
 
 def get_inputs():
   """
