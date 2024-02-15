@@ -17,9 +17,9 @@
 
 import numpy as np
 import resampy
-
-#from . import mel_features
-#from . import vggish_params
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__)))
 import mel_features
 import vggish_params
 

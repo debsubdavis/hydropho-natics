@@ -53,10 +53,8 @@ import tensorflow.compat.v1 as tf
 import os
 import pandas as pd
 import argparse
-
-#from . import vggish_input
-#from . import vggish_params
-#from . import vggish_slim
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__)))
 import vggish_input
 import vggish_params
 import vggish_slim
