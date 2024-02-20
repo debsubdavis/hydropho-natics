@@ -76,7 +76,7 @@ VGGish was trained with audio features computed as follows:
 
 ### vggish_input Notes - Emily Creeden
 * seems like can change the sample rate both for the input file and the model, though it was trained with specific parameters - worth double checking that "sr" is what we understand based on what we have in our input file
-* we can edut the upper and lower frequency edges
+* we can edit the upper and lower frequency edges
 * the "examples" and "features" are different. The features are the log mel spectrograms with their own window length and hop length in seconds for calculation purposes.
 * Examples have their own window lengths and hop lengths, but the Example's parameters aren't in seconds, they're in features. The example_window (s) * feature sample rate (feature/s) creates the example window length. In our demo case,
 1/0.010s, or 100 features/second, or 100 log mel spectrograms per second of audio.

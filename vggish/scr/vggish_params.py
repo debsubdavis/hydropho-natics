@@ -25,14 +25,14 @@ EMBEDDING_SIZE = 128  # Size of embedding layer.
 
 # Hyperparameters used in feature and example generation.
 SAMPLE_RATE = 16000
-STFT_WINDOW_LENGTH_SECONDS = 0.025
-STFT_HOP_LENGTH_SECONDS = 0.010
+STFT_WINDOW_LENGTH_SECONDS = (2.5/48) #Originally 0.025
+STFT_HOP_LENGTH_SECONDS = (1/48) #Originally 0.010
 NUM_MEL_BINS = NUM_BANDS
 MEL_MIN_HZ = 125
 MEL_MAX_HZ = 7500
 LOG_OFFSET = 0.01  # Offset used for stabilized log of input mel-spectrogram.
-EXAMPLE_WINDOW_SECONDS = 0.96  # Each example contains 96 10ms frames
-EXAMPLE_HOP_SECONDS = 0.96     # Examples do not overlap
+EXAMPLE_WINDOW_SECONDS = 2.0  # Each example contains N 10ms frames - originally 0.96
+EXAMPLE_HOP_SECONDS = 2.0     # Examples do not overlap if example_hop_seconds == example_window_seconds - originally 0.96
 
 # Parameters used for embedding postprocessing.
 PCA_EIGEN_VECTORS_NAME = 'pca_eigen_vectors'
