@@ -5,7 +5,37 @@ This README contains information on the VGGish model and how to create audio emb
 The goals of the codes in this folder are twofold. First, 
 
 ## Model Notes - VGGish
-VGGish requires a log mel spectrogram represented as a 3-D matrix with dimensions [frames x 96 window length x 64 mel bins]. Don't worry about creating this input yourself, running the code as-is will produce the correct result. VGGish then returns an example (datapoint) representing 0.96 seconds of audio in 128-D. Sometimes users will want to input spectrograms so that the output example is longer or shorter than 0.96 seconds. This can be achieved by changing the STFT_WINDOW_LENGTH_SECONDS, STFT_HOP_LENGTH_SECONDS, EXAMPLE_WINDOW_SECONDS, and EXAMPLE_HOP_SECONDS. Begin by changing the EXAMPLE_WINDOW_SECONDS and EXAMPLE_HOP_SECONDS to the values you desire in the vggish_params.py file ("hop" is the overlap between examples - our tests used 0 overlap, meaing that EXAMPLE_WINDOW_SECONDS = EXAMPLE_HOP_SECONDS). The EXAMPLE_WINDOW_SECONDS / STFT_HOP_LENTGH_SECONDS must equal 96. Alter the STFT_HOP_LENGTH_SECONDS to ensure EXAMPLE_WINDOW_SECONDS divided by it equals 96. STFT_HOP_LENGTH_SECONDS * 0.4 typically equals STFT_WINDOW_LENGTH_SECONDS (there's typically a 40% overlap when calculating the Fast Fourier Transform). By altering these 4 parameters you can continue to use the program as written while changing the amount of time represented in each example.
+VGGish requires a log mel spectrogram represented as a 3-D matrix with dimensions [frames x 96 window length x 64 mel bins]. Don't worry about creating this input yourself, running the code as-is will produce the correct result. VGGish then returns an example (datapoint) representing 0.96 seconds of audio encoded in 128-D. Sometimes users will want to input spectrograms so that the output example is longer or shorter than 0.96 seconds. This can be achieved by changing the STFT_WINDOW_LENGTH_SECONDS, STFT_HOP_LENGTH_SECONDS, EXAMPLE_WINDOW_SECONDS, and EXAMPLE_HOP_SECONDS. Begin by changing the EXAMPLE_WINDOW_SECONDS and EXAMPLE_HOP_SECONDS to the values you desire in the vggish_params.py file ("hop" is the overlap between examples - our tests used 0 overlap, meaing that EXAMPLE_WINDOW_SECONDS = EXAMPLE_HOP_SECONDS). The EXAMPLE_WINDOW_SECONDS / STFT_HOP_LENTGH_SECONDS must equal 96. Alter the STFT_HOP_LENGTH_SECONDS to ensure EXAMPLE_WINDOW_SECONDS divided by it equals 96. STFT_HOP_LENGTH_SECONDS typically equals STFT_WINDOW_LENGTH_SECONDS * 0.4 (there's typically a 40% overlap when calculating the Fast Fourier Transform). By altering these 4 parameters you can continue to use the program as written while changing the amount of time represented in each example.
+
+Formulaic value creation:
+EXAMPLE_WINDOW_SECONDS: x
+EXAMPLE_HOP_SECONDS: x (assuming 0 overlap between examples)
+STFT_WINDOW_LENGTH_SECONDS: (x/96)/0.4
+STFT_HOP_LENGTH_SECONDS: x/96
+
+Inputs for 0.96 second embeddings, 40% overlap:
+EXAMPLE_WINDOW_SECONDS: 0.96
+EXAMPLE_HOP_SECONDS: 0.96
+STFT_WINDOW_LENGTH_SECONDS: 0.025
+STFT_HOP_LENGTH_SECONDS: 0.010
+
+Inputs for 2 second embeddings:
+EXAMPLE_WINDOW_SECONDS: 2
+EXAMPLE_HOP_SECONDS: 2
+STFT_WINDOW_LENGTH_SECONDS: 5/96
+STFT_HOP_LENGTH_SECONDS: (1/48)
+
+Inputs for 5 second embeddings:
+EXAMPLE_WINDOW_SECONDS: 5
+EXAMPLE_HOP_SECONDS: 5
+STFT_WINDOW_LENGTH_SECONDS: 25/192
+STFT_HOP_LENGTH_SECONDS: 5/96
+
+Inputs for 20 second embeddings:
+EXAMPLE_WINDOW_SECONDS:
+EXAMPLE_HOP_SECONDS:
+STFT_WINDOW_LENGTH_SECONDS:
+STFT_HOP_LENGTH_SECONDS:
 
 
 ## Model Notes - Clustering
