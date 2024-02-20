@@ -10,7 +10,7 @@ VGGish requires a log mel spectrogram represented as a 3-D matrix with dimension
 Formulaic value creation:
 EXAMPLE_WINDOW_SECONDS: x
 EXAMPLE_HOP_SECONDS: x (assuming 0 overlap between examples)
-STFT_WINDOW_LENGTH_SECONDS: (x/96)/0.4
+STFT_WINDOW_LENGTH_SECONDS: (x/96)/0.4 (assuming 40% overlap for Fast Fourier Transform)
 STFT_HOP_LENGTH_SECONDS: x/96
 
 Inputs for 0.96 second embeddings, 40% overlap:
@@ -19,23 +19,17 @@ EXAMPLE_HOP_SECONDS: 0.96
 STFT_WINDOW_LENGTH_SECONDS: 0.025
 STFT_HOP_LENGTH_SECONDS: 0.010
 
-Inputs for 2 second embeddings:
+Inputs for 2 second embeddings, 40% overlap:
 EXAMPLE_WINDOW_SECONDS: 2
 EXAMPLE_HOP_SECONDS: 2
 STFT_WINDOW_LENGTH_SECONDS: 5/96
 STFT_HOP_LENGTH_SECONDS: (1/48)
 
-Inputs for 5 second embeddings:
+Inputs for 5 second embeddings, 40% overlap:
 EXAMPLE_WINDOW_SECONDS: 5
 EXAMPLE_HOP_SECONDS: 5
 STFT_WINDOW_LENGTH_SECONDS: 25/192
 STFT_HOP_LENGTH_SECONDS: 5/96
-
-Inputs for 20 second embeddings:
-EXAMPLE_WINDOW_SECONDS:
-EXAMPLE_HOP_SECONDS:
-STFT_WINDOW_LENGTH_SECONDS:
-STFT_HOP_LENGTH_SECONDS:
 
 
 ## Model Notes - Clustering

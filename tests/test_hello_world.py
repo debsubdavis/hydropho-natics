@@ -4,11 +4,19 @@ This module contains tests for the hello_world module.
 
 import sys
 import os
-sys.path.append(os.path.join(os.path.dirname(__file__), "../")) #puts us in the hydropho-natics directory
+import unittest
+from unittest.mock import patch
+sys.path.append(os.path.join(os.path.dirname(__file__), "../"))
 from utils import hello_world
 
-def test_get_message():
+
+class Test_get_message(unittest.TestCase):
     """
-    Test that get_message returns the correct string.
+    Test suite for hello_world.py
     """
-    assert hello_world.get_message() == "Hello World"
+    def test_message(self):
+        """
+        Test that get_message returns the correct string
+        """
+        with self.assertEquals("Hello World"):
+            hello_world.get_message()
