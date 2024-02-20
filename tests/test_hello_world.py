@@ -18,8 +18,8 @@ class Test_hello_world(unittest.TestCase):
         """
         Test that get_message returns the correct string
         """
-        with self.assertEquals("Hello World"):
-            hello_world.get_message()
+        self.assertEquals(hello_world.get_message(), "Hello World")
+            
 
 
 if __name__ == '__main__':
