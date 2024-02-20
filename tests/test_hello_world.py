@@ -10,7 +10,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), "../"))
 from utils import hello_world
 
 
-class Test_get_message(unittest.TestCase):
+class Test_hello_world(unittest.TestCase):
     """
     Test suite for hello_world.py
     """
@@ -20,3 +20,7 @@ class Test_get_message(unittest.TestCase):
         """
         with self.assertEquals("Hello World"):
             hello_world.get_message()
+
+
+if __name__ == '__main__':
+    unittest.main()
