@@ -10,7 +10,7 @@ dependencies:
   - numpy-base=1.26.2
   - matplotlib=3.8
   - pip:
-      - pylint
+      - pylint==3.0
       - pyspark==3.5
       - librosa==0.10
       - resampy==0.4
