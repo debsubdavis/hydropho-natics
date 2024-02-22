@@ -12,13 +12,14 @@ def submit_job(ml_client, exp_name, disp_name):
         inputs=dict(
             data_dir=Input(
                 type=AssetTypes.URI_FOLDER,
-                path="azureml:one-iter1-with-mooring:1"
+                path="azureml:one-iter-2:1"
             ),
             epochs=100,
-            pretrained="yolov8n.pt",
+            pretrained="yolov8m.pt",
             batch_size=8,
             img_size=640,
             device="cpu",
+            patience=20,
             #output_dir="azureml:minus-iter2-fo-asset:1",
             exp_name=exp_name
         ),
@@ -39,8 +40,8 @@ if __name__ == '__main__':
     resource_group = 'yolov8-models'
     workspace = 'yolov8-hyp-tuning'
 
-    experiment_name = "ONE-iter1-with-mooring"
-    display_name = "One iter1 with mooring"
+    experiment_name = "ONE-iter2-with-everything"
+    display_name = "One iter2 with everything"
 
     ml_client = conn_ml_wksp(subscription_id, resource_group, workspace)
     job = submit_job(ml_client, experiment_name, display_name)
