@@ -128,6 +128,11 @@ def main(_):
   wav_path = args.wav_path
   save_path = args.save_path
   vggish_checkpoint = args.vggish_checkpoint
+  #Adding '/' to the end of the wav_path & save_path if they don't have one already
+  if wav_path[:-1] != '/':
+    wav_path = wav_path+'/'
+  if save_path[:-1] != '/':
+    save_path = save_path+'/'
   # Create a list of wav files from the user-input path
   file_list = [wav_path+file for file in os.listdir(wav_path) if file.endswith('.wav')]
   if len(file_list) <= 0:
