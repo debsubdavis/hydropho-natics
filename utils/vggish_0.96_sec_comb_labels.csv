@@ -1,10 +1,14 @@
 vggish_point,label
+100-0,calibration
+100-1,calibration
 100-1640,humpback
 100-1641,humpback
 100-1642,humpback
 100-1646,humpback
 100-1647,humpback
 100-1648,humpback
+1006-0,calibration
+1006-1,calibration
 1006-1821,mooring
 1006-1822,mooring
 1006-1823,mooring
@@ -33,6 +37,8 @@ vggish_point,label
 1006-310,flow noise-mooring
 1006-311,flow noise
 1006-312,flow noise
+1018-0,calibration
+1018-1,calibration
 1018-569,fish
 1018-570,fish
 1018-571,fish
@@ -55,6 +61,8 @@ vggish_point,label
 1018-622,fish
 1018-623,fish
 1018-624,fish
+1020-0,calibration
+1020-1,calibration
 1020-503,humpback
 1020-504,humpback
 1020-505,humpback
@@ -101,6 +109,8 @@ vggish_point,label
 1020-557,humpback
 1020-558,humpback
 1020-559,humpback
+1039-0,calibration
+1039-1,calibration
 1039-1575,flow noise
 1039-1576,flow noise
 1039-1577,flow noise
@@ -127,6 +137,8 @@ vggish_point,label
 1039-1598,flow noise
 1039-1599,flow noise
 1039-1600,flow noise
+1044-0,calibration
+1044-1,calibration
 1044-1036,mooring
 1044-1037,mooring
 1044-1038,mooring
@@ -158,6 +170,8 @@ vggish_point,label
 1044-544,mooring
 1044-545,mooring
 1044-546,mooring
+1047-0,calibration
+1047-1,calibration
 1047-1500,airplane
 1047-1501,airplane
 1047-1502,airplane
@@ -212,6 +226,8 @@ vggish_point,label
 1047-1559,humpback
 1047-1561,humpback
 1047-1562,humpback
+105-0,calibration
+105-1,calibration
 105-1127,humpback
 105-1128,humpback
 105-1145,humpback
@@ -224,6 +240,8 @@ vggish_point,label
 105-1155,humpback
 105-1181,humpback
 105-1182,humpback
+1052-0,calibration
+1052-1,calibration
 1052-1188,humpback
 1052-1189,humpback
 1052-1190,humpback
@@ -268,6 +286,8 @@ vggish_point,label
 1052-1247,humpback
 1052-1248,humpback
 1052-1249,humpback
+1056-0,calibration
+1056-1,calibration
 1056-1063,flow noise-humpback
 1056-1064,flow noise-humpback
 1056-1065,flow noise-humpback
@@ -320,17 +340,23 @@ vggish_point,label
 1056-370,humpback
 1056-371,humpback
 1056-372,humpback
+1057-0,calibration
+1057-1,calibration
 1057-1168,mooring
 1057-1169,mooring
 1057-1170,mooring
 1057-1175,mooring
 1057-1176,mooring
 1057-1177,mooring
+1061-0,calibration
+1061-1,calibration
 1061-534,humpback
 1061-535,humpback
 1061-536,humpback
 1061-540,humpback
 1061-541,humpback
+1073-0,calibration
+1073-1,calibration
 1073-1250,boat
 1073-1251,boat
 1073-1252,boat
@@ -582,6 +608,8 @@ vggish_point,label
 1073-1622,boat
 1073-1623,boat
 1073-1624,boat
+1074-0,calibration
+1074-1,calibration
 1074-250,flow noise
 1074-251,flow noise
 1074-252,flow noise
@@ -592,6 +620,8 @@ vggish_point,label
 1074-279,humpback
 1074-280,humpback
 1074-281,humpback
+1079-0,calibration
+1079-1,calibration
 1079-1758,humpback
 1079-1759,humpback
 1079-1764,humpback
@@ -603,6 +633,8 @@ vggish_point,label
 1079-1794,humpback
 1079-1795,humpback
 1079-1796,humpback
+1082-0,calibration
+1082-1,calibration
 1082-1376,humpback
 1082-1377,humpback
 1082-1378,humpback
@@ -632,6 +664,8 @@ vggish_point,label
 1082-1425,humpback
 1082-1428,humpback
 1082-1429,humpback
+1087-0,calibration
+1087-1,calibration
 1087-1760,mooring
 1087-1761,mooring
 1087-1762,mooring
@@ -641,6 +675,8 @@ vggish_point,label
 1087-1794,mooring
 1087-1795,mooring
 1087-1796,mooring
+11-0,calibration
+11-1,calibration
 11-1753,humpback
 11-1754,humpback
 11-1755,humpback
@@ -671,6 +707,8 @@ vggish_point,label
 11-1790,humpback
 11-1795,humpback
 11-1796,humpback
+110-0,calibration
+110-1,calibration
 110-445,humpback
 110-446,humpback
 110-447,humpback
@@ -706,6 +744,8 @@ vggish_point,label
 110-490,humpback
 110-491,humpback
 110-492,humpback
+1101-0,calibration
+1101-1,calibration
 1101-1140,humpback
 1101-1141,humpback-mooring
 1101-1142,mooring
@@ -728,6 +768,8 @@ vggish_point,label
 1101-1169,humpback
 1101-1170,humpback
 1101-1171,humpback
+1104-0,calibration
+1104-1,calibration
 1104-1250,humpback
 1104-1251,humpback
 1104-1252,humpback
@@ -828,6 +870,8 @@ vggish_point,label
 1104-370,humpback
 1104-371,humpback
 1104-372,humpback
+1109-0,calibration
+1109-1,calibration
 1109-37,fish
 1109-38,fish
 1109-39,fish
@@ -846,6 +890,8 @@ vggish_point,label
 1109-56,fish
 1109-57,fish
 1109-58,fish
+1111-0,calibration
+1111-1,calibration
 1111-1586,flow noise
 1111-1587,flow noise
 1111-1588,flow noise
@@ -860,6 +906,8 @@ vggish_point,label
 1111-1597,flow noise
 1111-1598,flow noise
 1111-1599,flow noise
+1114-0,calibration
+1114-1,calibration
 1114-12,humpback
 1114-13,humpback
 1114-14,humpback
@@ -868,6 +916,8 @@ vggish_point,label
 1114-40,humpback
 1114-41,humpback
 1114-42,humpback
+1117-0,calibration
+1117-1,calibration
 1117-1375,flow noise
 1117-1376,flow noise-mooring
 1117-1377,flow noise-mooring
@@ -899,6 +949,8 @@ vggish_point,label
 1117-1431,flow noise
 1117-1432,flow noise
 1117-1433,flow noise
+1126-0,calibration
+1126-1,calibration
 1126-1312,flow noise
 1126-1313,flow noise
 1126-1314,flow noise
@@ -978,6 +1030,8 @@ vggish_point,label
 1126-1677,flow noise-mooring
 1126-1678,flow noise-mooring
 1126-1679,flow noise
+1129-0,calibration
+1129-1,calibration
 1129-1331,mooring
 1129-1332,mooring
 1129-1333,flow noise-mooring
@@ -1072,6 +1126,8 @@ vggish_point,label
 1129-497,flow noise
 1129-498,flow noise
 1129-499,flow noise
+1135-0,calibration
+1135-1,calibration
 1135-1004,humpback
 1135-1005,humpback
 1135-1006,humpback
@@ -1085,6 +1141,8 @@ vggish_point,label
 1135-1048,humpback
 1135-1049,humpback
 1135-1050,humpback
+1150-0,calibration
+1150-1,calibration
 1150-1040,helicopter
 1150-1041,helicopter
 1150-1042,helicopter
@@ -1098,6 +1156,8 @@ vggish_point,label
 1150-1050,helicopter
 1150-1051,helicopter
 1150-1052,helicopter
+1155-0,calibration
+1155-1,calibration
 1155-1502,humpback
 1155-1503,humpback
 1155-1504,humpback
@@ -1167,6 +1227,8 @@ vggish_point,label
 1155-246,humpback
 1155-247,humpback
 1155-248,humpback
+1157-0,calibration
+1157-1,calibration
 1157-1562,humpback
 1157-1563,humpback
 1157-1564,humpback
@@ -1213,6 +1275,8 @@ vggish_point,label
 1157-1622,humpback
 1157-1623,humpback
 1157-1624,humpback
+1159-0,calibration
+1159-1,calibration
 1159-251,humpback
 1159-252,humpback
 1159-253,humpback
@@ -1234,6 +1298,8 @@ vggish_point,label
 1159-305,humpback
 1159-306,humpback
 1159-307,humpback
+1164-0,calibration
+1164-1,calibration
 1164-726,airplane
 1164-727,airplane
 1164-728,airplane
@@ -1241,12 +1307,16 @@ vggish_point,label
 1164-730,airplane
 1164-731,airplane
 1164-732,airplane
+1166-0,calibration
+1166-1,calibration
 1166-1828,humpback
 1166-1829,humpback
 1166-1830,humpback
 1166-1858,humpback
 1166-1859,humpback
 1166-1860,humpback
+1167-0,calibration
+1167-1,calibration
 1167-125,flow noise
 1167-126,flow noise
 1167-127,flow noise
@@ -1300,11 +1370,15 @@ vggish_point,label
 1167-175,flow noise
 1167-176,flow noise
 1167-177,flow noise
+1168-0,calibration
+1168-1,calibration
 1168-446,humpback
 1168-447,humpback
 1168-448,humpback
 1168-450,humpback
 1168-451,humpback
+1171-0,calibration
+1171-1,calibration
 1171-1129,mooring
 1171-1130,mooring
 1171-1131,mooring
@@ -1456,6 +1530,8 @@ vggish_point,label
 1171-869,flow noise
 1171-870,flow noise
 1171-871,flow noise
+1173-0,calibration
+1173-1,calibration
 1173-1349,mooring
 1173-1350,mooring
 1173-1351,mooring
@@ -1474,6 +1550,8 @@ vggish_point,label
 1173-861,mooring
 1173-862,mooring
 1173-863,mooring
+1184-0,calibration
+1184-1,calibration
 1184-633,flow noise
 1184-634,flow noise
 1184-635,flow noise
@@ -1493,6 +1571,8 @@ vggish_point,label
 1184-683,humpback
 1184-684,humpback
 1184-685,humpback
+1187-0,calibration
+1187-1,calibration
 1187-815,humpback
 1187-816,humpback
 1187-817,humpback
@@ -1550,6 +1630,8 @@ vggish_point,label
 1187-873,humpback
 1187-874,humpback
 1187-875,humpback
+1188-0,calibration
+1188-1,calibration
 1188-1690,flow noise
 1188-1691,flow noise
 1188-1692,flow noise
@@ -1594,6 +1676,8 @@ vggish_point,label
 1188-1744,humpback
 1188-1748,humpback
 1188-1749,humpback
+1191-0,calibration
+1191-1,calibration
 1191-1128,flow noise
 1191-1129,flow noise
 1191-1130,flow noise
@@ -1685,6 +1769,8 @@ vggish_point,label
 1191-926,flow noise
 1191-927,flow noise
 1191-928,flow noise
+1197-0,calibration
+1197-1,calibration
 1197-312,flow noise
 1197-313,flow noise
 1197-314,flow noise
@@ -1733,6 +1819,8 @@ vggish_point,label
 1197-372,flow noise
 1197-373,flow noise
 1197-374,flow noise
+120-0,calibration
+120-1,calibration
 120-516,humpback
 120-517,humpback
 120-521,humpback
@@ -1746,6 +1834,8 @@ vggish_point,label
 120-555,fish
 120-556,fish
 120-557,fish
+1205-0,calibration
+1205-1,calibration
 1205-204,humpback
 1205-205,humpback
 1205-206,humpback
@@ -1762,6 +1852,8 @@ vggish_point,label
 1205-238,humpback-mooring
 1205-239,humpback-mooring
 1205-240,mooring
+121-0,calibration
+121-1,calibration
 121-1063,flow noise
 121-1064,flow noise
 121-1065,flow noise
@@ -1874,6 +1966,8 @@ vggish_point,label
 121-1805,flow noise
 121-1806,flow noise
 121-1807,flow noise
+1210-0,calibration
+1210-1,calibration
 1210-1689,humpback
 1210-1690,humpback
 1210-1691,humpback
@@ -1901,6 +1995,8 @@ vggish_point,label
 1210-1747,humpback
 1210-1748,humpback
 1210-1749,humpback
+1220-0,calibration
+1220-1,calibration
 1220-1125,flow noise
 1220-1126,flow noise
 1220-1127,flow noise
@@ -2001,6 +2097,8 @@ vggish_point,label
 1220-802,mooring
 1220-803,mooring
 1220-804,mooring
+1229-0,calibration
+1229-1,calibration
 1229-813,humpback
 1229-814,humpback
 1229-815,humpback
@@ -2036,6 +2134,8 @@ vggish_point,label
 1229-866,humpback
 1229-867,humpback
 1229-868,humpback
+1230-0,calibration
+1230-1,calibration
 1230-1375,humpback
 1230-1376,humpback
 1230-1377,humpback
@@ -2088,6 +2188,8 @@ vggish_point,label
 1230-1435,humpback
 1230-1436,humpback
 1230-1437,humpback
+1237-0,calibration
+1237-1,calibration
 1237-462,flow noise
 1237-463,flow noise
 1237-464,flow noise
@@ -2126,6 +2228,8 @@ vggish_point,label
 1237-497,flow noise
 1237-498,flow noise
 1237-499,flow noise
+1240-0,calibration
+1240-1,calibration
 1240-953,flow noise
 1240-954,flow noise
 1240-955,flow noise
@@ -2165,6 +2269,8 @@ vggish_point,label
 1240-989,flow noise
 1240-990,flow noise
 1240-991,flow noise
+1241-0,calibration
+1241-1,calibration
 1241-1127,humpback
 1241-1128,humpback
 1241-1129,humpback
@@ -2293,6 +2399,8 @@ vggish_point,label
 1241-622,flow noise
 1241-623,flow noise
 1241-624,flow noise
+1247-0,calibration
+1247-1,calibration
 1247-772,fish
 1247-773,fish
 1247-774,fish
@@ -2302,6 +2410,8 @@ vggish_point,label
 1247-806,mooring
 1247-807,mooring
 1247-808,mooring
+1259-0,calibration
+1259-1,calibration
 1259-130,humpback
 1259-131,humpback
 1259-132,humpback
@@ -2318,6 +2428,8 @@ vggish_point,label
 1259-181,airplane
 1259-184,humpback
 1259-185,humpback
+1265-0,calibration
+1265-1,calibration
 1265-687,boat
 1265-688,boat
 1265-689,boat
@@ -2375,6 +2487,8 @@ vggish_point,label
 1265-747,boat
 1265-748,boat
 1265-749,boat
+1267-0,calibration
+1267-1,calibration
 1267-1375,flow noise
 1267-1376,flow noise
 1267-1377,flow noise
@@ -2425,6 +2539,8 @@ vggish_point,label
 1267-1435,humpback
 1267-1436,humpback
 1267-1437,humpback
+1271-0,calibration
+1271-1,calibration
 1271-1393,humpback
 1271-1394,humpback
 1271-1395,humpback
@@ -2435,6 +2551,8 @@ vggish_point,label
 1271-1427,humpback
 1271-1428,humpback
 1271-1429,humpback
+1277-0,calibration
+1277-1,calibration
 1277-1375,boat
 1277-1376,boat
 1277-1377,boat
@@ -2498,6 +2616,8 @@ vggish_point,label
 1277-1435,boat
 1277-1436,boat
 1277-1437,boat
+1283-0,calibration
+1283-1,calibration
 1283-113,airplane
 1283-114,airplane
 1283-115,airplane
@@ -2520,6 +2640,8 @@ vggish_point,label
 1283-77,flow noise
 1283-78,flow noise
 1283-79,flow noise
+1288-0,calibration
+1288-1,calibration
 1288-765,flow noise
 1288-766,flow noise
 1288-767,flow noise
@@ -2556,6 +2678,8 @@ vggish_point,label
 1288-810,flow noise
 1288-811,flow noise
 1288-812,flow noise
+1292-0,calibration
+1292-1,calibration
 1292-187,boat
 1292-188,boat
 1292-189,boat
@@ -2619,12 +2743,16 @@ vggish_point,label
 1292-247,boat
 1292-248,boat
 1292-249,boat
+1298-0,calibration
+1298-1,calibration
 1298-658,mooring
 1298-659,mooring
 1298-660,mooring
 1298-661,mooring
 1298-662,mooring
 1298-663,mooring
+13-0,calibration
+13-1,calibration
 13-197,humpback
 13-198,humpback
 13-199,humpback
@@ -2639,6 +2767,8 @@ vggish_point,label
 13-224,airplane
 13-242,humpback
 13-243,humpback
+1304-0,calibration
+1304-1,calibration
 1304-1731,flow noise
 1304-1732,flow noise
 1304-1733,flow noise
@@ -2658,6 +2788,8 @@ vggish_point,label
 1304-1747,flow noise
 1304-1748,flow noise
 1304-1749,flow noise
+1305-0,calibration
+1305-1,calibration
 1305-687,flow noise
 1305-688,flow noise
 1305-689,flow noise
@@ -2672,6 +2804,8 @@ vggish_point,label
 1305-723,mooring
 1305-724,mooring
 1305-725,mooring
+131-0,calibration
+131-1,calibration
 131-1393,mooring
 131-1394,mooring
 131-1395,mooring
@@ -2683,6 +2817,8 @@ vggish_point,label
 131-1416,mooring
 131-1417,mooring
 131-1418,mooring
+1324-0,calibration
+1324-1,calibration
 1324-689,flow noise
 1324-690,flow noise
 1324-691,flow noise
@@ -2701,6 +2837,8 @@ vggish_point,label
 1324-719,mooring
 1324-720,mooring
 1324-721,mooring
+133-0,calibration
+133-1,calibration
 133-125,flow noise
 133-126,flow noise
 133-127,flow noise
@@ -2737,12 +2875,16 @@ vggish_point,label
 133-185,flow noise-mooring
 133-186,flow noise-mooring
 133-187,flow noise
+137-0,calibration
+137-1,calibration
 137-1111,fish
 137-1112,fish
 137-1113,fish
 137-1114,fish
 137-1115,fish
 137-1116,fish
+146-0,calibration
+146-1,calibration
 146-562,flow noise
 146-563,flow noise
 146-564,flow noise-humpback
@@ -2797,6 +2939,8 @@ vggish_point,label
 146-618,flow noise
 146-623,humpback
 146-624,humpback
+150-0,calibration
+150-1,calibration
 150-1126,humpback
 150-1127,humpback
 150-1128,humpback
@@ -2810,6 +2954,8 @@ vggish_point,label
 150-1185,humpback
 150-1186,humpback
 150-1187,humpback
+155-0,calibration
+155-1,calibration
 155-1439,humpback
 155-1440,humpback
 155-1441,humpback
@@ -2848,6 +2994,8 @@ vggish_point,label
 155-307,humpback
 155-308,humpback
 155-309,humpback
+159-0,calibration
+159-1,calibration
 159-441,fish
 159-442,fish
 159-443,fish
@@ -2863,6 +3011,8 @@ vggish_point,label
 159-453,helicopter
 159-454,helicopter
 159-455,helicopter
+162-0,calibration
+162-1,calibration
 162-756,mooring
 162-757,mooring
 162-758,mooring
@@ -2898,6 +3048,8 @@ vggish_point,label
 162-791,flow noise
 162-792,flow noise
 162-793,flow noise
+163-0,calibration
+163-1,calibration
 163-303,airplane
 163-304,airplane
 163-305,airplane
@@ -2906,6 +3058,8 @@ vggish_point,label
 163-308,airplane
 163-309,airplane
 163-310,airplane
+166-0,calibration
+166-1,calibration
 166-1381,humpback
 166-1382,humpback
 166-1383,humpback
@@ -2929,6 +3083,8 @@ vggish_point,label
 166-1415,humpback
 166-1432,humpback
 166-1433,humpback
+169-0,calibration
+169-1,calibration
 169-1757,flow noise
 169-1758,flow noise
 169-1759,flow noise
@@ -3016,9 +3172,13 @@ vggish_point,label
 169-935,flow noise-humpback
 169-936,flow noise
 169-937,flow noise
+171-0,calibration
+171-1,calibration
 171-1530,mooring
 171-1531,mooring
 171-1532,mooring
+175-0,calibration
+175-1,calibration
 175-768,flow noise
 175-769,flow noise
 175-770,flow noise
@@ -3074,6 +3234,8 @@ vggish_point,label
 175-935,flow noise
 175-936,flow noise
 175-937,flow noise
+182-0,calibration
+182-1,calibration
 182-250,humpback
 182-251,humpback
 182-252,humpback
@@ -3132,10 +3294,14 @@ vggish_point,label
 182-310,humpback
 182-311,humpback
 182-312,humpback
+183-0,calibration
+183-1,calibration
 183-572,mooring
 183-573,mooring
 183-574,mooring
 183-575,mooring
+192-0,calibration
+192-1,calibration
 192-625,humpback
 192-626,humpback
 192-627,humpback
@@ -3151,6 +3317,8 @@ vggish_point,label
 192-683,humpback
 192-684,humpback
 192-685,humpback
+193-0,calibration
+193-1,calibration
 193-1562,flow noise
 193-1563,flow noise
 193-1564,flow noise
@@ -3167,6 +3335,8 @@ vggish_point,label
 193-1605,humpback
 193-1606,humpback
 193-1607,humpback
+194-0,calibration
+194-1,calibration
 194-375,flow noise
 194-376,flow noise
 194-377,flow noise
@@ -3211,6 +3381,8 @@ vggish_point,label
 194-435,flow noise
 194-436,flow noise
 194-437,flow noise
+202-0,calibration
+202-1,calibration
 202-1625,fish
 202-1626,fish
 202-1627,fish
@@ -3242,6 +3414,8 @@ vggish_point,label
 202-860,helicopter
 202-861,helicopter
 202-862,helicopter
+204-0,calibration
+204-1,calibration
 204-1752,humpback
 204-1753,humpback
 204-1767,humpback
@@ -3268,6 +3442,8 @@ vggish_point,label
 204-1804,humpback
 204-1805,humpback
 204-1806,humpback
+206-0,calibration
+206-1,calibration
 206-100,humpback
 206-101,humpback
 206-102,humpback
@@ -3347,6 +3523,8 @@ vggish_point,label
 206-94,humpback
 206-95,humpback
 206-96,humpback
+211-0,calibration
+211-1,calibration
 211-1066,flow noise
 211-1067,flow noise
 211-1068,flow noise
@@ -3412,6 +3590,8 @@ vggish_point,label
 211-1185,flow noise
 211-1186,flow noise
 211-1187,flow noise
+221-0,calibration
+221-1,calibration
 221-1626,flow noise
 221-1627,flow noise
 221-1628,flow noise
@@ -3450,6 +3630,8 @@ vggish_point,label
 221-1671,flow noise
 221-1672,flow noise
 221-1673,flow noise
+225-0,calibration
+225-1,calibration
 225-1250,humpback
 225-1251,humpback
 225-1252,humpback
@@ -3479,6 +3661,8 @@ vggish_point,label
 225-1302,humpback
 225-1303,humpback
 225-1304,humpback
+226-0,calibration
+226-1,calibration
 226-1008,mooring
 226-1009,mooring
 226-1012,mooring
@@ -3504,6 +3688,8 @@ vggish_point,label
 226-1058,humpback
 226-1061,humpback
 226-1062,humpback
+229-0,calibration
+229-1,calibration
 229-1625,humpback
 229-1626,humpback
 229-1628,humpback
@@ -3535,6 +3721,8 @@ vggish_point,label
 229-1676,humpback
 229-1677,humpback
 229-1678,humpback
+232-0,calibration
+232-1,calibration
 232-710,helicopter
 232-711,helicopter
 232-712,helicopter
@@ -3552,6 +3740,8 @@ vggish_point,label
 232-724,helicopter
 232-725,helicopter
 232-726,helicopter
+234-0,calibration
+234-1,calibration
 234-1380,humpback
 234-1381,humpback
 234-1382,humpback
@@ -3559,6 +3749,8 @@ vggish_point,label
 234-1391,humpback
 234-1422,humpback
 234-1423,humpback
+238-0,calibration
+238-1,calibration
 238-1136,humpback
 238-1137,humpback
 238-1142,humpback
@@ -3568,10 +3760,14 @@ vggish_point,label
 238-1168,humpback
 238-1184,humpback
 238-1185,humpback
+241-0,calibration
+241-1,calibration
 241-25,mooring
 241-26,mooring
 241-27,mooring
 241-28,mooring
+244-0,calibration
+244-1,calibration
 244-649,humpback
 244-650,humpback
 244-651,humpback
@@ -3595,6 +3791,8 @@ vggish_point,label
 244-682,humpback
 244-686,humpback
 244-687,humpback
+247-0,calibration
+247-1,calibration
 247-1125,flow noise
 247-1126,flow noise
 247-1127,flow noise
@@ -3687,6 +3885,8 @@ vggish_point,label
 247-60,flow noise-mooring
 247-61,flow noise
 247-62,flow noise
+250-0,calibration
+250-1,calibration
 250-1564,humpback
 250-1565,humpback
 250-1566,humpback
@@ -3720,6 +3920,8 @@ vggish_point,label
 250-1622,humpback
 250-1623,humpback
 250-1624,humpback
+254-0,calibration
+254-1,calibration
 254-274,mooring
 254-275,mooring
 254-276,mooring
@@ -3739,6 +3941,8 @@ vggish_point,label
 254-307,mooring
 254-308,mooring
 254-309,mooring
+255-0,calibration
+255-1,calibration
 255-1250,humpback
 255-1251,humpback
 255-1252,humpback
@@ -3783,6 +3987,8 @@ vggish_point,label
 255-1307,humpback
 255-1308,humpback
 255-1309,humpback
+259-0,calibration
+259-1,calibration
 259-1128,humpback
 259-1129,humpback
 259-1130,humpback
@@ -3819,6 +4025,8 @@ vggish_point,label
 259-416,humpback
 259-417,humpback
 259-418,humpback
+260-0,calibration
+260-1,calibration
 260-189,humpback
 260-190,humpback
 260-191,humpback
@@ -3902,6 +4110,8 @@ vggish_point,label
 260-427,humpback
 260-428,humpback
 260-429,humpback
+271-0,calibration
+271-1,calibration
 271-696,mooring
 271-697,flow noise-mooring
 271-698,flow noise-mooring
@@ -3939,6 +4149,8 @@ vggish_point,label
 271-746,flow noise
 271-747,flow noise
 271-748,flow noise
+274-0,calibration
+274-1,calibration
 274-1570,mooring
 274-1571,mooring
 274-1572,mooring
@@ -3956,6 +4168,8 @@ vggish_point,label
 274-1600,mooring
 274-1601,mooring
 274-1602,mooring
+280-0,calibration
+280-1,calibration
 280-1562,flow noise
 280-1563,flow noise
 280-1564,flow noise
@@ -4011,6 +4225,8 @@ vggish_point,label
 280-1622,flow noise
 280-1623,flow noise
 280-1624,flow noise
+283-0,calibration
+283-1,calibration
 283-1756,humpback
 283-1757,humpback
 283-1758,humpback
@@ -4058,6 +4274,8 @@ vggish_point,label
 283-1808,humpback
 283-1809,humpback
 283-1810,humpback
+286-0,calibration
+286-1,calibration
 286-252,humpback
 286-253,humpback
 286-254,humpback
@@ -4083,6 +4301,8 @@ vggish_point,label
 286-304,humpback
 286-305,humpback
 286-306,humpback
+288-0,calibration
+288-1,calibration
 288-1069,humpback
 288-1095,humpback
 288-1096,humpback
@@ -4090,6 +4310,8 @@ vggish_point,label
 288-1101,humpback
 288-1102,humpback
 288-1103,humpback
+289-0,calibration
+289-1,calibration
 289-1644,humpback
 289-1645,humpback
 289-1646,humpback
@@ -4097,6 +4319,8 @@ vggish_point,label
 289-1676,humpback
 289-1677,humpback
 289-1678,humpback
+294-0,calibration
+294-1,calibration
 294-1503,airplane
 294-1504,airplane
 294-1505,airplane
@@ -4131,6 +4355,8 @@ vggish_point,label
 294-1672,helicopter
 294-1673,helicopter
 294-1674,helicopter
+306-0,calibration
+306-1,calibration
 306-453,mooring
 306-454,mooring
 306-455,mooring
@@ -4142,6 +4368,8 @@ vggish_point,label
 306-484,flow noise
 306-491,mooring
 306-492,mooring
+312-0,calibration
+312-1,calibration
 312-1814,humpback
 312-1815,humpback
 312-1816,humpback
@@ -4189,6 +4417,8 @@ vggish_point,label
 312-967,humpback
 312-991,humpback
 312-992,humpback
+314-0,calibration
+314-1,calibration
 314-258,flow noise
 314-259,flow noise
 314-260,flow noise
@@ -4209,6 +4439,8 @@ vggish_point,label
 314-307,mooring
 314-308,mooring
 314-309,mooring
+316-0,calibration
+316-1,calibration
 316-1687,flow noise
 316-1688,flow noise
 316-1689,flow noise
@@ -4238,6 +4470,8 @@ vggish_point,label
 316-1740,fish
 316-1741,fish
 316-1742,fish
+319-0,calibration
+319-1,calibration
 319-1438,humpback
 319-1439,humpback
 319-1440,humpback
@@ -4283,6 +4517,8 @@ vggish_point,label
 319-1494,humpback
 319-1495,humpback
 319-1496,humpback
+324-0,calibration
+324-1,calibration
 324-886,humpback
 324-887,humpback
 324-888,humpback
@@ -4292,6 +4528,8 @@ vggish_point,label
 324-930,humpback
 324-931,humpback
 324-932,humpback
+326-0,calibration
+326-1,calibration
 326-1078,humpback
 326-1079,humpback
 326-1080,humpback
@@ -4299,6 +4537,8 @@ vggish_point,label
 326-1101,humpback
 326-1102,humpback
 326-1103,humpback
+328-0,calibration
+328-1,calibration
 328-1065,humpback
 328-1066,humpback
 328-1070,helicopter
@@ -4511,6 +4751,8 @@ vggish_point,label
 328-996,airplane
 328-997,airplane
 328-998,airplane
+333-0,calibration
+333-1,calibration
 333-1766,humpback
 333-1767,humpback
 333-1768,humpback
@@ -4527,6 +4769,8 @@ vggish_point,label
 333-1787,flow noise
 333-1788,flow noise
 333-1789,flow noise
+336-0,calibration
+336-1,calibration
 336-1064,mooring
 336-1065,mooring
 336-1066,mooring
@@ -4552,6 +4796,8 @@ vggish_point,label
 336-1117,mooring
 336-1118,mooring
 336-1119,mooring
+341-0,calibration
+341-1,calibration
 341-1442,humpback
 341-1443,humpback
 341-1444,humpback
@@ -4575,6 +4821,8 @@ vggish_point,label
 341-1487,flow noise
 341-1488,flow noise
 341-1489,flow noise
+344-0,calibration
+344-1,calibration
 344-10,mooring
 344-1260,mooring
 344-1262,fish
@@ -4625,6 +4873,8 @@ vggish_point,label
 344-636,mooring
 344-8,mooring
 344-9,mooring
+35-0,calibration
+35-1,calibration
 35-646,humpback
 35-647,humpback
 35-648,humpback
@@ -4634,6 +4884,8 @@ vggish_point,label
 35-676,humpback
 35-677,humpback
 35-678,humpback
+350-0,calibration
+350-1,calibration
 350-1507,mooring
 350-1508,mooring
 350-1509,mooring
@@ -4651,6 +4903,8 @@ vggish_point,label
 350-1560,humpback
 350-1561,humpback
 350-1562,humpback
+354-0,calibration
+354-1,calibration
 354-770,humpback
 354-771,humpback
 354-772,humpback
@@ -4658,6 +4912,8 @@ vggish_point,label
 354-774,humpback
 354-778,humpback
 354-779,humpback
+361-0,calibration
+361-1,calibration
 361-1188,humpback
 361-1189,humpback
 361-1190,humpback
@@ -4707,6 +4963,8 @@ vggish_point,label
 361-1247,humpback
 361-1248,humpback
 361-1249,humpback
+368-0,calibration
+368-1,calibration
 368-391,mooring
 368-392,mooring
 368-393,mooring
@@ -4739,6 +4997,8 @@ vggish_point,label
 368-429,mooring
 368-430,mooring
 368-431,mooring
+371-0,calibration
+371-1,calibration
 371-1565,flow noise
 371-1566,flow noise
 371-1567,flow noise-humpback
@@ -4749,6 +5009,8 @@ vggish_point,label
 371-1573,flow noise
 371-1574,flow noise
 371-1575,flow noise
+374-0,calibration
+374-1,calibration
 374-1377,flow noise
 374-1378,flow noise
 374-1379,flow noise
@@ -4808,6 +5070,8 @@ vggish_point,label
 374-653,mooring
 374-654,mooring
 374-655,mooring
+379-0,calibration
+379-1,calibration
 379-875,humpback
 379-876,humpback
 379-878,humpback
@@ -4840,6 +5104,8 @@ vggish_point,label
 379-935,humpback
 379-936,humpback
 379-937,humpback
+383-0,calibration
+383-1,calibration
 383-1502,humpback
 383-1503,humpback
 383-1506,humpback
@@ -4954,6 +5220,8 @@ vggish_point,label
 383-1869,fish
 383-1870,fish
 383-1871,fish
+393-0,calibration
+393-1,calibration
 393-883,humpback
 393-884,humpback
 393-885,humpback
@@ -4978,6 +5246,8 @@ vggish_point,label
 393-925,humpback
 393-926,humpback
 393-927,humpback
+398-0,calibration
+398-1,calibration
 398-687,flow noise
 398-688,flow noise-humpback
 398-689,flow noise-humpback
@@ -5015,6 +5285,8 @@ vggish_point,label
 398-746,flow noise
 398-747,flow noise
 398-748,flow noise
+400-0,calibration
+400-1,calibration
 400-505,airplane
 400-506,airplane
 400-507,airplane
@@ -5025,6 +5297,8 @@ vggish_point,label
 400-512,airplane
 400-513,airplane
 400-514,airplane
+402-0,calibration
+402-1,calibration
 402-562,humpback
 402-563,humpback
 402-565,humpback
@@ -5050,6 +5324,8 @@ vggish_point,label
 402-612,flow noise
 402-613,flow noise
 402-614,flow noise
+404-0,calibration
+404-1,calibration
 404-1440,humpback
 404-1441,humpback
 404-1442,humpback
@@ -5068,6 +5344,8 @@ vggish_point,label
 404-1483,humpback
 404-1484,humpback
 404-1485,humpback
+407-0,calibration
+407-1,calibration
 407-1687,flow noise
 407-1688,flow noise-humpback
 407-1689,flow noise-humpback
@@ -5127,6 +5405,8 @@ vggish_point,label
 407-1747,flow noise-humpback
 407-1748,flow noise
 407-1749,flow noise
+412-0,calibration
+412-1,calibration
 412-1438,humpback
 412-1439,humpback
 412-1440,humpback
@@ -5136,6 +5416,8 @@ vggish_point,label
 412-1491,humpback
 412-1492,humpback
 412-1493,humpback
+416-0,calibration
+416-1,calibration
 416-625,flow noise
 416-626,flow noise
 416-627,flow noise
@@ -5181,6 +5463,8 @@ vggish_point,label
 416-668,flow noise-humpback
 416-669,flow noise-humpback
 416-670,humpback
+417-0,calibration
+417-1,calibration
 417-690,humpback
 417-691,humpback
 417-692,humpback
@@ -5215,6 +5499,8 @@ vggish_point,label
 417-739,humpback
 417-740,humpback
 417-741,humpback
+420-0,calibration
+420-1,calibration
 420-1062,flow noise
 420-1063,flow noise
 420-1064,flow noise
@@ -5301,6 +5587,8 @@ vggish_point,label
 420-344,flow noise
 420-345,flow noise
 420-346,flow noise
+422-0,calibration
+422-1,calibration
 422-1562,flow noise
 422-1563,flow noise
 422-1564,flow noise
@@ -5333,11 +5621,15 @@ vggish_point,label
 422-1592,flow noise
 422-1593,flow noise
 422-1594,flow noise
+424-0,calibration
+424-1,calibration
 424-1067,airplane
 424-1068,airplane
 424-1069,airplane
 424-1070,airplane
 424-1071,airplane
+425-0,calibration
+425-1,calibration
 425-1567,mooring
 425-1568,mooring
 425-1569,mooring
@@ -5359,6 +5651,8 @@ vggish_point,label
 425-1617,mooring
 425-1618,mooring
 425-1619,mooring
+43-0,calibration
+43-1,calibration
 43-1127,fish
 43-1128,fish
 43-1129,fish
@@ -5394,6 +5688,8 @@ vggish_point,label
 43-1173,flow noise
 43-1174,flow noise
 43-1175,flow noise
+433-0,calibration
+433-1,calibration
 433-750,flow noise
 433-751,flow noise
 433-752,flow noise-humpback
@@ -5437,6 +5733,8 @@ vggish_point,label
 433-793,humpback
 433-794,humpback
 433-795,humpback
+44-0,calibration
+44-1,calibration
 44-638,helicopter
 44-639,helicopter
 44-640,helicopter
@@ -5447,6 +5745,8 @@ vggish_point,label
 44-645,helicopter
 44-646,helicopter
 44-647,helicopter
+444-0,calibration
+444-1,calibration
 444-1375,flow noise
 444-1376,flow noise
 444-1377,flow noise
@@ -5499,6 +5799,8 @@ vggish_point,label
 444-1433,flow noise
 444-1434,humpback
 444-1435,humpback
+448-0,calibration
+448-1,calibration
 448-888,flow noise
 448-889,flow noise
 448-890,flow noise
@@ -5524,6 +5826,8 @@ vggish_point,label
 448-928,mooring
 448-929,mooring
 448-930,mooring
+449-0,calibration
+449-1,calibration
 449-107,humpback
 449-108,humpback
 449-109,humpback
@@ -5548,6 +5852,8 @@ vggish_point,label
 449-866,humpback
 449-869,humpback
 449-870,humpback
+466-0,calibration
+466-1,calibration
 466-1062,flow noise
 466-1063,flow noise
 466-1064,flow noise
@@ -5610,6 +5916,8 @@ vggish_point,label
 466-1122,flow noise
 466-1123,flow noise
 466-1124,flow noise
+467-0,calibration
+467-1,calibration
 467-879,flow noise
 467-880,flow noise
 467-881,flow noise
@@ -5648,6 +5956,8 @@ vggish_point,label
 467-919,flow noise
 467-920,flow noise
 467-921,flow noise
+470-0,calibration
+470-1,calibration
 470-1692,flow noise
 470-1693,flow noise
 470-1694,flow noise
@@ -5675,6 +5985,8 @@ vggish_point,label
 470-1745,flow noise
 470-1746,flow noise
 470-1747,flow noise
+475-0,calibration
+475-1,calibration
 475-1565,humpback
 475-1566,humpback
 475-1567,humpback
@@ -5724,12 +6036,16 @@ vggish_point,label
 475-1620,humpback
 475-1621,humpback
 475-1622,humpback
+476-0,calibration
+476-1,calibration
 476-1281,mooring
 476-1282,mooring
 476-1283,mooring
 476-1284,mooring
 476-1285,mooring
 476-1286,mooring
+480-0,calibration
+480-1,calibration
 480-1254,mooring
 480-1255,mooring
 480-1256,mooring
@@ -5739,6 +6055,8 @@ vggish_point,label
 480-37,mooring
 480-38,mooring
 480-39,mooring
+481-0,calibration
+481-1,calibration
 481-130,fish
 481-131,fish
 481-132,fish
@@ -5788,6 +6106,8 @@ vggish_point,label
 481-220,flow noise-mooring
 481-221,mooring
 481-222,mooring
+482-0,calibration
+482-1,calibration
 482-1330,flow noise
 482-1331,flow noise
 482-1332,flow noise
@@ -5848,12 +6168,16 @@ vggish_point,label
 482-803,mooring
 482-804,mooring
 482-805,mooring
+5-0,calibration
+5-1,calibration
 5-698,mooring
 5-699,mooring
 5-700,mooring
 5-719,mooring
 5-720,mooring
 5-721,mooring
+501-0,calibration
+501-1,calibration
 501-500,flow noise
 501-501,flow noise
 501-502,flow noise
@@ -5904,6 +6228,8 @@ vggish_point,label
 501-612,fish
 501-613,fish
 501-614,fish
+504-0,calibration
+504-1,calibration
 504-566,humpback
 504-567,humpback
 504-568,humpback
@@ -5987,6 +6313,8 @@ vggish_point,label
 504-997,flow noise
 504-998,flow noise
 504-999,flow noise
+506-0,calibration
+506-1,calibration
 506-1003,mooring
 506-1004,mooring
 506-1005,mooring
@@ -6044,6 +6372,8 @@ vggish_point,label
 506-991,mooring
 506-992,mooring
 506-993,mooring
+507-0,calibration
+507-1,calibration
 507-694,humpback
 507-695,humpback
 507-701,humpback
@@ -6056,6 +6386,8 @@ vggish_point,label
 507-739,humpback
 507-740,humpback
 507-741,humpback
+508-0,calibration
+508-1,calibration
 508-260,mooring
 508-261,mooring
 508-262,mooring
@@ -6075,6 +6407,8 @@ vggish_point,label
 508-309,mooring
 508-310,mooring
 508-311,mooring
+511-0,calibration
+511-1,calibration
 511-437,humpback
 511-438,humpback
 511-439,humpback
@@ -6128,10 +6462,14 @@ vggish_point,label
 511-494,humpback
 511-495,humpback
 511-496,humpback
+512-0,calibration
+512-1,calibration
 512-1218,mooring
 512-1219,mooring
 512-1220,mooring
 512-1221,mooring
+519-0,calibration
+519-1,calibration
 519-1251,humpback
 519-1252,humpback
 519-1255,humpback
@@ -6167,6 +6505,8 @@ vggish_point,label
 519-1294,flow noise-humpback
 519-1295,flow noise-humpback
 519-1296,flow noise
+523-0,calibration
+523-1,calibration
 523-1750,flow noise
 523-1751,flow noise
 523-1752,flow noise
@@ -6267,6 +6607,8 @@ vggish_point,label
 523-362,flow noise
 523-363,flow noise
 523-364,flow noise
+524-0,calibration
+524-1,calibration
 524-1000,flow noise
 524-1001,flow noise
 524-1002,flow noise
@@ -6303,6 +6645,8 @@ vggish_point,label
 524-1058,humpback
 524-1059,humpback
 524-1060,humpback
+529-0,calibration
+529-1,calibration
 529-1449,fish
 529-1450,fish
 529-1451,fish
@@ -6325,6 +6669,8 @@ vggish_point,label
 529-1500,mooring
 529-1501,mooring
 529-1502,mooring
+530-0,calibration
+530-1,calibration
 530-1312,humpback
 530-1313,humpback
 530-1314,humpback
@@ -6374,6 +6720,8 @@ vggish_point,label
 530-1372,humpback
 530-1373,humpback
 530-1374,humpback
+533-0,calibration
+533-1,calibration
 533-1115,fish
 533-1116,fish
 533-1117,fish
@@ -6395,6 +6743,8 @@ vggish_point,label
 533-1859,mooring
 533-1860,mooring
 533-1861,mooring
+534-0,calibration
+534-1,calibration
 534-250,flow noise
 534-251,flow noise
 534-252,flow noise
@@ -6403,6 +6753,8 @@ vggish_point,label
 534-257,flow noise
 534-258,flow noise
 534-259,flow noise
+540-0,calibration
+540-1,calibration
 540-440,mooring
 540-441,mooring
 540-442,mooring
@@ -6446,6 +6798,8 @@ vggish_point,label
 540-497,flow noise
 540-498,flow noise
 540-499,flow noise
+543-0,calibration
+543-1,calibration
 543-1066,humpback
 543-1067,humpback
 543-1068,humpback
@@ -6463,6 +6817,8 @@ vggish_point,label
 543-1120,humpback
 543-1121,humpback
 543-1122,humpback
+544-0,calibration
+544-1,calibration
 544-1135,flow noise
 544-1136,flow noise
 544-1137,flow noise
@@ -6489,6 +6845,8 @@ vggish_point,label
 544-1159,flow noise
 544-1160,flow noise
 544-1161,flow noise
+545-0,calibration
+545-1,calibration
 545-381,humpback
 545-382,humpback
 545-383,humpback
@@ -6498,6 +6856,8 @@ vggish_point,label
 545-416,humpback
 545-417,humpback
 545-418,humpback
+546-0,calibration
+546-1,calibration
 546-1146,helicopter
 546-1147,helicopter
 546-1148,helicopter
@@ -6542,6 +6902,8 @@ vggish_point,label
 546-57,mooring
 546-58,mooring
 546-59,mooring
+548-0,calibration
+548-1,calibration
 548-1454,mooring
 548-1455,mooring
 548-1456,mooring
@@ -6549,6 +6911,8 @@ vggish_point,label
 548-1466,mooring
 548-1467,flow noise-mooring
 548-1468,flow noise-mooring
+55-0,calibration
+55-1,calibration
 55-1205,humpback
 55-1206,humpback
 55-1214,humpback
@@ -6562,8 +6926,8 @@ vggish_point,label
 55-1245,humpback
 55-1246,humpback
 55-1247,humpback
-551-0,mooring
-551-1,mooring
+551-0,calibration-mooring
+551-1,calibration-mooring
 551-1070,mooring
 551-1071,mooring
 551-1072,mooring
@@ -6678,6 +7042,8 @@ vggish_point,label
 551-77,mooring
 551-78,mooring
 551-79,mooring
+552-0,calibration
+552-1,calibration
 552-638,mooring
 552-639,mooring
 552-644,humpback
@@ -6691,6 +7057,8 @@ vggish_point,label
 552-681,flow noise
 552-682,flow noise
 552-683,flow noise
+561-0,calibration
+561-1,calibration
 561-1000,flow noise
 561-1001,flow noise
 561-1002,flow noise
@@ -6709,6 +7077,8 @@ vggish_point,label
 561-1050,airplane
 561-1051,airplane
 561-1052,airplane
+562-0,calibration
+562-1,calibration
 562-1380,mooring
 562-1381,flow noise-mooring
 562-1382,flow noise-mooring
@@ -6732,9 +7102,13 @@ vggish_point,label
 562-1423,mooring
 562-1424,mooring
 562-1425,mooring
+565-0,calibration
+565-1,calibration
 565-182,humpback
 565-183,humpback
 565-184,humpback
+566-0,calibration
+566-1,calibration
 566-1319,mooring
 566-1320,mooring
 566-1321,mooring
@@ -6806,6 +7180,8 @@ vggish_point,label
 566-991,mooring
 566-992,mooring
 566-993,mooring
+571-0,calibration
+571-1,calibration
 571-1509,mooring
 571-1510,mooring
 571-1511,mooring
@@ -6831,6 +7207,8 @@ vggish_point,label
 571-727,mooring
 571-728,mooring
 571-729,mooring
+574-0,calibration
+574-1,calibration
 574-1819,flow noise
 574-1820,flow noise
 574-1821,flow noise
@@ -6913,6 +7291,8 @@ vggish_point,label
 574-247,flow noise
 574-248,flow noise
 574-249,flow noise
+585-0,calibration
+585-1,calibration
 585-1628,humpback
 585-1629,humpback
 585-1630,humpback
@@ -6933,6 +7313,8 @@ vggish_point,label
 585-1665,humpback
 585-1681,humpback
 585-1682,humpback
+589-0,calibration
+589-1,calibration
 589-1129,flow noise
 589-1130,flow noise
 589-1131,flow noise
@@ -6956,6 +7338,8 @@ vggish_point,label
 589-215,mooring
 589-216,mooring
 589-217,mooring
+59-0,calibration
+59-1,calibration
 59-1132,helicopter
 59-1133,helicopter
 59-1134,helicopter
@@ -7015,6 +7399,8 @@ vggish_point,label
 59-804,helicopter-humpback
 59-805,helicopter-humpback
 59-806,humpback
+591-0,calibration
+591-1,calibration
 591-1787,flow noise
 591-1788,flow noise
 591-1789,flow noise
@@ -7030,6 +7416,8 @@ vggish_point,label
 591-1802,flow noise
 591-1803,flow noise
 591-1804,flow noise
+598-0,calibration
+598-1,calibration
 598-129,humpback
 598-130,humpback
 598-131,humpback
@@ -7065,6 +7453,8 @@ vggish_point,label
 598-180,humpback
 598-184,humpback
 598-185,humpback
+604-0,calibration
+604-1,calibration
 604-1074,humpback
 604-1075,humpback
 604-1076,humpback
@@ -7089,6 +7479,8 @@ vggish_point,label
 604-920,humpback
 604-921,humpback
 604-922,humpback
+612-0,calibration
+612-1,calibration
 612-1508,flow noise
 612-1509,flow noise
 612-1510,flow noise
@@ -7114,6 +7506,8 @@ vggish_point,label
 612-1548,mooring
 612-1552,mooring
 612-1553,mooring
+617-0,calibration
+617-1,calibration
 617-1826,flow noise
 617-1827,flow noise
 617-1828,flow noise
@@ -7140,6 +7534,8 @@ vggish_point,label
 617-1865,flow noise
 617-1866,flow noise
 617-1867,flow noise
+627-0,calibration
+627-1,calibration
 627-1139,fish
 627-1140,fish
 627-1141,fish
@@ -7185,6 +7581,8 @@ vggish_point,label
 627-1181,fish
 627-1182,fish
 627-1183,fish
+63-0,calibration
+63-1,calibration
 63-1319,humpback
 63-1320,humpback
 63-1321,humpback
@@ -7214,6 +7612,8 @@ vggish_point,label
 63-1372,flow noise
 63-1373,flow noise
 63-1374,flow noise
+650-0,calibration
+650-1,calibration
 650-570,mooring
 650-571,mooring
 650-572,mooring
@@ -7245,6 +7645,8 @@ vggish_point,label
 650-620,flow noise
 650-621,flow noise
 650-622,flow noise
+651-0,calibration
+651-1,calibration
 651-1687,flow noise
 651-1688,flow noise
 651-1689,flow noise
@@ -7308,6 +7710,8 @@ vggish_point,label
 651-434,flow noise
 651-435,flow noise
 651-436,flow noise
+655-0,calibration
+655-1,calibration
 655-188,humpback
 655-189,humpback
 655-190,humpback
@@ -7355,6 +7759,8 @@ vggish_point,label
 655-244,humpback
 655-247,humpback
 655-248,humpback
+660-0,calibration
+660-1,calibration
 660-1567,flow noise
 660-1568,flow noise
 660-1569,flow noise
@@ -7387,6 +7793,8 @@ vggish_point,label
 660-1622,flow noise
 660-1623,flow noise
 660-1624,flow noise
+663-0,calibration
+663-1,calibration
 663-125,flow noise
 663-126,flow noise
 663-127,flow noise
@@ -7429,6 +7837,8 @@ vggish_point,label
 663-180,flow noise
 663-181,flow noise
 663-182,flow noise
+674-0,calibration
+674-1,calibration
 674-1125,flow noise
 674-1126,flow noise
 674-1127,flow noise
@@ -7475,6 +7885,8 @@ vggish_point,label
 674-1183,flow noise-mooring
 674-1184,flow noise-mooring
 674-1185,flow noise-mooring
+677-0,calibration
+677-1,calibration
 677-563,flow noise
 677-564,flow noise
 677-565,flow noise
@@ -7533,6 +7945,8 @@ vggish_point,label
 677-622,flow noise
 677-623,flow noise
 677-624,flow noise
+679-0,calibration
+679-1,calibration
 679-625,humpback
 679-626,humpback
 679-627,humpback
@@ -7568,6 +7982,8 @@ vggish_point,label
 679-685,humpback
 679-686,humpback
 679-687,humpback
+685-0,calibration
+685-1,calibration
 685-1128,mooring
 685-1129,mooring
 685-1130,mooring
@@ -7581,6 +7997,8 @@ vggish_point,label
 685-1165,mooring
 685-1166,mooring
 685-1167,mooring
+686-0,calibration
+686-1,calibration
 686-1249,fish
 686-1250,fish
 686-1251,fish
@@ -7777,6 +8195,8 @@ vggish_point,label
 686-59,mooring
 686-6,humpback
 686-60,mooring
+7-0,calibration
+7-1,calibration
 7-1125,humpback
 7-1126,humpback
 7-1127,humpback
@@ -7815,6 +8235,8 @@ vggish_point,label
 7-1172,humpback
 7-1173,humpback
 7-1174,humpback
+713-0,calibration
+713-1,calibration
 713-1511,flow noise
 713-1512,flow noise
 713-1513,flow noise
@@ -7916,6 +8338,8 @@ vggish_point,label
 713-497,flow noise
 713-498,flow noise
 713-499,flow noise
+715-0,calibration
+715-1,calibration
 715-755,mooring
 715-756,mooring
 715-757,mooring
@@ -7934,6 +8358,8 @@ vggish_point,label
 715-795,flow noise
 715-796,flow noise
 715-797,flow noise
+716-0,calibration
+716-1,calibration
 716-1094,airplane
 716-1095,airplane
 716-1096,airplane
@@ -7951,6 +8377,8 @@ vggish_point,label
 716-1723,airplane
 716-1724,airplane
 716-1725,airplane
+717-0,calibration
+717-1,calibration
 717-649,humpback
 717-650,humpback
 717-651,humpback
@@ -7962,6 +8390,8 @@ vggish_point,label
 717-682,humpback
 717-683,humpback
 717-684,humpback
+719-0,calibration
+719-1,calibration
 719-1312,flow noise
 719-1313,flow noise
 719-1314,flow noise
@@ -8027,6 +8457,8 @@ vggish_point,label
 719-926,flow noise-humpback
 719-927,flow noise-humpback
 719-928,flow noise
+722-0,calibration
+722-1,calibration
 722-940,humpback
 722-941,humpback
 722-942,humpback
@@ -8047,6 +8479,8 @@ vggish_point,label
 722-985,humpback
 722-986,humpback
 722-987,humpback
+725-0,calibration
+725-1,calibration
 725-875,flow noise
 725-876,flow noise
 725-877,flow noise
@@ -8085,6 +8519,8 @@ vggish_point,label
 725-934,flow noise
 725-935,flow noise
 725-936,flow noise
+730-0,calibration
+730-1,calibration
 730-664,fish
 730-665,fish
 730-666,fish
@@ -8103,6 +8539,8 @@ vggish_point,label
 730-682,fish
 730-683,fish
 730-684,fish
+731-0,calibration
+731-1,calibration
 731-1187,humpback
 731-1188,humpback
 731-1189,humpback
@@ -8110,6 +8548,8 @@ vggish_point,label
 731-1246,humpback
 731-1247,humpback
 731-1248,humpback
+734-0,calibration
+734-1,calibration
 734-1071,humpback
 734-1072,humpback
 734-1074,humpback
@@ -8142,6 +8582,8 @@ vggish_point,label
 734-1122,humpback
 734-1123,humpback
 734-1124,humpback
+736-0,calibration
+736-1,calibration
 736-1500,flow noise-humpback
 736-1501,flow noise-humpback
 736-1502,flow noise-humpback
@@ -8236,6 +8678,8 @@ vggish_point,label
 736-807,humpback
 736-808,humpback
 736-809,humpback
+74-0,calibration
+74-1,calibration
 74-312,humpback
 74-313,humpback
 74-328,humpback
@@ -8270,6 +8714,8 @@ vggish_point,label
 74-371,humpback
 74-372,humpback
 74-373,humpback
+748-0,calibration
+748-1,calibration
 748-10,flow noise
 748-11,flow noise
 748-12,flow noise-mooring
@@ -8288,6 +8734,8 @@ vggish_point,label
 748-7,flow noise
 748-8,flow noise
 748-9,flow noise
+76-0,calibration
+76-1,calibration
 76-1385,fish
 76-1386,fish
 76-1387,fish
@@ -8300,6 +8748,8 @@ vggish_point,label
 76-1433,mooring
 76-1434,mooring
 76-1435,mooring
+764-0,calibration
+764-1,calibration
 764-941,humpback
 764-942,humpback
 764-943,humpback
@@ -8309,6 +8759,8 @@ vggish_point,label
 764-981,humpback
 764-982,humpback
 764-983,humpback
+767-0,calibration
+767-1,calibration
 767-1271,mooring
 767-1272,mooring
 767-1273,mooring
@@ -8364,6 +8816,8 @@ vggish_point,label
 767-871,mooring
 767-872,mooring
 767-873,mooring
+77-0,calibration
+77-1,calibration
 77-1582,airplane
 77-1583,airplane
 77-1584,airplane
@@ -8372,6 +8826,8 @@ vggish_point,label
 77-1587,airplane
 77-1588,airplane
 77-1589,airplane
+774-0,calibration
+774-1,calibration
 774-500,humpback
 774-501,humpback
 774-502,humpback
@@ -8425,6 +8881,8 @@ vggish_point,label
 774-556,humpback
 774-557,humpback
 774-558,humpback
+775-0,calibration
+775-1,calibration
 775-1828,flow noise
 775-1829,flow noise
 775-1830,flow noise
@@ -8449,6 +8907,8 @@ vggish_point,label
 775-1872,flow noise
 775-1873,flow noise
 775-1874,flow noise
+778-0,calibration
+778-1,calibration
 778-134,mooring
 778-135,mooring
 778-136,mooring
@@ -8457,6 +8917,8 @@ vggish_point,label
 778-178,humpback
 778-179,humpback
 778-180,humpback
+78-0,calibration
+78-1,calibration
 78-127,humpback
 78-128,humpback
 78-129,humpback
@@ -8556,6 +9018,8 @@ vggish_point,label
 78-996,humpback
 78-997,humpback
 78-998,humpback
+785-0,calibration
+785-1,calibration
 785-1029,helicopter
 785-1030,helicopter
 785-1031,helicopter
@@ -8607,6 +9071,8 @@ vggish_point,label
 785-983,mooring
 785-984,mooring
 785-985,mooring
+786-0,calibration
+786-1,calibration
 786-500,humpback
 786-501,humpback
 786-527,humpback
@@ -8619,6 +9085,8 @@ vggish_point,label
 786-556,humpback
 786-557,humpback
 786-558,humpback
+789-0,calibration
+789-1,calibration
 789-447,fish
 789-448,fish
 789-449,fish
@@ -8655,12 +9123,16 @@ vggish_point,label
 789-71,fish
 789-72,fish
 789-73,fish
+791-0,calibration
+791-1,calibration
 791-851,humpback
 791-852,humpback
 791-853,humpback
 791-870,humpback
 791-871,humpback
 791-872,humpback
+795-0,calibration
+795-1,calibration
 795-1010,mooring
 795-1011,mooring
 795-1012,mooring
@@ -8721,6 +9193,8 @@ vggish_point,label
 795-422,fish
 795-423,fish
 795-424,fish
+804-0,calibration
+804-1,calibration
 804-1503,fish
 804-1504,fish
 804-1505,fish
@@ -8748,6 +9222,8 @@ vggish_point,label
 804-1554,flow noise
 804-1555,flow noise
 804-1556,flow noise
+805-0,calibration
+805-1,calibration
 805-1626,flow noise
 805-1627,flow noise
 805-1628,flow noise
@@ -8766,6 +9242,8 @@ vggish_point,label
 805-1681,humpback
 805-1682,humpback
 805-1683,humpback
+810-0,calibration
+810-1,calibration
 810-639,fish
 810-640,fish
 810-641,fish
@@ -8788,6 +9266,8 @@ vggish_point,label
 810-675,humpback
 810-676,humpback
 810-677,humpback
+811-0,calibration
+811-1,calibration
 811-1273,flow noise
 811-1274,flow noise
 811-1275,flow noise
@@ -8798,6 +9278,8 @@ vggish_point,label
 811-1280,flow noise
 811-1305,mooring
 811-1306,mooring
+813-0,calibration
+813-1,calibration
 813-1564,humpback
 813-1565,humpback
 813-1566,humpback
@@ -8845,6 +9327,8 @@ vggish_point,label
 813-1615,humpback
 813-1616,humpback
 813-1617,humpback
+816-0,calibration
+816-1,calibration
 816-205,flow noise
 816-206,flow noise
 816-207,flow noise
@@ -8895,6 +9379,8 @@ vggish_point,label
 816-923,mooring
 816-924,mooring
 816-925,mooring
+821-0,calibration
+821-1,calibration
 821-1613,helicopter
 821-1614,helicopter
 821-1615,helicopter
@@ -8905,6 +9391,8 @@ vggish_point,label
 821-1620,helicopter
 821-1621,helicopter
 821-1622,helicopter
+828-0,calibration
+828-1,calibration
 828-379,mooring
 828-380,mooring
 828-381,flow noise-mooring
@@ -8966,6 +9454,8 @@ vggish_point,label
 828-491,mooring
 828-492,mooring
 828-493,mooring
+831-0,calibration
+831-1,calibration
 831-1501,humpback
 831-1502,humpback
 831-1522,humpback
@@ -8974,6 +9464,8 @@ vggish_point,label
 831-1542,humpback
 831-1543,humpback
 831-1544,humpback
+832-0,calibration
+832-1,calibration
 832-1135,mooring
 832-1136,mooring
 832-1137,mooring
@@ -8986,6 +9478,8 @@ vggish_point,label
 832-626,humpback
 832-627,humpback
 832-628,humpback
+841-0,calibration
+841-1,calibration
 841-1626,mooring
 841-1627,mooring
 841-1628,mooring
@@ -9028,6 +9522,8 @@ vggish_point,label
 841-734,mooring
 841-743,mooring
 841-744,mooring
+842-0,calibration
+842-1,calibration
 842-155,fish
 842-156,fish
 842-157,fish
@@ -9061,6 +9557,8 @@ vggish_point,label
 842-185,fish
 842-186,fish
 842-187,fish
+845-0,calibration
+845-1,calibration
 845-1250,flow noise
 845-1251,flow noise
 845-1252,flow noise
@@ -9172,10 +9670,14 @@ vggish_point,label
 845-685,flow noise
 845-686,flow noise
 845-687,flow noise
+849-0,calibration
+849-1,calibration
 849-1610,mooring
 849-1611,mooring
 849-1612,mooring
 849-1613,mooring
+85-0,calibration
+85-1,calibration
 85-1065,flow noise
 85-1066,flow noise
 85-1067,flow noise
@@ -9213,6 +9715,8 @@ vggish_point,label
 85-1113,flow noise
 85-1114,flow noise
 85-1115,flow noise
+856-0,calibration
+856-1,calibration
 856-1016,mooring
 856-1017,mooring
 856-1018,mooring
@@ -9233,6 +9737,8 @@ vggish_point,label
 856-1049,mooring
 856-1050,mooring
 856-1051,mooring
+859-0,calibration
+859-1,calibration
 859-20,mooring
 859-21,mooring
 859-22,mooring
@@ -9242,6 +9748,8 @@ vggish_point,label
 859-40,mooring
 859-41,mooring
 859-42,mooring
+860-0,calibration
+860-1,calibration
 860-197,mooring
 860-198,mooring
 860-199,mooring
@@ -9258,11 +9766,15 @@ vggish_point,label
 860-222,mooring
 860-223,mooring
 860-224,mooring
+862-0,calibration
+862-1,calibration
 862-74,flow noise
 862-75,flow noise
 862-76,flow noise
 862-77,flow noise
 862-78,flow noise
+864-0,calibration
+864-1,calibration
 864-17,humpback
 864-18,humpback
 864-19,humpback
@@ -9270,6 +9782,8 @@ vggish_point,label
 864-47,humpback
 864-48,humpback
 864-49,humpback
+866-0,calibration
+866-1,calibration
 866-1313,mooring
 866-1314,mooring
 866-1315,mooring
@@ -9282,6 +9796,8 @@ vggish_point,label
 866-1346,mooring
 866-1347,mooring
 866-1348,mooring
+871-0,calibration
+871-1,calibration
 871-688,humpback
 871-689,humpback
 871-690,humpback
@@ -9309,10 +9825,14 @@ vggish_point,label
 871-747,humpback
 871-748,humpback
 871-749,humpback
+875-0,calibration
+875-1,calibration
 875-1866,mooring
 875-1867,mooring
 875-1868,mooring
 875-1869,mooring
+883-0,calibration
+883-1,calibration
 883-100,flow noise
 883-101,flow noise
 883-102,flow noise
@@ -9379,6 +9899,8 @@ vggish_point,label
 883-97,humpback
 883-98,flow noise
 883-99,flow noise
+886-0,calibration
+886-1,calibration
 886-1191,flow noise
 886-1192,flow noise
 886-1193,flow noise
@@ -9433,6 +9955,8 @@ vggish_point,label
 886-1247,flow noise
 886-1248,flow noise
 886-1249,flow noise
+891-0,calibration
+891-1,calibration
 891-1647,flow noise
 891-1648,flow noise
 891-1649,flow noise
@@ -9454,6 +9978,8 @@ vggish_point,label
 891-1672,flow noise
 891-1673,flow noise
 891-1674,flow noise
+893-0,calibration
+893-1,calibration
 893-956,helicopter
 893-957,helicopter
 893-958,helicopter
@@ -9468,6 +9994,8 @@ vggish_point,label
 893-967,helicopter
 893-968,helicopter
 893-969,helicopter
+894-0,calibration
+894-1,calibration
 894-762,mooring
 894-763,mooring
 894-764,mooring
@@ -9489,6 +10017,8 @@ vggish_point,label
 894-795,flow noise
 894-796,flow noise
 894-797,flow noise
+897-0,calibration
+897-1,calibration
 897-1129,mooring
 897-1130,mooring
 897-1131,mooring
@@ -9501,6 +10031,8 @@ vggish_point,label
 897-1175,mooring
 897-1176,mooring
 897-1177,mooring
+923-0,calibration
+923-1,calibration
 923-317,humpback
 923-318,humpback
 923-319,humpback
@@ -9545,6 +10077,8 @@ vggish_point,label
 923-372,flow noise
 923-373,flow noise
 923-374,flow noise
+924-0,calibration
+924-1,calibration
 924-125,humpback
 924-126,humpback
 924-127,humpback
@@ -9584,6 +10118,8 @@ vggish_point,label
 924-177,humpback
 924-178,humpback
 924-179,humpback
+925-0,calibration
+925-1,calibration
 925-1635,airplane
 925-1636,airplane
 925-1637,airplane
@@ -9595,6 +10131,8 @@ vggish_point,label
 925-1643,airplane
 925-1644,airplane
 925-1645,airplane
+926-0,calibration
+926-1,calibration
 926-1062,flow noise
 926-1063,flow noise
 926-1064,flow noise
@@ -9796,12 +10334,16 @@ vggish_point,label
 926-241,flow noise
 926-242,flow noise
 926-243,flow noise
+93-0,calibration
+93-1,calibration
 93-762,flow noise
 93-763,flow noise
 93-764,flow noise
 93-765,flow noise
 93-794,mooring
 93-795,mooring
+932-0,calibration
+932-1,calibration
 932-1625,fish-humpback
 932-1626,fish-humpback
 932-1627,fish-humpback
@@ -9843,6 +10385,8 @@ vggish_point,label
 932-1676,fish-humpback
 932-1677,fish-humpback
 932-1678,fish-humpback
+935-0,calibration
+935-1,calibration
 935-291,fish
 935-292,fish
 935-293,fish
@@ -9855,6 +10399,8 @@ vggish_point,label
 935-300,fish
 935-301,fish-humpback
 935-302,humpback
+943-0,calibration
+943-1,calibration
 943-813,flow noise
 943-814,flow noise
 943-815,flow noise
@@ -9876,6 +10422,8 @@ vggish_point,label
 943-842,flow noise
 943-843,flow noise
 943-844,flow noise
+947-0,calibration
+947-1,calibration
 947-1312,humpback
 947-1313,humpback
 947-1314,humpback
@@ -9917,6 +10465,8 @@ vggish_point,label
 947-1368,humpback
 947-1369,humpback
 947-1370,humpback
+951-0,calibration
+951-1,calibration
 951-437,flow noise-humpback
 951-438,flow noise-humpback
 951-439,flow noise-humpback
@@ -9969,6 +10519,8 @@ vggish_point,label
 951-491,flow noise
 951-492,flow noise
 951-493,flow noise
+957-0,calibration
+957-1,calibration
 957-1690,flow noise-humpback
 957-1691,flow noise-humpback
 957-1692,flow noise-humpback
@@ -10007,6 +10559,8 @@ vggish_point,label
 957-1746,humpback
 957-1747,humpback
 957-1748,humpback
+965-0,calibration
+965-1,calibration
 965-500,humpback
 965-501,humpback
 965-502,humpback
@@ -10041,6 +10595,8 @@ vggish_point,label
 965-558,humpback
 965-559,humpback
 965-560,humpback
+968-0,calibration
+968-1,calibration
 968-1750,humpback
 968-1751,humpback
 968-1752,humpback
@@ -10083,6 +10639,8 @@ vggish_point,label
 968-1809,airplane
 968-1810,airplane
 968-1811,airplane
+97-0,calibration
+97-1,calibration
 97-522,fish
 97-523,fish
 97-524,fish
@@ -10102,6 +10660,8 @@ vggish_point,label
 97-556,flow noise
 97-557,flow noise
 97-558,flow noise
+975-0,calibration
+975-1,calibration
 975-1187,humpback
 975-1188,humpback
 975-1189,humpback-mooring
@@ -10158,6 +10718,8 @@ vggish_point,label
 975-1246,humpback
 975-1248,humpback
 975-1249,humpback
+980-0,calibration
+980-1,calibration
 980-1375,flow noise
 980-1376,flow noise
 980-1377,flow noise
@@ -10323,6 +10885,8 @@ vggish_point,label
 980-549,flow noise
 980-550,flow noise
 980-551,flow noise
+982-0,calibration
+982-1,calibration
 982-1437,flow noise
 982-1438,flow noise
 982-1439,flow noise
@@ -10389,6 +10953,8 @@ vggish_point,label
 982-747,flow noise
 982-748,flow noise
 982-749,flow noise
+986-0,calibration
+986-1,calibration
 986-628,humpback
 986-629,humpback
 986-632,humpback
@@ -10420,6 +10986,8 @@ vggish_point,label
 986-677,humpback
 986-682,humpback
 986-683,humpback
+993-0,calibration
+993-1,calibration
 993-570,humpback
 993-571,humpback
 993-572,humpback
