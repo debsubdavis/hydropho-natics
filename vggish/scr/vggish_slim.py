@@ -32,9 +32,10 @@ https://github.com/tensorflow/models/blob/master/research/slim/nets/vgg.py
 
 import tensorflow.compat.v1 as tf
 import tf_slim as slim
-
-from . import vggish_params as params
-#import vggish_params as params
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__)))
+import vggish_params as params
 
 
 def define_vggish_slim(features_tensor=None, training=False):

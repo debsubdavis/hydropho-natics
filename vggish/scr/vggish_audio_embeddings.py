@@ -53,13 +53,11 @@ import tensorflow.compat.v1 as tf
 import os
 import pandas as pd
 import argparse
-
-from . import vggish_input
-from . import vggish_params
-from . import vggish_slim
-#import vggish_input
-#import vggish_params
-#import vggish_slim
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__)))
+import vggish_input
+import vggish_params
+import vggish_slim
 
 def get_inputs():
   """
@@ -121,8 +119,8 @@ def main(_):
     N csv, one per input wav files, stored in the save_path. The csv will have 
     128 columns corresponding to the 128-dimensional embedding, a column for
     the wav filename which generated an embedding, the example number (an
-    example is  0.96 seconds of audio. The first 0.96 seconds embedded is
-    example 0, the next 0.96 seconds are example 1, etc.), a column
+    example is N seconds of audio. The first N seconds embedded is
+    example 0, the next N seconds are example 1, etc.), a column
     approximating the example start time, and a column approximating the
     example stop time.
   """
@@ -130,6 +128,11 @@ def main(_):
   wav_path = args.wav_path
   save_path = args.save_path
   vggish_checkpoint = args.vggish_checkpoint
+  #Adding '/' to the end of the wav_path & save_path if they don't have one already
+  if wav_path[:-1] != '/':
+    wav_path = wav_path+'/'
+  if save_path[:-1] != '/':
+    save_path = save_path+'/'
   # Create a list of wav files from the user-input path
   file_list = [wav_path+file for file in os.listdir(wav_path) if file.endswith('.wav')]
   if len(file_list) <= 0:
@@ -165,7 +168,7 @@ def main(_):
       embedding_df['recording_stop_s'] = (embedding_df['example_number'] + 1) * vggish_params.EXAMPLE_WINDOW_SECONDS
       
       # Save the embedding and sample information to a csv file
-      embedding_df.to_csv(save_path+wav_filename+'.csv')
+      embedding_df.to_csv(save_path+wav_filename+'.csv',index=False)
     print("Embeddings created and saved")
 
 if __name__ == '__main__':

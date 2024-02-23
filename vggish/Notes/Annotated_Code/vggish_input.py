@@ -75,9 +75,9 @@ def waveform_to_examples(data, sample_rate):
   example_hop_length = int(round(
       vggish_params.EXAMPLE_HOP_SECONDS * features_sample_rate))
   log_mel_examples = mel_features.frame(
-      log_mel,
-      window_length=example_window_length,
-      hop_length=example_hop_length)
+      log_mel, #frames x mel_bins
+      window_length=example_window_length, #0.96*100
+      hop_length=example_hop_length) #0.96*100
   return log_mel_examples
 
 

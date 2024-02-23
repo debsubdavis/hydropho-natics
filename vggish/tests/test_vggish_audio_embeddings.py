@@ -104,8 +104,8 @@ class TestMain(unittest.TestCase):
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
-                wav_path = './bad_path',
-                vggish_checkpoint = 'vggish_model.ckpt',
+                wav_path = './vggish/scr',
+                vggish_checkpoint = './vggish/scr/vggish_model.ckpt',
                 save_path = './vggish/tests/'
             ))
     def test_no_wav_files(self, mock_parse_args):
@@ -116,7 +116,9 @@ class TestMain(unittest.TestCase):
         with self.assertRaises(TypeError):
             vggish_audio_embeddings.main(mock_parse_args)
 
-    #The following code is used for local testing only
+    #The following tests are for local running only due to
+    #necessary download of huge checkpoint file which we 
+    #don't want in our test environment
     '''patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
                 wav_path = './vggish/tests/',
@@ -141,8 +143,91 @@ class TestMain(unittest.TestCase):
         self.assertEqual(len(output_csv), int(wav_file_length))
 
         #Remove the csv file after we're done testing it
-        os.remove(embedding_file_path)'''
+        os.remove(embedding_file_path)
+    
+    @patch('argparse.ArgumentParser.parse_args',
+            return_value = argparse.Namespace(
+                wav_path = './vggish/tests',
+                vggish_checkpoint = './vggish/scr/vggish_model.ckpt',
+                save_path = './vggish/tests/'
+            ))
+    def test_wav_no_slash(self, mock_parse_args):
+        """
+        Test that the code runs when there is no '/' in the wav path
+        """
+        #Running the model
+        vggish_audio_embeddings.main(None)
 
+        #Checking if the file exists
+        embedding_file_path = './vggish/tests/sample_wav.csv'
+        self.assertTrue(os.path.exists(embedding_file_path))
+
+        #Remove the csv file after we're done testing it
+        os.remove(embedding_file_path)
+
+
+    @patch('argparse.ArgumentParser.parse_args',
+            return_value = argparse.Namespace(
+                wav_path = './vggish/tests/',
+                vggish_checkpoint = './vggish/scr/vggish_model.ckpt',
+                save_path = './vggish/tests'
+            ))
+    def test_save_no_slash(self, mock_parse_args):
+        """
+        Test that the code runs when there is no '/' in the save path
+        """
+        #Running the model
+        vggish_audio_embeddings.main(None)
+
+        #Checking if the file exists
+        embedding_file_path = './vggish/tests/sample_wav.csv'
+        self.assertTrue(os.path.exists(embedding_file_path))
+
+        #Remove the csv file after we're done testing it
+        os.remove(embedding_file_path)
+
+
+    @patch('argparse.ArgumentParser.parse_args',
+            return_value = argparse.Namespace(
+                wav_path = './vggish/tests',
+                vggish_checkpoint = './vggish/scr/vggish_model.ckpt',
+                save_path = './vggish/tests'
+            ))
+    def test_both_no_slash(self, mock_parse_args):
+        """
+        Test that the code runs when there is no '/'in either save or wav path
+        """
+        #Running the model
+        vggish_audio_embeddings.main(None)
+
+        #Checking if the file exists
+        embedding_file_path = './vggish/tests/sample_wav.csv'
+        self.assertTrue(os.path.exists(embedding_file_path))
+
+        #Remove the csv file after we're done testing it
+        os.remove(embedding_file_path)
+
+
+    @patch('argparse.ArgumentParser.parse_args',
+            return_value = argparse.Namespace(
+                wav_path = './vggish/tests/',
+                vggish_checkpoint = './vggish/scr/vggish_model.ckpt',
+                save_path = './vggish/tests/'
+            ))
+    def test_both_slash(self, mock_parse_args):
+        """
+        Test that the code runs when there is '/' in both paths
+        """
+        #Running the model
+        vggish_audio_embeddings.main(None)
+
+        #Checking if the file exists
+        embedding_file_path = './vggish/tests/sample_wav.csv'
+        self.assertTrue(os.path.exists(embedding_file_path))
+
+        #Remove the csv file after we're done testing it
+        os.remove(embedding_file_path)
+        '''
 
 if __name__ == '__main__':
     unittest.main()

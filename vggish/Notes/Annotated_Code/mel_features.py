@@ -18,7 +18,9 @@
 import numpy as np
 
 
-def frame(data, window_length, hop_length):
+def frame(data, #resampled wav, frames x mel_bins
+          window_length, #400 samples, 0.96*100 (96)
+          hop_length): #160 samples, 0.96*100 (96)
   """Convert array into a sequence of successive possibly overlapping frames.
 
   An n-dimensional array of shape (num_samples, ...) is converted into an
@@ -38,14 +40,14 @@ def frame(data, window_length, hop_length):
     (N+1)-D np.array with as many rows as there are complete frames that can be
     extracted.
   """
-  num_samples = data.shape[0] #how many samples there are in the data
-  num_frames = 1 + int(np.floor((num_samples - window_length) / hop_length)) #
+  num_samples = data.shape[0] #data samples, frames
+  num_frames = 1 + int(np.floor((num_samples - window_length) / hop_length))
   shape = (num_frames, window_length) + data.shape[1:] #don't think the data.shape does anything when first called for spectrogram b/c data is 1-D
   strides = (data.strides[0] * hop_length,) + data.strides
   return np.lib.stride_tricks.as_strided(data, shape=shape, strides=strides)
 
 
-def periodic_hann(window_length):
+def periodic_hann(window_length): #400 samples
   """Calculate a "periodic" Hann window.
 
   The classic Hann window is defined as a raised cosine that starts and
@@ -72,9 +74,10 @@ def periodic_hann(window_length):
 #cosine-d array
 
 
-def stft_magnitude(signal, fft_length,
-                   hop_length=None,
-                   window_length=None):
+def stft_magnitude(signal, #previously called data, resampled wav
+                   fft_length, #512 samples - 2 ** int(np.ceil(np.log(window_length_samples) / np.log(2.0)))
+                   hop_length=None, #160 samples
+                   window_length=None): #400 samples
   """Calculate the short-time Fourier transform magnitude.
 
   Args:
@@ -115,11 +118,11 @@ def hertz_to_mel(frequencies_hertz):
       1.0 + (frequencies_hertz / _MEL_BREAK_FREQUENCY_HERTZ))
 
 
-def spectrogram_to_mel_matrix(num_mel_bins=20,
-                              num_spectrogram_bins=129,
-                              audio_sample_rate=8000,
-                              lower_edge_hertz=125.0,
-                              upper_edge_hertz=3800.0):
+def spectrogram_to_mel_matrix(num_mel_bins=20, #64 standard
+                              num_spectrogram_bins=129, #257 standard
+                              audio_sample_rate=8000, #16000 standard
+                              lower_edge_hertz=125.0, #125 standard
+                              upper_edge_hertz=3800.0): #7500 standard
   """Return a matrix that can post-multiply spectrogram rows to make mel.
 
   Returns a np.array matrix A that can be used to post-multiply a matrix S of
@@ -194,11 +197,11 @@ def spectrogram_to_mel_matrix(num_mel_bins=20,
 
 
 def log_mel_spectrogram(data,
-                        audio_sample_rate=8000,
-                        log_offset=0.0,
-                        window_length_secs=0.025,
-                        hop_length_secs=0.010,
-                        **kwargs):
+                        audio_sample_rate=8000, #16000
+                        log_offset=0.0, #0.01
+                        window_length_secs=0.025, #0.025
+                        hop_length_secs=0.010, #0.01
+                        **kwargs): #64 mel bins, 125 lower_edge_hertz, 7500 upper_edge_hertz
   """Convert waveform to a log magnitude mel-frequency spectrogram.
 
   Args:
@@ -222,6 +225,7 @@ def log_mel_spectrogram(data,
       hop_length=hop_length_samples, #160 samples
       window_length=window_length_samples) #400 samples
   mel_spectrogram = np.dot(spectrogram, spectrogram_to_mel_matrix(
-      num_spectrogram_bins=spectrogram.shape[1],
-      audio_sample_rate=audio_sample_rate, **kwargs))
+      num_spectrogram_bins=spectrogram.shape[1], #257 (from fft)
+      audio_sample_rate=audio_sample_rate, #16000
+      **kwargs)) #64 mel bins, 125 lower_edge_hertz, 7500 upper_edge_hertz
   return np.log(mel_spectrogram + log_offset)
