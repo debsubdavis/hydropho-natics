@@ -17,18 +17,21 @@ def parse_opt():
     parser.add_argument('--lr0', type=float, default=0.01, help='Initial Learning Rate')
     parser.add_argument('--iou', type=float, default=0.3, help='IoU')
     parser.add_argument('--dropout', type=float, default=0.2, help='Dropout')
+    #parser.add_argument('--model', type=str, default="yolov8m.pt", help='Model')
     return parser.parse_args()
 
 def train_model(opt):
     print("Training options:", opt)
 
     device = torch.device('cpu')
+    #model = YOLO("yolov8m.pt").to(device)
     model = YOLO().to(device)
 
     # Here, assume 'data.yaml' is available in the --data_dir directory.
     # You might need to adjust the dataset configuration accordingly.
     model.train(
         data=f"{opt.data_dir}/data.yaml",
+        # model=opt.model,
         pretrained=opt.pretrained,
         batch=opt.batch_size,
         imgsz=opt.img_size,

@@ -22,27 +22,31 @@ def submit_hp_tuning_job(ml_client, exp_name, exp_display_name, compute_name, ma
         #limits=SweepJobLimits(max_total_trials=20, max_concurrent_trials=4, trial_timeout=3600),
         limits=SweepJobLimits(max_concurrent_trials=max_concurrent_trials, trial_timeout=14400),
         search_space=dict(
-            batch_size=Choice([8, 16, 32]),
+            batch_size=Choice([16]),
             lr0=Choice([0.01, 0.001]),
+            optimizer=Choice(["Adam", "SGD"]),
             #iou=Choice([0.3, 0.5]),
-            #dropout=Choice([0.2, 0.5])
+            dropout=Choice([0.2])
         ),
         trial=CommandJob(
             code="/Users/debbiesubocz/GitReps/hydropho-natics/one_minus/hyd_yolo_training/azure_trng_jobs",  # Adjust to the actual path of your training script
-            command="python train_model.py --data_dir ${{inputs.data_dir}} --exp_name ${{inputs.exp_name}} --epochs ${{inputs.epochs}} --patience ${{inputs.patience}} --pretrained ${{inputs.pretrained}} --optimizer ${{inputs.optimizer}} --iou ${{inputs.iou}}",
+            command="python train_model.py --data_dir ${{inputs.data_dir}} --exp_name ${{inputs.exp_name}} --epochs ${{inputs.epochs}} --patience ${{inputs.patience}} --pretrained ${{inputs.pretrained}} --iou ${{inputs.iou}}",
             environment=ml_studio_env,
             inputs=dict(
                 data_dir=Input(
                     type=AssetTypes.URI_FOLDER,
-                    path="azureml://subscriptions/8f00e0d7-79c6-4b37-bfea-a3b9362bd229/resourcegroups/yolov8-models/workspaces/testing/datastores/minus_iter_3/paths/minus-iter-3-WITHOUT-miw/"
+                    path="azureml://subscriptions/8f00e0d7-79c6-4b37-bfea-a3b9362bd229/resourcegroups/yolov8-models/workspaces/testing/datastores/minus_iter_2/paths/without-mooring/",
+                    # path="azureml://subscriptions/8f00e0d7-79c6-4b37-bfea-a3b9362bd229/resourcegroups/yolov8-models/workspaces/testing/datastores/minus_iter_3/paths/minus-iter-3-WITHOUT-miw/"
                     # path="azureml://subscriptions/8f00e0d7-79c6-4b37-bfea-a3b9362bd229/resourcegroups/yolov8-models/workspaces/yolov8-hyp-tuning/datastores/one_iter_1/paths/one-without-mooring/"
                 ),
-                pretrained=Input(
-                    type=AssetTypes.URI_FILE,
-                    path="azureml://subscriptions/8f00e0d7-79c6-4b37-bfea-a3b9362bd229/resourcegroups/yolov8-models/workspaces/testing/datastores/minus_iter_2/paths/without-mooring/best.pt"
-                ),
-                optimizer="SGD",
-                iou=0.5,
+                # pretrained=Input(
+                #     type=AssetTypes.URI_FILE,
+                #     path="azureml://subscriptions/8f00e0d7-79c6-4b37-bfea-a3b9362bd229/resourcegroups/yolov8-models/workspaces/testing/datastores/minus_iter_2/paths/without-mooring/best.pt"
+                # ),
+
+                pretrained="yolov8m.pt",
+                optimizer="Adam",
+                iou=0.3,
                 exp_name=exp_name,
                 epochs=200,
                 patience=50
@@ -64,7 +68,7 @@ if __name__ == '__main__':
     experiment_name = "MINUS-iter3-hyp-tuning-200"
     experiment_display_name = "MINUS iter3 hyp tuning 200 epochs"
     max_conc_trials = 6
-    azureml_compute_name = "cluster1"
+    azureml_compute_name = "cluster2"
     ml_studio_env = "yolo_env:1"
 
     ml_client = conn_ml_wksp(subscription_id, resource_group, workspace)
