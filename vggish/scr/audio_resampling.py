@@ -65,7 +65,7 @@ def get_inputs():
 
 def main():
     """
-    This function actually performs audio resampling using the librosa library.
+    This function performs audio resampling using the librosa library.
     It will resample and output the wav files as a signed 16-bit PCM mono
     wav file.
 
