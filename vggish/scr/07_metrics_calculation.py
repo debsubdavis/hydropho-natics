@@ -90,11 +90,11 @@ def known_confusion_matrix_calc(cluster_df, annotations_csv, output_heatmap):
     plt.close()
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Reduce the dimensions of embeddings to 2D and save the result.")
-    parser.add_argument("input_csv", help="Input CSV file containing reduced embeddings from tsne or umap")
-    parser.add_argument("num_clusters", help="Number of clusters acquired from the dimensionality reduction process")
-    parser.add_argument("annotations_csv", help="Input CSV file containing the annotations for the identification numbers")
-    parser.add_argument("output_heatmap", help="Output heatmap file to save the heatmap")
+    parser = argparse.ArgumentParser(description="Calculate the goodness of dimensionality reduction & clustering metrics")
+    parser.add_argument("--input_csv", help="Input CSV file containing reduced embeddings from tsne or umap")
+    parser.add_argument("--num_clusters", help="Number of clusters acquired from the dimensionality reduction process")
+    parser.add_argument("--annotations_csv", help="Input CSV file containing the annotations for the identification numbers")
+    parser.add_argument("--output_heatmap", help="Output heatmap file to save the heatmap")
 
     args = parser.parse_args()
 

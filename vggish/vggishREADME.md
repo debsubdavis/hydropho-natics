@@ -69,7 +69,18 @@ Audio embeddings will be saved as csv files (1 csv per wav file) in the specifie
 
 
 ### IV. Perform dimensionality reduction and clustering
-1. @Saumya - please add after finishing clustering module.
+1. To cluster the embeddings and identify like sounds we first need to combine all CSV embedding files output by VGGish. Do so programmatically by running the following command from the scr directory:
+      $ python 04_combine_csv_files.py --folder_path path/to/vggish/output/csvs/ --output_file_path file/path/combined_csv_name.csv
+2. Next we preprocess the combined embedding file. Each embedding is given a unique identifier based on its wav file name and sequential order e.g., the first N second embeding from the first wav file would be 1-0. The following command is run from the scr directory.
+      $ python 05_preprocess_embeddings.py --input_csv path/to/combined/embedding/csv/combined_csv_name.csv --output_csv path/to/preprocessed/embeddings/preprocessed_csv_name.csv --mapping_csv /path/to/output/mapping/file/mapping_file.csv
+3. We tested two methods of dimensionality reduction to take the embeddings from 128-D to 2-D for visuaslization and clustering purposes. t-SNE had the best results based on our metrics (scripts to run metrics in step 4 below). The t-SNE script can be run using the following command from the scr directory. It outputs 1 row per embedding with the id number and x and y coordinate:
+      $ python 06_tsne_process.py --input_csv path/to/preprocessed/embeddings/preprocessed_csv_name.csv --output_csv path/to/reduced/embeddings/tsne_csv.csv
+If you would like to run UMAP dimensionality reduction rather than t-SNE on the 128-D embeddings, run the following command from the scr directory:
+      $ python umap_process.py --input_csv path/to/preprocessed/embeddings/preprocessed_csv_name.csv --output_csv path/to/reduced/embeddings/umap_csv.csv
+4. We used Silhouette score and a custom "density of known sounds per cluster" metric to assess goodness of dimensionality reduction and clustering. More information on the density of known sounds per cluster can be found in the VGGish_report file in the vggish directory. To calculate the Silhouette score and create a heatmap with the density of known sound run the following command from the scr directory:
+      $ python 
+
+
 
 
 ## Data Files Created
@@ -78,3 +89,14 @@ Audio embeddings will be saved as csv files (1 csv per wav file) in the specifie
 
 ### Embedding CSV Files
 \*.csv - These csv files contain the embeddings output from the VGGish model plus the numerical name of the recording file, what example number of the embedding, start time in seconds of the example, and end time in seconds for the example.
+
+### Combined Embedding CSV File
+
+### Cleaned Combined Embedding CSV File
+
+### Mapping CSV File
+
+### Reduced Combined Embedding CSV File
+#### t-SNE
+#### UMAP
+

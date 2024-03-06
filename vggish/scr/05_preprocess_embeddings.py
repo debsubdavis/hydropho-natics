@@ -43,9 +43,9 @@ def preprocess(input_csv, output_csv, mapping_csv):
 if __name__ == "__main__":
     # Parse command-line arguments
     parser = argparse.ArgumentParser(description="Preprocess the input CSV file containing embeddings.")
-    parser.add_argument("input_csv", help="Input CSV file containing embeddings")
-    parser.add_argument("output_csv", help="Output CSV file to save the cleaned embeddings")
-    parser.add_argument("mapping_csv", help="Mapping CSV file to save the WAV file to identification number mapping")
+    parser.add_argument("--input_csv", help="Input CSV file containing embeddings")
+    parser.add_argument("--output_csv", help="Output CSV file to save the cleaned embeddings")
+    parser.add_argument("--mapping_csv", help="Mapping CSV file to save the WAV file to identification number mapping")
 
     args = parser.parse_args()
 

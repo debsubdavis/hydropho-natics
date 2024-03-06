@@ -3,13 +3,13 @@ import argparse
 import pandas as pd
 from tqdm import tqdm
 
-def combine_csv_files(folder_path, output_file):
+def combine_csv_files(folder_path, output_file_path):
     """
     Combines multiple CSV files into a single CSV file.
 
     Args:
     folder_path (str): Path to the folder containing CSV files.
-    output_file (str): Output file to save the combined CSV data.
+    output_file_path (str): Output file to save the combined CSV data.
     """
 
     # Get a list of CSV files in the specified folder
@@ -30,17 +30,17 @@ def combine_csv_files(folder_path, output_file):
         combined_df = pd.concat([combined_df, df], ignore_index=True)
 
     # Save the combined data to the output CSV file
-    combined_df.to_csv(output_file, index=False)
-    print(f"Combined data saved to {output_file}")
+    combined_df.to_csv(output_file_path, index=False)
+    print(f"Combined data saved to {output_file_path}")
 
 if __name__ == "__main__":
     # Parse command-line arguments
     parser = argparse.ArgumentParser(description="Combine multiple CSV files into a single CSV file.")
-    parser.add_argument("folder_path", help="Path to the folder containing CSV files")
-    parser.add_argument("output_file", help="Output file to save the combined CSV data")
+    parser.add_argument("--folder_path", help="Path to the folder containing CSV files")
+    parser.add_argument("--output_file_path", help="Output file with path to save the combined CSV data")
     args = parser.parse_args()
 
     # Call the function to combine CSV files
-    combine_csv_files(args.folder_path, args.output_file)
+    combine_csv_files(args.folder_path, args.output_file_path)
 
 

@@ -12,8 +12,11 @@ dependencies:
   - pip:
       - pyspark==3.5
       - librosa==0.10
+      - umap-learn
       - resampy==0.4
       - tensorflow==2.15
       - tf-slim==1.1
+      - tqdm==4.66
       - six==1.16
+      - scikit-learn
       - soundfile==0.12.1
