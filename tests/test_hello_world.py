@@ -5,7 +5,7 @@ This module contains tests for the hello_world module.
 import sys
 import os
 import unittest
-sys.path.append(os.path.join(os.path.dirname(__file__), "../"))
+sys.path.append(os.path.join(os.path.dirname(__file__)))
 
 
 class TestHelloWorld(unittest.TestCase):
