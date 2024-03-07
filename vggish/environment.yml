@@ -17,6 +17,7 @@ dependencies:
       - tensorflow==2.15
       - tf-slim==1.1
       - tqdm==4.66
+      - seaborn
       - six==1.16
       - scikit-learn
       - soundfile==0.12.1

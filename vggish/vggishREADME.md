@@ -73,12 +73,17 @@ Audio embeddings will be saved as csv files (1 csv per wav file) in the specifie
       $ python 04_combine_csv_files.py --folder_path path/to/vggish/output/csvs/ --output_file_path file/path/combined_csv_name.csv
 2. Next we preprocess the combined embedding file. Each embedding is given a unique identifier based on its wav file name and sequential order e.g., the first N second embeding from the first wav file would be 1-0. The following command is run from the scr directory.
       $ python 05_preprocess_embeddings.py --input_csv path/to/combined/embedding/csv/combined_csv_name.csv --output_csv path/to/preprocessed/embeddings/preprocessed_csv_name.csv --mapping_csv /path/to/output/mapping/file/mapping_file.csv
-3. We tested two methods of dimensionality reduction to take the embeddings from 128-D to 2-D for visuaslization and clustering purposes. t-SNE had the best results based on our metrics (scripts to run metrics in step 4 below). The t-SNE script can be run using the following command from the scr directory. It outputs 1 row per embedding with the id number and x and y coordinate:
+3. We tested two methods of dimensionality reduction to take the embeddings from 128-D to 2-D for visuaslization and clustering purposes. t-SNE had the best results based on our metrics (see step 6 below). The t-SNE script can be run using the following command from the scr directory. It outputs 1 row per embedding with the id number and x and y coordinate:
       $ python 06_tsne_process.py --input_csv path/to/preprocessed/embeddings/preprocessed_csv_name.csv --output_csv path/to/reduced/embeddings/tsne_csv.csv
 If you would like to run UMAP dimensionality reduction rather than t-SNE on the 128-D embeddings, run the following command from the scr directory:
       $ python umap_process.py --input_csv path/to/preprocessed/embeddings/preprocessed_csv_name.csv --output_csv path/to/reduced/embeddings/umap_csv.csv
-4. We used Silhouette score and a custom "density of known sounds per cluster" metric to assess goodness of dimensionality reduction and clustering. More information on the density of known sounds per cluster can be found in the VGGish_report file in the vggish directory. To calculate the Silhouette score and create a heatmap with the density of known sound run the following command from the scr directory:
-      $ python 
+
+*Optional: As part of the 2024 MSDS Capstone project we were given spectrogram annotations stored in a JSON format corresponding to some of the wav files. We used these annotations to label a subset of VGGish embeddings with their annotated sounds. We have included copies of the csvs necessary to execute annotation to embedding mappings in the top level utils folder without rerunning the code (unique_image_annotations.csv, human_readable_annotation_timings.csv, and vggish_0.96_sec_comb_labels.csv). Most researchers likely won't have access to the specific folders required to run the following scripts, but we include the code and steps here as a jumping off point should they wish to do a similar analysis.*
+
+4. Labeling embeddings with known sounds requires running several scripts. These scripts have been specifically tailored to the structure of the hard drive passed to the 2024 MSDS Capstone team. If you have the same hard drive/data structure, start by running all cells in unique_images_annotations.ipynb found in the top level utils directory. This code will output unique_images_annotations.csv which contains only the most recent annotations for each spectrogram image (some images were annotated more than once). We have saved unique_images_annotations.csv in the utils folder so you don't have to run the code to achieve our results.
+5. Next, run the embedding_to_annotation_mapper.ipynb. This will take the unique spectrogram annotations from step 4 and map those known sounds to embedding identification numbers based on the model parameters stored in vggish_params.py. If vggish_params.py is set up to create 0.96 second embeddings, the embedding_to_annotations_mapper will produce 0.96 second embedding mappings. If vggish_params.py is set up to create 2 second embeddings, the embedding_to_annotations_mapper will produce 2 second embedding mappings, and so on. We have saved several such embedding files, vggish_0.96_sec_comb_labels.csv, vggish_2_sec_comb_labels.csv and vggish_5_sec_comb_labels.csv so our results can be replicated without running the code.
+6. We used Silhouette score and a custom "density of known sounds per cluster" metric to assess goodness of dimensionality reduction and clustering. More information on the density of known sounds per cluster can be found in the VGGish_report file in the vggish directory. To calculate the Silhouette score and create a heatmap with the density of known sound run the following command from the scr directory. The number of clusters was printed to the terminal when you ran tSNE or UMAP.
+      $ python 07_metrics_calculation.py --input_csv path/to/reduced_embeddings.csv --num_clusters N --annotations_csv path/to/annotation.csv --output_heatmap path/to/save/heatmap/heatmap.png
 
 
 
@@ -99,4 +104,6 @@ If you would like to run UMAP dimensionality reduction rather than t-SNE on the 
 ### Reduced Combined Embedding CSV File
 #### t-SNE
 #### UMAP
+
+### Heatmap
 
