@@ -83,6 +83,11 @@ def main():
     args = get_inputs()
     wav_path = args.wav_path
     save_path = args.save_path
+    #Adding '/' to the end of the wav_path & save_path if they don't have one already
+    if wav_path[:-1] != '/':
+        wav_path = wav_path+'/'
+    if save_path[:-1] != '/':
+        save_path = save_path+'/'
     target_sample_rate = args.target_sample_rate
     #Get a list of the wav files
     file_list = [wav_path+file for file in os.listdir(wav_path) if file.endswith('.wav')]
