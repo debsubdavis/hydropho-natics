@@ -155,9 +155,9 @@ class TestMain(unittest.TestCase):
 
     @patch('argparse.ArgumentParser.parse_args',
             return_value = argparse.Namespace(
-                wav_path = '../tests/',
+                wav_path = './vggish/tests/',
                 target_sample_rate = 16000,
-                save_path = '../tests/'
+                save_path = './vggish/tests/'
             ))
     def test_correct_resampling(self, mock_parse_args):
         """
@@ -167,7 +167,7 @@ class TestMain(unittest.TestCase):
         audio_resampling.main()
 
         # Checking if the file exists
-        sound_file_path = '../tests/sample_wav_resampled.wav'
+        sound_file_path = './vggish/tests/sample_wav_resampled.wav'
         self.assertTrue(os.path.exists(sound_file_path))
 
         # Reading the sound file using soundfile
