@@ -18,8 +18,9 @@ import os
 from unittest.mock import patch
 import soundfile as sf
 import sys
-sys.path.append(os.path.join(os.path.dirname(__file__), "../")) #puts us in the vggish directory
-from scr import audio_resampling
+sys.path.append(os.path.join(os.path.dirname(__file__), "../scr")) #puts us in the vggish/scr directory
+#from scr import audio_resampling
+audio_resampling = __import__('02_audio_resampling')
 
 
 # pylint:disable=unused-argument; is 'magic' argument allowing mock of user input
@@ -160,8 +161,7 @@ class TestMain(unittest.TestCase):
             ))
     def test_correct_resampling(self, mock_parse_args):
         """
-        Test that the output file from audio_resampling is indeed
-        signed 16-bit PCM, sampled as 16kHz mono
+        Test that the output file is signed 16-bit PCM 16kHz mono
         """
         #Running audio_resampling.py
         audio_resampling.main()

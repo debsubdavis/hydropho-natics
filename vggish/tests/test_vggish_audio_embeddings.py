@@ -18,8 +18,9 @@ import os
 import pandas as pd
 import soundfile as sf
 import sys
-sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
-from scr import vggish_audio_embeddings
+sys.path.append(os.path.join(os.path.dirname(__file__), "../scr")) #puts us in vggish/scr directory
+#from scr import vggish_audio_embeddings
+vggish_audio_embeddings = __import__('03_vggish_audio_embeddings')
 
 
 # pylint:disable=unused-argument; is 'magic' argument allowing mock of user input

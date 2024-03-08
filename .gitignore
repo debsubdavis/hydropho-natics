@@ -1,9 +1,3 @@
-poc/vggish/raw_data/
-poc/vggish/intermediate_data/
-data
-
-
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -167,5 +161,3 @@ cython_debug/
 
 # VGGish files
 vggish/scr/vggish_model.ckpt
-vggish/DELETE_LATER/test_embed_data/*
-vggish/tests/*.wav

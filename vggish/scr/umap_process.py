@@ -24,7 +24,7 @@ def umap_custom(input_csv, output_csv):
         df.drop('Unnamed: 0', axis=1, inplace=True)
         print("Dropped 'Unnamed: 0' column")
     else:
-        print("No 'Unnamed: 0' column found, continuing...")
+        pass
 
     # Extract 'identification_number' column
     identification_numbers = df['identification_number']
@@ -60,8 +60,8 @@ def umap_custom(input_csv, output_csv):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Reduce the dimensions of embeddings to 2D and save the result.")
-    parser.add_argument("input_csv", help="Input CSV file containing embeddings")
-    parser.add_argument("output_csv", help="Output CSV file to save the reduced embeddings")
+    parser.add_argument("--input_csv", help="Input CSV file containing embeddings")
+    parser.add_argument("--output_csv", help="Output CSV file to save the reduced embeddings")
 
     args = parser.parse_args()
 
