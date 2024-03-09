@@ -3,13 +3,17 @@ from azure.identity import DefaultAzureCredential
 from azure.ai.ml import command, Input
 from azure.ai.ml.constants import AssetTypes
 
+# Function to connect to the Azure ML workspace
 def conn_ml_wksp(subscription_id, resource_group, workspace):
+    # Create MLClient object using Azure credentials and workspace details
     ml_client = MLClient(DefaultAzureCredential(), subscription_id, resource_group, workspace)
     print("ml_client:")
     print(ml_client)
     return ml_client
 
+# Function to submit a job to Azure ML
 def submit_job(ml_client, exp_name, disp_name, input_path, compute_instance, ml_studio_env):
+    # Define inputs for the Azure ML job
     job = command(
         inputs=dict(
             data_dir=Input(
@@ -45,23 +49,21 @@ def submit_job(ml_client, exp_name, disp_name, input_path, compute_instance, ml_
     return ml_client.jobs.create_or_update(job)
 
 if __name__ == '__main__':
-    # subscription_id = 'your-subscription-id'
-    # resource_group = 'your-resource-group'
-    # workspace = 'your-workspace-name'
+    # Define Azure subscription and workspace details
     subscription_id = '8f00e0d7-79c6-4b37-bfea-a3b9362bd229'
     resource_group = 'yolov8-models'
     workspace = 'testing'
 
+    # Define compute instance and experiment details
     compute = "cluster2"
-
     experiment_name = "MINUS-iter2-8m.pt"
     display_name = "MINUS-iter2-8m.pt"
-    
     input_path = "azureml:minus_iter_2_data:1"
-
     docker_env = "yolo_env:1"
 
-
+    # Connect to the Azure ML workspace
     ml_client = conn_ml_wksp(subscription_id, resource_group, workspace)
+    
+    # Submit the job to Azure ML
     job = submit_job(ml_client, experiment_name, display_name, input_path, compute, docker_env)
     print(f"Submitted job: {job.name}")

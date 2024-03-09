@@ -3,6 +3,7 @@ from ultralytics import YOLO
 import torch
 import sys
 
+# Parse command-line arguments
 def parse_opt():
     parser = argparse.ArgumentParser()
     parser.add_argument('--data_dir', type=str, help='Path to the dataset')
@@ -12,26 +13,23 @@ def parse_opt():
     parser.add_argument('--img_size', type=int, default=640, help='Train, test image sizes')
     parser.add_argument('--output_dir', type=str, default='runs/train', help='Output folder')
     parser.add_argument('--exp_name', type=str, default='exp_default', help='Experiment name')
-    parser.add_argument('--patience', type=int, default=20, help="Patience value" )
+    parser.add_argument('--patience', type=int, default=20, help="Patience value")
     parser.add_argument('--optimizer', type=str, default='Adam', help='Optimizer')
     parser.add_argument('--lr0', type=float, default=0.01, help='Initial Learning Rate')
     parser.add_argument('--iou', type=float, default=0.3, help='IoU')
     parser.add_argument('--dropout', type=float, default=0.2, help='Dropout')
-    #parser.add_argument('--model', type=str, default="yolov8m.pt", help='Model')
     return parser.parse_args()
 
+# Train the model based on the provided options
 def train_model(opt):
     print("Training options:", opt)
 
     device = torch.device('cpu')
-    #model = YOLO("yolov8m.pt").to(device)
     model = YOLO().to(device)
 
-    # Here, assume 'data.yaml' is available in the --data_dir directory.
-    # You might need to adjust the dataset configuration accordingly.
+    # Train the model
     model.train(
         data=f"{opt.data_dir}/data.yaml",
-        # model=opt.model,
         pretrained=opt.pretrained,
         batch=opt.batch_size,
         imgsz=opt.img_size,
