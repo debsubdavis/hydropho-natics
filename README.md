@@ -13,7 +13,7 @@ one_minus/:
             - 20160222T090004-File-8_20Hz_one_prediction.png
             - 20190221T143004-File-1_20Hz_one_prediction.png
         - Minus Model Predictions/: same as above, but Minus Model predictions
-            - 20160222T090004-File-8_20Hz_minus_prediction.png
+            - 20160222T090004-File-8_20Hz_minus_prediction.png 
             - 20190221T143004-File-1_20Hz_minus_prediction.png
         - One Minus Overlap Predictions/: same as above, but One and Minus Model predictions overlaid            
             - 20160222T090004-File-8_20Hz_overlap_prediction.png
