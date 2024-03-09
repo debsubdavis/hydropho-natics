@@ -10,16 +10,10 @@ dependencies:
   - numpy-base=1.26.2
   - matplotlib=3.8
   - pip:
+      - librosa==0.10
       - pyspark==3.5
-      - labelbox==3.59
-      - labelbox[data]
-      - ultralytics==8.1
-      - requests==2.31
-      - azure-keyvault-secrets==4.7
-      - azure-identity==1.15
-      - pylint==3.0
-      - azure-storage-blob==12.19
-      - torch>=1.8
-      - azure-ai-ml==1.*
-      - azureml-core==1.*
-      - azureml-mlflow==1.*
+      - resampy==0.4
+      - tensorflow==2.15
+      - tf-slim==1.1
+      - six==1.16
+      - soundfile==0.12.1

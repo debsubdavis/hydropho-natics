@@ -1,0 +1,7 @@
+numpy
+librosa==0.10
+resampy==0.4
+tensorflow==2.15
+tf-slim==1.1
+six==1.16
+soundfile==0.12.1

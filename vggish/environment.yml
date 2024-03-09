@@ -1,0 +1,24 @@
+name: vggish_run_environment
+channels:
+  - defaults
+dependencies:
+  - pip=23.3
+  - python=3.11
+  - jupyter=1
+  - notebook=6
+  - pandas=2.1
+  - numpy-base=1.26.2
+  - matplotlib=3.8
+  - pip:
+      - librosa==0.10
+      - pyspark==3.5
+      - plotly==5.19
+      - resampy==0.4
+      - scikit-learn==1.4
+      - seaborn==0.13
+      - six==1.16
+      - soundfile==0.12.1
+      - tensorflow==2.15
+      - tf-slim==1.1
+      - tqdm==4.66
+      - umap-learn==0.5
