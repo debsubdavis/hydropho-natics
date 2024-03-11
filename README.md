@@ -5,17 +5,17 @@ This repository was built to contain the work developed by the Hydropho-natics 2
 ## Repo Structure and Contents
 
 one_minus/:
-    - one_minusREADME.md: instructions for how to 
-    - one_minusReport.docx
-    - requirements.txt
-    - data.yaml
-    - azure_setup/
-    - one_minus_utils/
-    - scr/
+   - one_minusREADME.md: instructions for how to structure model approach
+   - one_minusReport.docx: report on the approach's development, thought process, and learnings 
+   - requirements.txt: libraries necessary to run the model in Azure
+   - data.yaml: example data.yaml file for reference - see one_minusREADME.md for more
+   - azure_setup/: codes used in the 2024 MSDS Capstone Azure ML deployment, for reference if future teams decide to use Azure but not required
+   - one_minus_utils/: utility scripts built for 2024 MSDS Capstone, included for reference but not required
+   - scr/
         - Yolov8_IntersectionOverUnion_Framework.ipynb
         - Yolov8_ModelTemplate.ipynb
         - Yolov8-HyperparameterTuning.ipynb
-    -results_data/: contains output and results images from 2024 Capstone project
+   - results_data/: contains output and results images from 2024 Capstone project
         - One Model Predictions/: 2 images, 1 from Fred Olsen and another from Azura, with the One Model predictions
             - 20160222T090004-File-8_20Hz_one_prediction.png
             - 20190221T143004-File-1_20Hz_one_prediction.png
@@ -29,10 +29,10 @@ one_minus/:
             - best_one_model_confusion_matrix_normalized.png
             - best_minus_model_confusion_matrix_normalized.png
 vggish/: Directory continaing the code for the VGGish audio embedding approach
-    -vggishREADME.md: instructions for how to run the code in the VGGish directory and details on the data outputs
-    -vggishReport.docx: report on the approach's development, thought process, and learnings 
-    -environment.yml: necessary libraries to run the code, usage instructions in vggishREADME.md
-    -scr/: contains code for approach
+   - vggishREADME.md: instructions for how to run the code in the VGGish directory and details on the data outputs
+   - vggishReport.docx: report on the approach's development, thought process, and learnings 
+   - environment.yml: necessary libraries to run the code, usage instructions in vggishREADME.md
+   - scr/: contains code for approach
         - requirements.txt: contains libraries for installation (backup to environment.yml)
         - vggish_params.py: sets parameters for VGGish model - see vggish/vggishREADME.md for more info
         - 01_vggish_smoke_test.py: verifies everything is setup correctly to run VGGish
@@ -48,7 +48,7 @@ vggish/: Directory continaing the code for the VGGish audio embedding approach
         - vggish_input.py: computes input log mel spectrograms & examples for VGGish from audio waveform
         - vggish_postprocess.py: post processes embededings. Not used in 2024 Capstone, necessary for 01_vggish_smoke_test.py
         - vggish_slim.py: defines the VGGish model used to generate AudioSet embedding features
-    -results_data/: contains output and results images from 2024 Capstone project
+   - results_data/: contains output and results images from 2024 Capstone project
         - Data/: contains the data files for the best VGGish results set (5-second t-SNE reduced embeddings)
             - combined_data_5secs.csv: combined 128-dimensional embeddings for 5 second embeddings
             - tsne_data_5secs.csv: combined 2-dimensional t-SNE reduced results for 5 second embeddings
@@ -59,3 +59,14 @@ vggish/: Directory continaing the code for the VGGish audio embedding approach
         - tsne_plot_0.96secs.png: cluster of t-SNE reduced 0.96 second embeddings
         - tsne_plot_2secs.png: cluster of t-SNE reduced 2 second embeddings
         - tsne_plot_5secs.png: cluster of t-SNE reduced 5 second embeddings
+
+utils/: Directory containing utility code used by both models actively or during development. See vggishREADME for more.
+   - img-info/: code, image and annotation used to calculate pixel width of spectrogram for sound to time of occurrance mapping
+   - embedding_to_annotation_mapper.ipynb: tie annotations to their time of occurrance in WAV files and map to embeddings output by VGGish
+   - human_readable_annotation_timings.csv: file output by above code containing information for humans to locate and listen to annotations
+   - vggish_0.96_sec_comb_labels.csv: annotation labels mapped to VGGish embeddings for 0.96 second examples
+   - vggish_2_sec_comb_labels.csv: annotation labels mapped to VGGish embeddings for 2 second examples
+   - vggish_5_sec_comb_labels.csv: annotation labels mapped to VGGish embeddings for 5 second examples
+   - mapping_filenames.csv: maps wav files to numerical id for embedding labeling, output by 05_preprocess_embeddings.py
+   - unique_images_annotations.ipynb: identifies the most recent annotation for each image in 2024 MSDS Capstone data hard drive
+   - unique_images_annotations.csv: results of above code
