@@ -1,7 +1,6 @@
 ## About
 This README contains information on the VGGish model, how to resample audio, run VGGish, and cluster the output embeddings.
 
-
 ## Steps to Execute Analysis
 
 ### I. Set up environment and verify VGGish runs via a "smoke test"
