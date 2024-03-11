@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 5
+names: ['airplane', 'boat', 'flow noise', 'helicopter', 'humpback']
+
+roboflow:
+  workspace: msdscapstone
+  project: minus-iter-2
+  version: 3
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/msdscapstone/minus-iter-2/dataset/3

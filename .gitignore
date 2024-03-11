@@ -161,3 +161,9 @@ cython_debug/
 
 # VGGish files
 vggish/scr/vggish_model.ckpt
+
+# YOLO files
+one_minus/azure_setup/*
+*.pt
+*/compose-dev.yaml
+*/*/compose-dev.yaml
