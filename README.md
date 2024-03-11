@@ -59,3 +59,14 @@ vggish/: Directory continaing the code for the VGGish audio embedding approach
         - tsne_plot_0.96secs.png: cluster of t-SNE reduced 0.96 second embeddings
         - tsne_plot_2secs.png: cluster of t-SNE reduced 2 second embeddings
         - tsne_plot_5secs.png: cluster of t-SNE reduced 5 second embeddings
+
+utils/: Directory containing utility code used by both models actively or during development. See vggishREADME for more.
+   - img-info/: code, image and annotation used to calculate pixel width of spectrogram for sound to time of occurrance mapping
+   - embedding_to_annotation_mapper.ipynb: tie annotations to their time of occurrance in WAV files and map to embeddings output by VGGish
+   - human_readable_annotation_timings.csv: file output by above code containing information for humans to locate and listen to annotations
+   - vggish_0.96_sec_comb_labels.csv: annotation labels mapped to VGGish embeddings for 0.96 second examples
+   - vggish_2_sec_comb_labels.csv: annotation labels mapped to VGGish embeddings for 2 second examples
+   - vggish_5_sec_comb_labels.csv: annotation labels mapped to VGGish embeddings for 5 second examples
+   - mapping_filenames.csv: maps wav files to numerical id for embedding labeling, output by 05_preprocess_embeddings.py
+   - unique_images_annotations.ipynb: identifies the most recent annotation for each image in 2024 MSDS Capstone data hard drive
+   - unique_images_annotations.csv: results of above code
