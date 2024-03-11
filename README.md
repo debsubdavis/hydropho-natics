@@ -9,6 +9,7 @@ one_minus/:
    - one_minusReport.docx: report on the approach's development, thought process, and learnings 
    - requirements.txt: libraries necessary to run the model in Azure
    - data.yaml: example data.yaml file for reference - see one_minusREADME.md for more
+   - Roboflow - Usage Guide.pdf: usage guide for our annotation tool of choice, Roboflow
    - azure_setup/: codes used in the 2024 MSDS Capstone Azure ML deployment, for reference if future teams decide to use Azure but not required
    - one_minus_utils/: utility scripts built for 2024 MSDS Capstone, included for reference but not required
    - scr/

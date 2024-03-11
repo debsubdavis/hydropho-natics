@@ -117,25 +117,22 @@ This README contains information on the Yolov8 model, how to annotate the data, 
    Examine the output folder structure to assess model performance and identify areas of interest for further investigation.
 
 
-Output Directory
-│
-├── one
-│   ├── predict
-│   │   ├── images
-│   │   └── labels
-│   └── predicted_info.csv
-│
-├── minus
-│   ├── predict
-│   │   ├── images
-│   │   └── labels
-│   └── predicted_info.csv
-│
-├── overlap
-│   └── (Overlap images or visual representations)
-│
-└── areas_of_interest
-    └── (Areas of interest images and CSV files)
+Output Directory:
+   - one
+      - predict
+         - images
+         - labels
+      - predicted_info.csv
+   - minus
+      - predict
+         - image
+         - labels
+      - predicted_info.csv
+   - overlap
+      - (Overlap images or visual representations)
+   - areas_of_interest
+      - (Areas of interest images and CSV files)
+
  
 The output of the IoU framework follows a structured organization, facilitating the analysis and interpretation of object detection results:
 
