@@ -4,10 +4,17 @@ This repository was built to contain the work developed by the Hydropho-natics 2
  
 ## Repo Structure and Contents
 
-one_minus/: 
-#    -scr/
-#    -dev/
-#    -utils/
+one_minus/:
+    - one_minusREADME.md: instructions for how to 
+    - one_minusReport.docx
+    - requirements.txt
+    - data.yaml
+    - azure_setup/
+    - one_minus_utils/
+    - scr/
+        - Yolov8_IntersectionOverUnion_Framework.ipynb
+        - Yolov8_ModelTemplate.ipynb
+        - Yolov8-HyperparameterTuning.ipynb
     -results_data/: contains output and results images from 2024 Capstone project
         - One Model Predictions/: 2 images, 1 from Fred Olsen and another from Azura, with the One Model predictions
             - 20160222T090004-File-8_20Hz_one_prediction.png
@@ -23,7 +30,7 @@ one_minus/:
             - best_minus_model_confusion_matrix_normalized.png
 vggish/: Directory continaing the code for the VGGish audio embedding approach
     -vggishREADME.md: instructions for how to run the code in the VGGish directory and details on the data outputs
-    -vggishReport.md: report on the approach's development, thought process, and learnings 
+    -vggishReport.docx: report on the approach's development, thought process, and learnings 
     -environment.yml: necessary libraries to run the code, usage instructions in vggishREADME.md
     -scr/: contains code for approach
         - requirements.txt: contains libraries for installation (backup to environment.yml)
@@ -49,6 +56,6 @@ vggish/: Directory continaing the code for the VGGish audio embedding approach
         - 0.96_sec_heatmap.png: heatmap of known sound cluster density for 0.96 second embeddings
         - 2_sec_heatmap.png: heatmap of known sound cluster density for 2 second embeddings
         - 5_sec_heatmap.png: heatmap of known sound cluster density for 5 second embeddings
-#        - cluster of t-SNE reduced 0.96 second embeddings
-#        - cluster of t-SNE reduced 2 second embeddings
+        - tsne_plot_0.96secs.png: cluster of t-SNE reduced 0.96 second embeddings
+        - tsne_plot_2secs.png: cluster of t-SNE reduced 2 second embeddings
         - tsne_plot_5secs.png: cluster of t-SNE reduced 5 second embeddings
